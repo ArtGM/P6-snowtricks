@@ -1,7 +1,8 @@
 version: '3.7'
 services:
     database:
-        image: 'mysql:lastest'
+        image: 'mysql:8.0'
+        command: "--default-authentication-plugin=mysql_native_password  --disable-partition-engine-check --bind-address=0.0.0.0"
         environment:
             MYSQL_ROOT_PASSWORD: password
             MYSQL_DATABASE: main
