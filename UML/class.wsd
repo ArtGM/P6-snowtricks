@@ -1,0 +1,50 @@
+@startuml
+scale 800 width
+skinparam classBackgroundColor #f1ffe7
+skinparam classBorderColor #1a1b41
+Class Trick {
+-id: integer
+-name: string
+-description: text
+-tricks_group: integer
+-medias
+-contributors
+}
+Class Tricks_group {
+  -id: integer
+  -name: string
+  -description: text
+}
+Class Media {
+  -id: integer
+  -name: string
+  -description: text
+  -file: string
+  -type: string
+}
+Class User {
+  -id: integer
+  -name: string
+  -email: string
+  -password:string
+  -connected: boolean
+  -avatar: id
+}
+Class Comment {
+  -id: integer
+  -content: text
+  -date: datetime
+  -trick
+  -user
+}
+
+Media  "one" --o  "one" User
+Trick  "one" --*  "one" Tricks_group
+Trick  "one" *--  "many" User
+User  "one" *--  "many" Comment
+Media  "one" --o "one" Trick
+Comment "one" --* "one" Trick
+
+
+
+@enduml

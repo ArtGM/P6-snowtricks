@@ -3,90 +3,106 @@
 namespace App\Entity;
 
 use App\Repository\TricksRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\OneToOne;
 
 /**
+ * @ORM\Table(name="st_trick")
  * @ORM\Entity(repositoryClass=TricksRepository::class)
  */
-class Tricks
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+class Tricks {
+	/**
+	 * @var int
+	 *
+	 * @ORM\Id()
+	 * @ORM\Column(type="integer")
+	 */
+	protected $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $name;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(type="text", nullable=true)
+	 */
+	private $description;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $images;
+	/**
+	 *
+	 * @var int
+	 * One trick has One Tricks_group
+	 * @OneToOne(targetEntity="App\Entity\TricksGroup")
+	 */
+	private $tricks_group;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $tricks_categorie;
+	/**
+	 * One trick have Many medias
+	 *
+	 * @OneToMany(targetEntity="App\Entity\Media", mappedBy="trick")
+	 */
+	private $medias;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+	/**
+	 * One trick has many contributors
+	 *
+	 * @OneToMany(targetEntity="App\Entity\User", mappedBy="contributions")
+	 */
+	private $contributors;
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
+	/**
+	 * @return ArrayCollection
+	 */
+	public function get_medias(): ArrayCollection {
+		return $this->medias;
+	}
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
+	/**
+	 * @return ArrayCollection
+	 */
+	public function get_contributors(): ArrayCollection {
+		return $this->contributors;
+	}
 
-        return $this;
-    }
+	public function __construct() {
+		$this->medias       = new ArrayCollection();
+		$this->contributors = new ArrayCollection();
+	}
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
+	/**
+	 * @return int
+	 */
+	public function get_id(): int {
+		return $this->id;
+	}
 
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
+	/**
+	 * @return string
+	 */
+	public function get_name(): string {
+		return $this->name;
+	}
 
-        return $this;
-    }
+	/**
+	 * @return string
+	 */
+	public function get_description(): string {
+		return $this->description;
+	}
 
-    public function getImages(): ?string
-    {
-        return $this->images;
-    }
+	/**
+	 * @return int
+	 */
+	public function get_tricks_group(): int {
+		return $this->tricks_group;
+	}
 
-    public function setImages(?string $images): self
-    {
-        $this->images = $images;
 
-        return $this;
-    }
-
-    public function getTricksCategorie(): ?int
-    {
-        return $this->tricks_categorie;
-    }
-
-    public function setTricksCategorie(?int $tricks_categorie): self
-    {
-        $this->tricks_categorie = $tricks_categorie;
-
-        return $this;
-    }
 }
