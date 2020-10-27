@@ -7,10 +7,10 @@ use App\Repository\TricksGroupRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table (name="st_tricks_group")
+ * @ORM\Table (name="st_trick_group")
  * @ORM\Entity (repositoryClass=TricksGroupRepository::class)
  */
-class TricksGroup {
+class TrickGroup {
 	/**
 	 * @var string
 	 *

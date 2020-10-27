@@ -48,10 +48,6 @@ class Media {
 	 */
 	private $type;
 
-	/**
-	 * @ORM\ManyToOne (targetEntity="App\Entity\Tricks", inversedBy="medias")
-	 */
-	private $trick;
 
 	/**
 	 * @return int
@@ -88,10 +84,4 @@ class Media {
 		return $this->type;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function get_trick() {
-		return $this->trick;
-	}
 }

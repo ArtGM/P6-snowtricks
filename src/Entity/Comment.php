@@ -6,6 +6,8 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\OneToOne;
 
 /**
@@ -37,15 +39,15 @@ class Comment {
 
 	/**
 	 * @var int
-	 * One Comment belong to One Trick
-	 * @OneToOne (targetEntity="App\Entity\Tricks")
+	 * Many Comments have One trick
+	 * @ManyToOne (targetEntity="App\Entity\Trick")
 	 */
 	private $trick;
 
 	/**
 	 * @var int
-	 * One Comment Belong to One User
-	 * @OneToOne (targetEntity="App\Entity\User")
+	 * Many Comments have one user
+	 * @ManyToOne (targetEntity="App\Entity\User")
 	 */
 	private $user;
 

@@ -5,14 +5,15 @@ namespace App\Entity;
 use App\Repository\TricksRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToMany;
-use Doctrine\ORM\Mapping\OneToOne;
 
 /**
  * @ORM\Table(name="st_trick")
  * @ORM\Entity(repositoryClass=TricksRepository::class)
  */
-class Tricks {
+class Trick {
 	/**
 	 * @var int
 	 *
@@ -38,24 +39,21 @@ class Tricks {
 	/**
 	 *
 	 * @var int
-	 * One trick has One Tricks_group
-	 * @OneToOne(targetEntity="App\Entity\TricksGroup")
+	 * Many Trick have one Trick_group
+	 * @ManyToOne(targetEntity="App\Entity\TrickGroup")
 	 */
 	private $tricks_group;
 
 	/**
-	 * One trick have Many medias
+	 * Many tricks have Many medias
 	 *
-	 * @OneToMany(targetEntity="App\Entity\Media", mappedBy="trick")
+	 * @ManyToMany(targetEntity="App\Entity\Media")
+	 *  @ORM\JoinTable(name="trick_has_media",
+	 *      joinColumns={@ORM\JoinColumn(name="trick_id", referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="media_id", referencedColumnName="id")}
+	 *     )
 	 */
 	private $medias;
-
-	/**
-	 * One trick has many contributors
-	 *
-	 * @OneToMany(targetEntity="App\Entity\User", mappedBy="contributions")
-	 */
-	private $contributors;
 
 	/**
 	 * @return ArrayCollection
@@ -64,16 +62,9 @@ class Tricks {
 		return $this->medias;
 	}
 
-	/**
-	 * @return ArrayCollection
-	 */
-	public function get_contributors(): ArrayCollection {
-		return $this->contributors;
-	}
 
 	public function __construct() {
 		$this->medias       = new ArrayCollection();
-		$this->contributors = new ArrayCollection();
 	}
 
 	/**

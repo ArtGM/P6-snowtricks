@@ -5,7 +5,6 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OneToOne;
 
 /**
  * @ORM\Table (name="st_user")
@@ -43,20 +42,18 @@ class User {
 	private $password;
 
 	/**
-	 * @var bool
-	 *
-	 * @ORM\Column (type="boolean")
-	 */
-	private $connected;
-
-	/**
-	 * One user has one avatar
-	 * @OneToOne(targetEntity="App\Entity\Media")
+	 * many user has one avatar
+	 * @ORM\ManyToOne(targetEntity="App\Entity\Media")
 	 */
 	private $avatar;
 
 	/**
-	 * @ORM\ManyToOne (targetEntity="App\Entity\Tricks", inversedBy="contributors")
+	 * Many Users have Many Trick
+	 * @ORM\ManyToMany (targetEntity="App\Entity\Trick")
+	 * @ORM\JoinTable(name="user_has_tricks",
+	 *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="trick_id", referencedColumnName="id")}
+	 *     )
 	 */
 	private $contributions;
 
@@ -93,13 +90,6 @@ class User {
 	 */
 	public function get_password(): string {
 		return $this->password;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function is_connected(): bool {
-		return $this->connected;
 	}
 
 	/**
