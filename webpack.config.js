@@ -1,7 +1,7 @@
 const Encore = require('@symfony/webpack-encore');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
+// It's useful when you use tools that rely on webpack.config.components file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
@@ -20,17 +20,17 @@ Encore
      * Add 1 entry for each "page" of your app
      * (including one that's included on every page - e.g. "app")
      *
-     * Each entry will result in one JavaScript file (e.g. app.js)
+     * Each entry will result in one JavaScript file (e.g. app.components)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    //.addEntry('page1', './assets/page1.js')
-    //.addEntry('page2', './assets/page2.js')
+    //.addEntry('page1', './assets/page1.components')
+    //.addEntry('page2', './assets/page2.components')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
-    // will require an extra script tag for runtime.js
+    // will require an extra script tag for runtime.components
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
 
@@ -68,7 +68,7 @@ Encore
 
     // uncomment if you use API Platform Admin (composer req api-admin)
     .enableReactPreset()
-    //.addEntry('admin', './assets/admin.js')
+    //.addEntry('admin', './assets/admin.components')
 ;
 
 module.exports = Encore.getWebpackConfig();

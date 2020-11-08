@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,10 +43,17 @@ class User {
 	private $password;
 
 	/**
+	 * @var string
+	 *
+	 * @ORM\Column (type="string")
+	 */
+	private $roles;
+
+	/**
 	 * many user has one avatar
 	 * @ORM\ManyToOne(targetEntity="App\Entity\Media")
 	 */
-	private $avatar;
+	private $avatar_id;
 
 	/**
 	 * Many Users have Many Trick
@@ -56,6 +64,13 @@ class User {
 	 *     )
 	 */
 	private $contributions;
+
+	/**
+	 * @var DateTime
+	 *
+	 * @ORM\Column (type="datetime")
+	 */
+	private $created_at;
 
 	/**
 	 * @return mixed

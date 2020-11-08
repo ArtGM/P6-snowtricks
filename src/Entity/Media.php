@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use App\Repository\MediaRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +48,13 @@ class Media {
 	 * @ORM\Column (type="string")
 	 */
 	private $type;
+
+	/**
+	 * @var DateTime
+	 *
+	 * @ORM\Column (type="datetime")
+	 */
+	private $created_at;
 
 
 	/**

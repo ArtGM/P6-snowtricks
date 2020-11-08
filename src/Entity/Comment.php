@@ -35,7 +35,7 @@ class Comment {
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $date;
+	private $created_at;
 
 	/**
 	 * @var int
@@ -68,8 +68,8 @@ class Comment {
 	/**
 	 * @return DateTime
 	 */
-	public function get_date(): DateTime {
-		return $this->date;
+	public function get_createdat(): DateTime {
+		return $this->created_at;
 	}
 
 	/**

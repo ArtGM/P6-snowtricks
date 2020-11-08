@@ -2,12 +2,11 @@
 
 namespace App\Entity;
 
+use App\Domain\Trick\TrickDTO;
 use App\Repository\TricksRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToMany;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * @ORM\Table(name="st_trick")
@@ -18,7 +17,8 @@ class Trick {
 	 * @var int
 	 *
 	 * @ORM\Id()
-	 * @ORM\Column(type="integer")
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	protected $id;
 
@@ -27,7 +27,7 @@ class Trick {
 	 *
 	 * @ORM\Column(type="string", length=255)
 	 */
-	private $name;
+	protected $name;
 
 	/**
 	 * @var string
@@ -40,14 +40,14 @@ class Trick {
 	 *
 	 * @var int
 	 * Many Trick have one Trick_group
-	 * @ManyToOne(targetEntity="App\Entity\TrickGroup")
+	 * @ORM\ManyToOne(targetEntity="App\Entity\TrickGroup")
 	 */
 	private $tricks_group;
 
 	/**
 	 * Many tricks have Many medias
 	 *
-	 * @ManyToMany(targetEntity="App\Entity\Media")
+	 * @ORM\ManyToMany(targetEntity="App\Entity\Media")
 	 *  @ORM\JoinTable(name="trick_has_media",
 	 *      joinColumns={@ORM\JoinColumn(name="trick_id", referencedColumnName="id")},
 	 *      inverseJoinColumns={@ORM\JoinColumn(name="media_id", referencedColumnName="id")}
@@ -56,44 +56,29 @@ class Trick {
 	private $medias;
 
 	/**
-	 * @return ArrayCollection
+	 * @var DateTime
+	 *
+	 * @ORM\Column (type="datetime")
 	 */
-	public function get_medias(): ArrayCollection {
-		return $this->medias;
-	}
+	private $created_at;
 
+	/**
+	 * @var DateTime
+	 *
+	 * @ORM\Column (type="datetime")
+	 */
+	private $updated_at;
 
-	public function __construct() {
+	public function __construct(string $name, string $description) {
+		$this->name = $name;
+		$this->description = $description;
+		$this->created_at = new DateTime();
+		$this->updated_at = new DateTime();
 		$this->medias       = new ArrayCollection();
 	}
 
-	/**
-	 * @return int
-	 */
-	public function get_id(): int {
-		return $this->id;
+	public static function createFromDto( TrickDTO $trickDto ): Trick {
+		return new self($trickDto->name, $trickDto->description);
 	}
-
-	/**
-	 * @return string
-	 */
-	public function get_name(): string {
-		return $this->name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_description(): string {
-		return $this->description;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_tricks_group(): int {
-		return $this->tricks_group;
-	}
-
 
 }

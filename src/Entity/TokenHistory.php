@@ -45,6 +45,6 @@ class TokenHistory {
 	 * Many tokens has one user
 	 * @ORM\ManyToOne (targetEntity="App\Entity\User")
 	 */
-	private $user;
+	private $user_id;
 
 }

@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use App\Repository\TricksGroupRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -53,5 +54,14 @@ class TrickGroup {
 	public function get_description(): string {
 		return $this->description;
 	}
+
+	/**
+	 * @var DateTime
+	 *
+	 * @ORM\Column (type="datetime")
+	 */
+	private $created_at;
+
+
 
 }

@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML/class.wsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/mysql/mysql/auto.cnf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/mysql/mysql/ca-key.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/mysql/mysql/ib_buffer_pool" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/mysql/mysql/ib_logfile0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/mysql/mysql/ib_logfile1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/mysql/mysql/ibdata1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201009073431.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201009124709.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201011115434.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/UML/class/class.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/TricksGroup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CommentRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/MediaRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/TricksGroupRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+    <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name">
+      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.php-version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/components/HeaderContent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/components/Home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/components/TrickForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/components/Wrapper.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/trick-form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201027091103.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201106121340.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CommonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Tricks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tricks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TricksRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TricksRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TokenHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TokenHistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TrickGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TrickGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +49,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="composer.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -124,6 +130,12 @@
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-eventmanager" />
       <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iCHQCxDY3dMTc8mJMbVUvTvxrZ" />
@@ -141,21 +153,31 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lamb-of-code" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="C:\Users\Arthur\AppData\Roaming\npm\node_modules\standard" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Sites\www\snowtrick" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Sites\www\snowtrick\src\Domain\Trick" />
+      <recent name="F:\Sites\www\snowtrick\src\Entity" />
       <recent name="F:\Sites\www\snowtrick\templates" />
     </key>
   </component>
@@ -192,6 +214,29 @@
       <workItem from="1602181164372" duration="5216000" />
       <workItem from="1602225964309" duration="10785000" />
       <workItem from="1602401647291" duration="10012000" />
+      <workItem from="1602432770188" duration="601000" />
+      <workItem from="1602616603329" duration="683000" />
+      <workItem from="1603480953872" duration="707000" />
+      <workItem from="1603539291595" duration="7177000" />
+      <workItem from="1603608465061" duration="2047000" />
+      <workItem from="1603619429767" duration="3587000" />
+      <workItem from="1603704190639" duration="1252000" />
+      <workItem from="1603740840858" duration="5714000" />
+      <workItem from="1603789259578" duration="18115000" />
+      <workItem from="1603876660629" duration="5179000" />
+      <workItem from="1604152584232" duration="5267000" />
+      <workItem from="1604238108932" duration="4852000" />
+      <workItem from="1604246165582" duration="2052000" />
+      <workItem from="1604248237406" duration="326000" />
+      <workItem from="1604433022377" duration="597000" />
+      <workItem from="1604651895042" duration="6544000" />
+      <workItem from="1604663127139" duration="151000" />
+      <workItem from="1604663304992" duration="736000" />
+      <workItem from="1604664063006" duration="1530000" />
+      <workItem from="1604669909744" duration="633000" />
+      <workItem from="1604671808566" duration="65000" />
+      <workItem from="1604671976935" duration="171000" />
+      <workItem from="1604837510494" duration="338000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -200,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601730896422</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name">
+      <created>1603792043911</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603792043911</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +273,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="* Dev: set development environment" />
-    <option name="LAST_COMMIT_MESSAGE" value="* Dev: set development environment" />
+    <MESSAGE value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
+    <option name="LAST_COMMIT_MESSAGE" value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
   </component>
 </project>
