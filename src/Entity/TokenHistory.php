@@ -18,28 +18,28 @@ class TokenHistory {
 	 * @ORM\Id()
 	 * @ORM\Column (type="integer")
 	 */
-	private $id;
+	private int $id;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $value;
+	private string $value;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $type;
+	private string $type;
 
 	/**
 	 * Many tokens has one user

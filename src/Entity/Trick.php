@@ -20,21 +20,21 @@ class Trick {
 	 * @ORM\Column(name="id", type="integer")
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
-	protected $id;
+	protected  int $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(type="string", length=255)
 	 */
-	protected $name;
+	protected string $name;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(type="text", nullable=true)
 	 */
-	private $description;
+	private string $description;
 
 	/**
 	 *
@@ -42,7 +42,7 @@ class Trick {
 	 * Many Trick have one Trick_group
 	 * @ORM\ManyToOne(targetEntity="App\Entity\TrickGroup")
 	 */
-	private $tricks_group;
+	private int $tricks_group;
 
 	/**
 	 * Many tricks have Many medias
@@ -53,21 +53,21 @@ class Trick {
 	 *      inverseJoinColumns={@ORM\JoinColumn(name="media_id", referencedColumnName="id")}
 	 *     )
 	 */
-	private $medias;
+	private ArrayCollection $medias;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $updated_at;
+	private DateTime $updated_at;
 
 	public function __construct(string $name, string $description) {
 		$this->name = $name;

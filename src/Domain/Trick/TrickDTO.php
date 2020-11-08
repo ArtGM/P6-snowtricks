@@ -14,7 +14,7 @@ class TrickDTO {
 	 *     message="le nom est requis
 	 * )
 	 */
-	public $name;
+	public ?string $name;
 
 	/**
 	 * @var string|null
@@ -23,6 +23,6 @@ class TrickDTO {
 	 *     message="la description est requise"
 	 * )
 	 */
-	public $description;
+	public ?string $description;
 
 }

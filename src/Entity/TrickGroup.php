@@ -18,49 +18,28 @@ class TrickGroup {
 	 * @ORM\Id()
 	 * @ORM\Column (type="integer")
 	 */
-	private $id;
+	private string $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
 	 */
-	private $description;
-
-	/**
-	 * @return string
-	 */
-	public function get_id(): string {
-		return $this->id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_name(): string {
-		return $this->name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_description(): string {
-		return $this->description;
-	}
+	private string $description;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 
 

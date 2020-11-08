@@ -19,41 +19,41 @@ class User {
 	 * @ORM\Id ()
 	 * @ORM\Column (type="integer")
 	 */
-	private $id;
+	private int $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
 	 */
-	private $email;
+	private string $email;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $password;
+	private string $password;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $roles;
+	private string $roles;
 
 	/**
 	 * many user has one avatar
 	 * @ORM\ManyToOne(targetEntity="App\Entity\Media")
 	 */
-	private $avatar_id;
+	private string $avatar_id;
 
 	/**
 	 * Many Users have Many Trick
@@ -70,48 +70,6 @@ class User {
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
-
-	/**
-	 * @return mixed
-	 */
-	public function get_contributions() {
-		return $this->contributions;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_id(): int {
-		return $this->id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_name(): string {
-		return $this->name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_email(): string {
-		return $this->email;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_password(): string {
-		return $this->password;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_avatar(): int {
-		return $this->avatar;
-	}
+	private DateTime $created_at;
 
 }

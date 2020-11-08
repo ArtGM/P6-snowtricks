@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.php-version" beforeDir="false" afterPath="$PROJECT_DIR$/.php-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TokenHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TokenHistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TrickGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TrickGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +214,7 @@
       <workItem from="1604669909744" duration="633000" />
       <workItem from="1604671808566" duration="65000" />
       <workItem from="1604671976935" duration="171000" />
-      <workItem from="1604837510494" duration="1197000" />
+      <workItem from="1604837510494" duration="2058000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -231,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604837875925</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="* Config: change php version to 7.4">
+      <created>1604838815248</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604838815248</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +266,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="* Dev: set development environment" />
     <MESSAGE value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
-    <option name="LAST_COMMIT_MESSAGE" value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
+    <MESSAGE value="* Config: change php version to 7.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="* Config: change php version to 7.4" />
   </component>
 </project>

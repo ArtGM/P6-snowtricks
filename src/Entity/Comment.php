@@ -21,68 +21,34 @@ class Comment {
 	 * @ORM\Id()
 	 * @ORM\Column (type="integer")
 	 */
-	private $id;
+	private int $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
 	 */
-	private $content;
+	private string $content;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 	/**
 	 * @var int
 	 * Many Comments have One trick
 	 * @ManyToOne (targetEntity="App\Entity\Trick")
 	 */
-	private $trick;
+	private int $trick;
 
 	/**
 	 * @var int
 	 * Many Comments have one user
 	 * @ManyToOne (targetEntity="App\Entity\User")
 	 */
-	private $user;
+	private int $user;
 
-	/**
-	 * @return int
-	 */
-	public function get_id(): int {
-		return $this->id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_content(): string {
-		return $this->content;
-	}
-
-	/**
-	 * @return DateTime
-	 */
-	public function get_createdat(): DateTime {
-		return $this->created_at;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_trick(): int {
-		return $this->trick;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_user(): int {
-		return $this->user;
-	}
 }
