@@ -1841,6 +1841,16 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bootstrap-icons@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.1.0.tgz#8f2e268a563e3056723171dfd1c5f78a8c3e1677"
+  integrity sha512-z5wWjw+SGLdDdP9R5qqEYSi+yRJOeOwlGW83VNftMO+jIgW/rtxHk3LI8sRxPYZEB0G+btJaEiUKLKsx3Mlycg==
+
+bootstrap@^5.0.0-alpha3:
+  version "5.0.0-alpha3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.0.0-alpha3.tgz#f5abbd38740383d6b8e041212aef5ea220e7daaa"
+  integrity sha512-ghwrMFNzqOwfB0nJ1iYbkERd+EK1PblUl7rEEynY35jD0TUlSY6yrjG2M42qI++NhAUBEqGcjmmHkMGs3QyNHA==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"

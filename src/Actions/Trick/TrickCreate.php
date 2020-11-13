@@ -23,11 +23,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 class TrickCreate {
 
-	/** @var FormFactoryInterface  */
-	private FormFactoryInterface $form_factory;
+	/** @var FormFactoryInterface */
+	private FormFactoryInterface $formFactory;
 
-	/** @var EntityManagerInterface  */
-	private EntityManagerInterface $entity_manager;
+	/** @var EntityManagerInterface */
+	private EntityManagerInterface $entityManager;
 
 	/**
 	 * TrickCreate constructor.
@@ -37,40 +37,39 @@ class TrickCreate {
 	 */
 	public function __construct(
 		EntityManagerInterface $entity_manager,
-		FormFactoryInterface $form_factory,
-		UrlGeneratorInterface $url_generator
+		FormFactoryInterface $form_factory
 	) {
-		$this->form_factory = $form_factory;
-		$this->entity_manager = $entity_manager;
+		$this->formFactory   = $form_factory;
+		$this->entityManager = $entity_manager;
 	}
 
 
 	/**
 	 * @param Request $request
-	 * @param ViewResponders $view_responders
-	 * @param RedirectResponders $redirect_responders
+	 * @param ViewResponders $viewResponders
+	 * @param RedirectResponders $redirectResponders
 	 *
 	 * @return RedirectResponse|Response
 	 */
 	public function __invoke(
 		Request $request,
-		ViewResponders $view_responders,
-		RedirectResponders $redirect_responders
+		ViewResponders $viewResponders,
+		RedirectResponders $redirectResponders
 	) {
-		$form = $this->form_factory->create( TrickFormType::class )
-		                           ->handleRequest( $request );
-		if ( $form->isSubmitted() && $form->isValid() ) {
+		$createTrickForm = $this->formFactory->create( TrickFormType::class )
+		                                     ->handleRequest( $request );
+		if ( $createTrickForm->isSubmitted() && $createTrickForm->isValid() ) {
 
 			/** @var TrickDTO $trickDto */
-			$trickDto = $form->getData();
+			$trickDto = $createTrickForm->getData();
 
-			$trick = Trick::createFromDto($trickDto);
-			$this->entity_manager->persist( $trick );
-			$this->entity_manager->flush();
+			$newTrick = Trick::createFromDto( $trickDto );
+			$this->entityManager->persist( $newTrick );
+			$this->entityManager->flush();
 
-			return $redirect_responders('homepage');
+			return $redirectResponders( 'homepage' );
 		}
 
-		return $view_responders('core/trick-form.html.twig', ['form' => $form->createView()]);
+		return $viewResponders( 'core/trick-form.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
 	}
 }

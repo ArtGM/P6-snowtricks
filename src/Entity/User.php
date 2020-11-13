@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use App\Domain\User\RegistrationDTO;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
@@ -71,5 +72,15 @@ class User {
 	 * @ORM\Column (type="datetime")
 	 */
 	private DateTime $created_at;
+
+	public function __construct(string $name, string $email, string $password) {
+		$this->name = $name;
+		$this->email = $email;
+		$this->password = $password;
+	}
+
+	public static function createFromDto( RegistrationDTO $registrationDto ) : User {
+		return new self($registrationDto->name, $registrationDto->email, $registrationDto->password);
+	}
 
 }

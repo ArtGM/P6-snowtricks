@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(signUpForm) }}
+
+    {{ form_row(signUpForm.name, {
+        'label_attr': {
+          'class': 'form-label'
+        },
+        'attr': {
+            'placeholder': 'Your name',
+            'class': 'form-control'
+        }
+    }) }}
+
+    {{ form_row(signUpForm.email, {
+        'label_attr': {
+            'class': 'form-label'
+        },
+        'attr': {
+            'placeholder': 'Email address',
+            'class': 'form-control'
+        }
+    }) }}
+    {{ form_row(signUpForm.password, {
+        'label_attr': {
+            'class': 'form-label'
+        },
+        'attr': {
+            'placeholder': 'Your password',
+            'class': 'form-control'
+        }
+    }) }}
+
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+    {{ form_end(signUpForm) }}
+{% endblock %}
+
