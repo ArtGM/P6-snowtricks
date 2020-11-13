@@ -88,7 +88,7 @@
         "version": "2.2.3"
     },
     "php": {
-        "version": "7.3"
+        "version": "7.4"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -232,6 +232,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.20.0"
+    },
     "symfony/routing": {
         "version": "5.1",
         "recipe": {
@@ -277,6 +280,9 @@
     },
     "symfony/twig-pack": {
         "version": "v1.0.0"
+    },
+    "symfony/uid": {
+        "version": "v5.1.8"
     },
     "symfony/var-dumper": {
         "version": "v5.1.6"
