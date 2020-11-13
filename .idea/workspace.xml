@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Actions/User/UserRegistration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Domain/User/RegistrationDTO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Domain/User/RegistrationFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/registration-form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/icons/person-circle.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Actions/Trick/TrickCreate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Trick/TrickCreate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/trick-form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick-form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +125,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iCHQCxDY3dMTc8mJMbVUvTvxrZ" />
@@ -219,7 +231,7 @@
       <workItem from="1604865298666" duration="985000" />
       <workItem from="1604866404396" duration="3135000" />
       <workItem from="1605033775101" duration="5217000" />
-      <workItem from="1605252815447" duration="1974000" />
+      <workItem from="1605252815447" duration="13821000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -270,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605254689911</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="* COnfig: Add security bundle component">
+      <created>1605256312048</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605256312048</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +315,7 @@
     <MESSAGE value="* Dev: add type declaration on Entity property" />
     <MESSAGE value="* Dev: set ADR pattern" />
     <MESSAGE value="* Dev: Change name" />
-    <option name="LAST_COMMIT_MESSAGE" value="* Dev: Change name" />
+    <MESSAGE value="* COnfig: Add security bundle component" />
+    <option name="LAST_COMMIT_MESSAGE" value="* COnfig: Add security bundle component" />
   </component>
 </project>
