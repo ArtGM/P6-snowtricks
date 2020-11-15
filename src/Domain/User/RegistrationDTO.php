@@ -3,8 +3,13 @@
 
 namespace App\Domain\User;
 
-use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class RegistrationDTO
+ * @package App\Domain\User
+ */
 class RegistrationDTO {
 	/**
 	 * @var string|null
@@ -31,7 +36,6 @@ class RegistrationDTO {
 
 	/**
 	 * @var string|null
-	 * @Assert\NotCompromisedPassword
 	 * @Assert\Length(
 	 *      min = 8,
 	 *      max = 16,

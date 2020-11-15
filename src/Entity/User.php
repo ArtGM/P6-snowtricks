@@ -7,11 +7,16 @@ use App\Domain\User\RegistrationDTO;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table (name="st_user")
  * @ORM\Entity (repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="email already exist"
+ * )
  */
 class User implements UserInterface {
 
@@ -84,12 +89,12 @@ class User implements UserInterface {
 	 * @param string $password
 	 * @param array|string[] $roles
 	 */
-	public function __construct( string $name, string $email, string $password, array $roles = ['ROLE_USER']) {
-		$this->name     = $name;
-		$this->email    = $email;
-		$this->password = $password;
+	public function __construct( string $name, string $email, string $password, array $roles = [ 'ROLE_USER' ] ) {
+		$this->name       = $name;
+		$this->email      = $email;
+		$this->password   = $password;
 		$this->created_at = new DateTime();
-		$this->roles = $roles;
+		$this->roles      = $roles;
 
 	}
 
@@ -126,6 +131,7 @@ class User implements UserInterface {
 	public function getSalt(): ?string {
 		// TODO: Implement getSalt() method.
 	}
+
 	public function eraseCredentials() {
 		// TODO: Implement eraseCredentials() method.
 	}

@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/sign-up")
@@ -49,14 +48,13 @@ class UserRegistration {
 	) {
 		$this->formFactory   = $formFactory;
 		$this->entityManager = $entityManager;
-		$this->encoder = $encoder;
+		$this->encoder       = $encoder;
 	}
 
 	/**
 	 * @param Request $request
 	 * @param RedirectResponders $redirectResponder
 	 * @param ViewResponders $viewResponder
-	 * @param UserPasswordEncoderInterface $passwordEncoder
 	 *
 	 * @return RedirectResponse|Response
 	 */
@@ -65,22 +63,24 @@ class UserRegistration {
 		RedirectResponders $redirectResponder,
 		ViewResponders $viewResponder
 	) {
-			$signUpForm = $this->signUpForm($request);
+		$signUpForm = $this->signUpForm( $request );
 
 		if ( $signUpForm->isSubmitted() && $signUpForm->isValid() ) {
 
 			/** @var RegistrationDTO $registrationDto */
 			$registrationDto = $signUpForm->getData();
 
-			$registrationDto->password = $this->encodedPassword($registrationDto->password);
+			$registrationDto->password = $this->encodedPassword( $registrationDto->password );
 
 			$newUser = User::createFromDto( $registrationDto );
+
 
 			$this->entityManager->persist( $newUser );
 
 			$this->entityManager->flush();
 
 			return $redirectResponder( 'homepage' );
+
 
 		}
 
@@ -92,8 +92,8 @@ class UserRegistration {
 	 *
 	 * @return FormInterface
 	 */
-	private function signUpForm($request): FormInterface {
-		return $this->formFactory->create(RegistrationFormType::class)->handleRequest($request);
+	private function signUpForm( $request ): FormInterface {
+		return $this->formFactory->create( RegistrationFormType::class )->handleRequest( $request );
 	}
 
 	/**
@@ -101,9 +101,10 @@ class UserRegistration {
 	 *
 	 * @return string
 	 */
-	private function encodedPassword($plainPassword): string {
-		$passwordEncoder = $this->encoder->getEncoder(User::class);
-		return $passwordEncoder->encodePassword($plainPassword, null);
+	private function encodedPassword( $plainPassword ): string {
+		$passwordEncoder = $this->encoder->getEncoder( User::class );
+
+		return $passwordEncoder->encodePassword( $plainPassword, null );
 	}
 
 }

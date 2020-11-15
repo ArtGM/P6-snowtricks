@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/packages/test/validator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201106121340.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201113135702.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Actions/User/UserRegistration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/User/UserRegistration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/User/RegistrationDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/RegistrationDTO.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/registration-form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/registration-form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +125,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iCHQCxDY3dMTc8mJMbVUvTvxrZ" />
@@ -222,7 +229,8 @@
       <workItem from="1604865298666" duration="985000" />
       <workItem from="1604866404396" duration="3135000" />
       <workItem from="1605033775101" duration="5217000" />
-      <workItem from="1605252815447" duration="20108000" />
+      <workItem from="1605252815447" duration="20506000" />
+      <workItem from="1605436398294" duration="6991000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -294,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605273877261</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="* Dev: Hash Password on registering">
+      <created>1605280260849</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605280260849</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +338,7 @@
     <MESSAGE value="* COnfig: Add security bundle component" />
     <MESSAGE value="* Dev: Sign up Action, form and templates + add bootstrap" />
     <MESSAGE value="* Dev: Build front end" />
-    <option name="LAST_COMMIT_MESSAGE" value="* Dev: Build front end" />
+    <MESSAGE value="* Dev: Hash Password on registering" />
+    <option name="LAST_COMMIT_MESSAGE" value="* Dev: Hash Password on registering" />
   </component>
 </project>
