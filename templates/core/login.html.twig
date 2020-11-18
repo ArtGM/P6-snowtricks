@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row my-3 justify-content-center">
+        <form action="{{ path('user_login') }}" class="col-6">
+            <div class="form-group">
+                <label for="user-email" class="form-label">Email</label>
+                <input placeholder="Email Address" id="user-email" type="email" class="form-control" name="_username"
+                       required>
+
+            </div>
+
+            <div class="form-group">
+                <label for="user-password" class="form-label">Password</label>
+                <input placeholder="Password" type="password" id="user-password" class="form-control" name="_password"
+                       required>
+
+            </div>
+            <input class="btn btn-primary my-3" type="submit" value="login">
+        </form>
+    </div>
+{% endblock %}

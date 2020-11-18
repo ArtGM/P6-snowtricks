@@ -7,6 +7,8 @@ use App\Domain\User\RegistrationDTO;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -21,13 +23,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface {
 
 	/**
-	 * @var int
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id ()
-	 * @ORM\Column (type="integer")
-	 * @ORM\GeneratedValue(strategy="AUTO")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue(strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator(class=UuidGenerator::class)
 	 */
-	private int $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var string
@@ -90,6 +93,7 @@ class User implements UserInterface {
 	 * @param array|string[] $roles
 	 */
 	public function __construct( string $name, string $email, string $password, array $roles = [ 'ROLE_USER' ] ) {
+		$this->id         = Uuid::v4();
 		$this->name       = $name;
 		$this->email      = $email;
 		$this->password   = $password;

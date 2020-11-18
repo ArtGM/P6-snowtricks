@@ -7,8 +7,8 @@ use App\Repository\CommentRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
-use Doctrine\ORM\Mapping\OneToOne;
+use Ramsey\Uuid\UuidInterface;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 
 /**
  * @ORM\Table (name="st_comment")
@@ -16,12 +16,14 @@ use Doctrine\ORM\Mapping\OneToOne;
  */
 class Comment {
 	/**
-	 * @var int
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id()
-	 * @ORM\Column (type="integer")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue (strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator (class=UuidGenerator::class)
 	 */
-	private int $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var string

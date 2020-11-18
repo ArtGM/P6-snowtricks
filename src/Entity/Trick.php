@@ -7,6 +7,8 @@ use App\Repository\TricksRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 
 /**
  * @ORM\Table(name="st_trick")
@@ -14,13 +16,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Trick {
 	/**
-	 * @var int
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id()
-	 * @ORM\Column(name="id", type="integer")
-	 * @ORM\GeneratedValue(strategy="AUTO")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue (strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator (class=UuidGenerator::class)
 	 */
-	protected  int $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var string
@@ -70,11 +73,12 @@ class Trick {
 	private DateTime $updated_at;
 
 	public function __construct(string $name, string $description) {
-		$this->name = $name;
+		$this->id          = Uuid::v4();
+		$this->name        = $name;
 		$this->description = $description;
-		$this->created_at = new DateTime();
-		$this->updated_at = new DateTime();
-		$this->medias       = new ArrayCollection();
+		$this->created_at  = new DateTime();
+		$this->updated_at  = new DateTime();
+		$this->medias      = new ArrayCollection();
 	}
 
 	public static function createFromDto( TrickDTO $trickDto ): Trick {
