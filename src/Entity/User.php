@@ -93,7 +93,6 @@ class User implements UserInterface {
 	 * @param array|string[] $roles
 	 */
 	public function __construct( string $name, string $email, string $password, array $roles = [ 'ROLE_USER' ] ) {
-		$this->id         = Uuid::v4();
 		$this->name       = $name;
 		$this->email      = $email;
 		$this->password   = $password;
