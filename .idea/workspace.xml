@@ -4,28 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="* Dev: Hash Password on registering">
-      <change afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/ramsey_uuid_doctrine.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Actions/User/UserLogin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/core/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
+    <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201113135702.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201118204114.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TokenHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TokenHistory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TrickGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TrickGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Actions/User/UserLogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/User/UserLogin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Actions/User/UserRegistration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/User/UserRegistration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/User/RegistrationDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/Registration/RegistrationDTO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/User/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/Registration/RegistrationFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/registration-form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/registration-form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +148,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lamb-of-code" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Domain/User" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -171,6 +159,7 @@
     <property name="node.js.selected.package.standard" value="C:\Users\Arthur\AppData\Roaming\npm\node_modules\standard" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
@@ -178,6 +167,7 @@
       <recent name="F:\Sites\www\snowtrick" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Sites\www\snowtrick\src\Domain\User\Registration" />
       <recent name="F:\Sites\www\snowtrick\src\Domain\Trick" />
       <recent name="F:\Sites\www\snowtrick\src\Entity" />
       <recent name="F:\Sites\www\snowtrick\templates" />
@@ -246,7 +236,9 @@
       <workItem from="1605436398294" duration="9571000" />
       <workItem from="1605470498790" duration="911000" />
       <workItem from="1605645900234" duration="1991000" />
-      <workItem from="1605729448468" duration="2240000" />
+      <workItem from="1605729448468" duration="3011000" />
+      <workItem from="1605812356717" duration="5874000" />
+      <workItem from="1605859455470" duration="10887000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -332,7 +324,42 @@
       <option name="project" value="LOCAL" />
       <updated>1605458301469</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="* Dev: Use uuid for all entities">
+      <created>1605732134803</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605732134803</updated>
+    </task>
+    <task id="LOCAL-00014" summary="* Fix: remove uuid form constructor">
+      <created>1605732250690</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1605732250690</updated>
+    </task>
+    <task id="LOCAL-00015" summary="* Dev: Add confirm password">
+      <created>1605860293718</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605860293718</updated>
+    </task>
+    <task id="LOCAL-00016" summary="* Dev: Unique entity DTO Validator">
+      <created>1605864285094</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1605864285094</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Rollback to bootstrap 4 instead of v5">
+      <created>1605869439207</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605869439207</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,6 +390,13 @@
     <MESSAGE value="* Dev: Build front end" />
     <MESSAGE value="* Dev: Hash Password on registering" />
     <MESSAGE value="* Dev: Add unique entity constraint (not working on DTO)" />
-    <option name="LAST_COMMIT_MESSAGE" value="* Dev: Add unique entity constraint (not working on DTO)" />
+    <MESSAGE value="* Dev: Use uuid for all entities" />
+    <MESSAGE value="* Fix: remove uuid form constructor" />
+    <MESSAGE value="* Dev: Add confirm password" />
+    <MESSAGE value="* Dev: Unique entity DTO Validator" />
+    <MESSAGE value="Rollback to bootstrap 4 instead of v5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rollback to bootstrap 4 instead of v5" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

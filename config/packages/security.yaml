@@ -1,7 +1,6 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
         in_database:
             entity:
                 class: App\Entity\User
@@ -17,6 +16,8 @@ security:
             form_login:
                 login_path: user_login
                 check_path: user_login
+            logout:
+                path: logout
 
 
             # activate different ways to authenticate

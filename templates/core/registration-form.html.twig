@@ -3,56 +3,21 @@
 {% block body %}
     <h1 class="text-center">Create New Account</h1>
     <div class="row my-3 justify-content-center">
-    {{ form_start(signUpForm, {
-        'attr': {
-            'class': 'col-6'
-        }
-    }) }}
-
-    {{ form_row(signUpForm.name, {
-        'label_attr': {
-          'class': 'form-label'
-        },
-        'attr': {
-            'placeholder': 'Your name',
-            'class': 'form-control'
-        }
-    }) }}
-
-    {{ form_row(signUpForm.email, {
-        'label_attr': {
-            'class': 'form-label'
-        },
-        'attr': {
-            'placeholder': 'Email address',
-            'class': 'form-control'
-        }
-    }) }}
-        {{ form_row(signUpForm.password.first, {
-            'label_attr': {
-                'class': 'form-label'
-            },
+        {{ form_start(signUpForm, {
             'attr': {
-                'placeholder': 'Your password',
-                'class': 'form-control'
+                'class': 'col-6'
             }
         }) }}
-        {{ form_row(signUpForm.password.second, {
-            'label_attr': {
-                'class': 'form-label'
-            },
-            'attr': {
-                'placeholder': 'Confirm password',
-                'class': 'form-control'
-            }
-        }) }}
+
+
+        {{ form_widget(signUpForm) }}
 
         <button class="btn btn-primary my-2" type="submit">Sign Up</button>
         {{ form_end(signUpForm) }}
-        <p class="text-center">
-            <a href="/log-in">Already have an account ?</a>
-        </p>
 
     </div>
+    <p class="text-center">
+        <a href="/log-in">Already have an account ?</a>
+    </p>
 {% endblock %}
 
