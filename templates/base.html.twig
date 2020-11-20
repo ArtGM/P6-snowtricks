@@ -39,7 +39,8 @@
                                 Hi {{ app.user.username }} !
                             </li>
                             <li class="nav-item">
-                                <a href="/logout">Logout</a>
+                                <a title="logout"
+                                   href="{{ path('logout') }}">{% include 'icons/box_arrow_right.html.twig' %}</a>
                             </li>
                         {% endif %}
                     </ul>

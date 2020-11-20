@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/icons/box_arrow_right.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/registration_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/registration_form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +232,7 @@
       <workItem from="1605645900234" duration="1991000" />
       <workItem from="1605729448468" duration="3011000" />
       <workItem from="1605812356717" duration="5874000" />
-      <workItem from="1605859455470" duration="12849000" />
+      <workItem from="1605859455470" duration="14525000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -390,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605874213088</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="use path function in twig instead of hardcoded href,&#10;set logout route.">
+      <created>1605875366382</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1605875366382</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +436,8 @@
     <MESSAGE value="Add error and lastusername" />
     <MESSAGE value="Improve form template" />
     <MESSAGE value="Rename twig template to match snake case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename twig template to match snake case" />
+    <MESSAGE value="use path function in twig instead of hardcoded href,&#10;set logout route." />
+    <option name="LAST_COMMIT_MESSAGE" value="use path function in twig instead of hardcoded href,&#10;set logout route." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
