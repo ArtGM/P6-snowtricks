@@ -70,6 +70,6 @@ class TrickCreate {
 			return $redirectResponders( 'homepage' );
 		}
 
-		return $viewResponders( 'core/trick-form.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
+		return $viewResponders( 'core/trick_form.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
 	}
 }

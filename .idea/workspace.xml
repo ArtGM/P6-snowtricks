@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/User/UserLogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/User/UserLogin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/User/UserRegistration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/User/UserRegistration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/User/RegistrationDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/Registration/RegistrationDTO.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/User/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/User/Registration/RegistrationFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/registration-form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/registration-form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +230,7 @@
       <workItem from="1605645900234" duration="1991000" />
       <workItem from="1605729448468" duration="3011000" />
       <workItem from="1605812356717" duration="5874000" />
-      <workItem from="1605859455470" duration="10887000" />
+      <workItem from="1605859455470" duration="11706000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -359,7 +351,35 @@
       <option name="project" value="LOCAL" />
       <updated>1605869439207</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add Bootstrap 4 form theme">
+      <created>1605873281201</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873281201</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Move To Registration folder">
+      <created>1605873319186</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873319186</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add error and lastusername">
+      <created>1605873339076</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873339076</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Improve form template">
+      <created>1605873371031</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873371031</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +415,11 @@
     <MESSAGE value="* Dev: Add confirm password" />
     <MESSAGE value="* Dev: Unique entity DTO Validator" />
     <MESSAGE value="Rollback to bootstrap 4 instead of v5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rollback to bootstrap 4 instead of v5" />
+    <MESSAGE value="Add Bootstrap 4 form theme" />
+    <MESSAGE value="Move To Registration folder" />
+    <MESSAGE value="Add error and lastusername" />
+    <MESSAGE value="Improve form template" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve form template" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

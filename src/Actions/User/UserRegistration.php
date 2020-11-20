@@ -84,7 +84,7 @@ class UserRegistration {
 
 		}
 
-		return $viewResponder( 'core/registration-form.html.twig', [ 'signUpForm' => $signUpForm->createView() ] );
+		return $viewResponder( 'core/registration_form.html.twig', [ 'signUpForm' => $signUpForm->createView() ] );
 	}
 
 	/**
