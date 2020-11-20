@@ -15,10 +15,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Table (name="st_user")
  * @ORM\Entity (repositoryClass=UserRepository::class)
- * @UniqueEntity(
- *     fields={"email"},
- *     message="email already exist"
- * )
  */
 class User implements UserInterface {
 
@@ -132,7 +128,7 @@ class User implements UserInterface {
 	}
 
 	public function getSalt(): ?string {
-		// TODO: Implement getSalt() method.
+		return null;
 	}
 
 	public function eraseCredentials() {
