@@ -28,21 +28,30 @@
             'class': 'form-control'
         }
     }) }}
-    {{ form_row(signUpForm.password, {
-        'label_attr': {
-            'class': 'form-label'
-        },
-        'attr': {
-            'placeholder': 'Your password',
-            'class': 'form-control'
-        }
-    }) }}
+        {{ form_row(signUpForm.password.first, {
+            'label_attr': {
+                'class': 'form-label'
+            },
+            'attr': {
+                'placeholder': 'Your password',
+                'class': 'form-control'
+            }
+        }) }}
+        {{ form_row(signUpForm.password.second, {
+            'label_attr': {
+                'class': 'form-label'
+            },
+            'attr': {
+                'placeholder': 'Confirm password',
+                'class': 'form-control'
+            }
+        }) }}
 
-    <button class="btn btn-primary my-2" type="submit">Sign Up</button>
-    {{ form_end(signUpForm) }}
-    <p class="text-center">
-        <a href="/log-in">Already have an account ?</a>
-    </p>
+        <button class="btn btn-primary my-2" type="submit">Sign Up</button>
+        {{ form_end(signUpForm) }}
+        <p class="text-center">
+            <a href="/log-in">Already have an account ?</a>
+        </p>
 
     </div>
 {% endblock %}
