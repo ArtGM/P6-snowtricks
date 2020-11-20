@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Domain\User;
-
+namespace App\Domain\User\Registration;
 
 
 use Symfony\Component\Form\AbstractType;
@@ -30,10 +29,9 @@ class RegistrationFormType extends AbstractType {
 				RepeatedType::class, [
 				'type'            => PasswordType::class,
 				'invalid_message' => 'The password fields must match.',
-				'options'         => [ 'attr' => [ 'class' => 'password-field' ] ],
 				'required'        => true,
 				'first_options'   => [ 'label' => 'Password' ],
-				'second_options'  => [ 'label' => 'Repeat Password' ],
+				'second_options'  => [ 'label' => 'Confirm Password' ],
 			] );
 	}
 

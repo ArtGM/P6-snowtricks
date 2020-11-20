@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Domain\User;
+namespace App\Domain\User\Registration;
 
 use App\Validator\Constraints\UniqueEntityDto;
 use Symfony\Component\Validator\Constraints as Assert;

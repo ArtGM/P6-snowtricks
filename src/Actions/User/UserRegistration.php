@@ -4,8 +4,8 @@
 namespace App\Actions\User;
 
 
-use App\Domain\User\RegistrationDTO;
-use App\Domain\User\RegistrationFormType;
+use App\Domain\User\Registration\RegistrationDTO;
+use App\Domain\User\Registration\RegistrationFormType;
 use App\Entity\User;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 /**
- * @Route("/sign-up")
+ * @Route("/sign-up", name="user_registration")
  * Class UserRegistration
  * @package App\Actions\User
  */
