@@ -1,8 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(createTrickForm) }}
-    <button type="submit">Add</button>
-    {{ form_end(createTrickForm) }}
+    <h1 class="text-center">Create New Trick</h1>
+    <div class="row justify-content-center">
+        {{ form_start(createTrickForm, {
+            'attr': {
+                'class': 'col-lg-6'
+            }
+        }) }}
+
+
+        {{ form_row(createTrickForm.name) }}
+        {{ form_row(createTrickForm.description) }}
+        <div class="form-group">
+
+            {{ form_label(createTrickForm.images) }}
+            <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
+                    id="addImageButton">Add
+                Image
+            </button>
+            <ul class="list-group list-group-flush" id="imagesFieldsList"
+                data-prototype="{{ form_widget(createTrickForm.images.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li class="list-group-item"></li>'|e }}"
+                data-widget-counter="{{ createTrickForm.images|length }}">
+                {% for imageField in createTrickForm.images %}
+                    <li>
+                        {{ form_errors(imageField) }}
+                        {{ form_widget(imageField) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {{ form_row(createTrickForm.trickGroup) }}
+        <button class="btn btn-primary" type="submit">Add</button>
+        {{ form_end(createTrickForm) }}
+    </div>
 {% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('trickForm') }}
+{% endblock %}

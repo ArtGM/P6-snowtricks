@@ -3,26 +3,40 @@
 
 namespace App\Domain\Trick;
 
-use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
+
+use App\Domain\TrickGroup\TrickGroupDTO;
+use App\Entity\TrickGroup;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TrickDTO {
 
 	/**
 	 * @var string|null
-	 *
-	 * @Assert\NotBlank(
-	 *     message="le nom est requis
+	 * @Assert\NotBlank (
+	 *     message="name is required"
 	 * )
 	 */
 	public ?string $name;
 
 	/**
 	 * @var string|null
-	 *
 	 * @Assert\NotBlank (
-	 *     message="la description est requise"
+	 *     message="description is required"
 	 * )
 	 */
 	public ?string $description;
+
+	/**
+	 * @var array
+	 */
+	public array $images;
+
+	/**
+	 * @var TrickGroup
+	 *
+	 */
+	public TrickGroup $trickGroup;
 
 }

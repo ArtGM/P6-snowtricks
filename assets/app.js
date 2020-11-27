@@ -10,6 +10,8 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 
-import './scss/app.scss';
+import './scss/app.scss'
+
+console.log('hello')
 
 //ReactDOM.render(<Wrapper/>, document.getElementById('root'))

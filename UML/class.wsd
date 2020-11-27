@@ -15,7 +15,7 @@ Class Tricks_group {
   -name: string
   -description: text
 }
-Class Media {
+Class TrickGroup {
   -id: integer
   -name: string
   -description: text
@@ -38,11 +38,11 @@ Class Comment {
   -user
 }
 
-Media  "one" --o  "one" User
+TrickGroup  "one" --o  "one" User
 Trick  "one" --*  "one" Tricks_group
 Trick  "one" *--  "many" User
 User  "one" *--  "many" Comment
-Media  "one" --o "one" Trick
+TrickGroup  "one" --o "one" Trick
 Comment "one" --* "one" Trick
 
 

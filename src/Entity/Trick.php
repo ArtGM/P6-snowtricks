@@ -6,6 +6,7 @@ use App\Domain\Trick\TrickDTO;
 use App\Repository\TricksRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
@@ -41,22 +42,22 @@ class Trick {
 
 	/**
 	 *
-	 * @var int
+	 * @var TrickGroup
 	 * Many Trick have one Trick_group
 	 * @ORM\ManyToOne(targetEntity="App\Entity\TrickGroup")
 	 */
-	private int $tricks_group;
+	private TrickGroup $tricks_group;
 
 	/**
 	 * Many tricks have Many medias
 	 *
 	 * @ORM\ManyToMany(targetEntity="App\Entity\Media")
-	 *  @ORM\JoinTable(name="trick_has_media",
+	 * @ORM\JoinTable(name="trick_has_media",
 	 *      joinColumns={@ORM\JoinColumn(name="trick_id", referencedColumnName="id")},
 	 *      inverseJoinColumns={@ORM\JoinColumn(name="media_id", referencedColumnName="id")}
 	 *     )
 	 */
-	private ArrayCollection $medias;
+	private Collection $medias;
 
 	/**
 	 * @var DateTime
@@ -72,17 +73,19 @@ class Trick {
 	 */
 	private DateTime $updated_at;
 
-	public function __construct(string $name, string $description) {
-		$this->id          = Uuid::v4();
-		$this->name        = $name;
-		$this->description = $description;
-		$this->created_at  = new DateTime();
-		$this->updated_at  = new DateTime();
-		$this->medias      = new ArrayCollection();
+	public function __construct( string $name, string $description, TrickGroup $trickGroup, ArrayCollection $medias ) {
+		$this->name         = $name;
+		$this->description  = $description;
+		$this->created_at   = new DateTime();
+		$this->updated_at   = new DateTime();
+		$this->tricks_group = $trickGroup;
+		$this->medias       = $medias;
 	}
 
-	public static function createFromDto( TrickDTO $trickDto ): Trick {
-		return new self($trickDto->name, $trickDto->description);
+	public static function createFromDto( TrickDTO $trickDto, array $mediaEntity ): Trick {
+		$medias = new ArrayCollection( $mediaEntity );
+
+		return new self( $trickDto->name, $trickDto->description, $trickDto->trickGroup, $medias );
 	}
 
 }

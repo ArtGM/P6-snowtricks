@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use App\Domain\Media\MediaDTO;
 use App\Repository\MediaRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
@@ -59,6 +60,18 @@ class Media {
 	 * @ORM\Column (type="datetime")
 	 */
 	private DateTime $created_at;
+
+	public function __construct( string $name, string $description, string $file, string $type ) {
+		$this->name        = $name;
+		$this->description = $description;
+		$this->type        = $type;
+		$this->file        = $file;
+		$this->created_at  = new DateTime();
+	}
+
+	public static function createMedia( MediaDTO $mediaDTO, $fileWithExtension, $type ): Media {
+		return new self( $mediaDTO->name, $mediaDTO->description, $fileWithExtension, $type );
+	}
 
 
 }
