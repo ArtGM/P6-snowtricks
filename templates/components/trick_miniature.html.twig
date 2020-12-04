@@ -1,0 +1,10 @@
+<div class="col-3">
+    <div class="card m-2">
+        <img loading="lazy" src="https://placekitten.com/400/300" class="card-img-top" alt="kittens">
+        <div class="card-body">
+            <h5 class="card-title"> {{ trick.get_name }}</h5>
+            <p class="card-text">{{ trick.get_description|u.truncate(100, '...', false) }}</p>
+            <a href="#" class="btn btn-primary">See More</a>
+        </div>
+    </div>
+</div>

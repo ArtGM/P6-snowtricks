@@ -5,31 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/page/trickForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Media/ImageFormType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Media/MediaDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/TrickGroup/TrickGroupDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/TrickGroup/TrickGroupFormType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/FileUploader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/page/homepage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Actions/Ajax/HomePageLoadMore.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Responders/JsonResponders.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UML/class.wsd" beforeDir="false" afterPath="$PROJECT_DIR$/UML/class.wsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/page/trickForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/trickForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Trick/TrickCreate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Trick/TrickCreate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Trick/TrickFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Actions/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TrickGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TrickGroup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/trick_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +150,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/twig/string-extra" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iCHQCxDY3dMTc8mJMbVUvTvxrZ" />
@@ -188,7 +184,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="com.codota.intellij.common.configuration.CodotaConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -275,7 +271,10 @@
       <workItem from="1606244946427" duration="7731000" />
       <workItem from="1606410493226" duration="788000" />
       <workItem from="1606464263060" duration="2156000" />
-      <workItem from="1606466454441" duration="9691000" />
+      <workItem from="1606466454441" duration="10593000" />
+      <workItem from="1607014227117" duration="5250000" />
+      <workItem from="1607069858971" duration="26000" />
+      <workItem from="1607069903392" duration="14028000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -445,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605878432572</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Dev: Create Trick form with images and TrickGroup fields">
+      <created>1606485461978</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1606485461978</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,35 +494,10 @@
     <MESSAGE value="Rename twig template to match snake case" />
     <MESSAGE value="use path function in twig instead of hardcoded href,&#10;set logout route." />
     <MESSAGE value="add icon logout and remove hardcoded href" />
-    <option name="LAST_COMMIT_MESSAGE" value="add icon logout and remove hardcoded href" />
+    <MESSAGE value="Dev: Create Trick form with images and TrickGroup fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dev: Create Trick form with images and TrickGroup fields" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="602" y="744" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606250268828">
-      <screen x="0" y="30" width="3840" height="2130" />
-    </state>
-    <state x="602" y="744" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.3840.2130@0.30.3840.2130" timestamp="1606250268828" />
-    <state x="674" y="790" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606249030661">
-      <screen x="0" y="30" width="3840" height="2130" />
-    </state>
-    <state x="674" y="790" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.3840.2130@0.30.3840.2130" timestamp="1606249030661" />
-    <state width="334" height="692" key="HiddenNamespacesPopup" timestamp="1606250187782">
-      <screen x="0" y="30" width="3840" height="2130" />
-    </state>
-    <state width="334" height="692" key="HiddenNamespacesPopup/0.30.3840.2130@0.30.3840.2130" timestamp="1606250187782" />
-    <state x="754" y="771" key="NewPhpClassDialog" timestamp="1606468397811">
-      <screen x="0" y="30" width="3840" height="2130" />
-    </state>
-    <state x="754" y="771" key="NewPhpClassDialog/0.30.3840.2130@0.30.3840.2130" timestamp="1606468397811" />
-    <state x="661" y="678" width="2116" height="883" key="SettingsEditor" timestamp="1606466584516">
-      <screen x="0" y="30" width="3840" height="2130" />
-    </state>
-    <state x="661" y="678" width="2116" height="883" key="SettingsEditor/0.30.3840.2130@0.30.3840.2130" timestamp="1606466584516" />
-    <state x="1100" y="524" width="840" height="1034" key="search.everywhere.popup" timestamp="1606471370109">
-      <screen x="0" y="30" width="3840" height="2130" />
-    </state>
-    <state x="1100" y="524" width="840" height="1034" key="search.everywhere.popup/0.30.3840.2130@0.30.3840.2130" timestamp="1606471370109" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

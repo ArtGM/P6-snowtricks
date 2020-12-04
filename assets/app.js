@@ -9,9 +9,10 @@
 //import Wrapper from './components/Wrapper'
 
 // any CSS you import will output into a single css file (app.css in this case)
-
+import 'bootstrap'
 import './scss/app.scss'
+import Homepage from './page/homepage'
 
-console.log('hello')
+Homepage()
 
 //ReactDOM.render(<Wrapper/>, document.getElementById('root'))

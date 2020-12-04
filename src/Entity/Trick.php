@@ -33,6 +33,7 @@ class Trick {
 	 */
 	protected string $name;
 
+
 	/**
 	 * @var string
 	 *
@@ -88,4 +89,52 @@ class Trick {
 		return new self( $trickDto->name, $trickDto->description, $trickDto->trickGroup, $medias );
 	}
 
+	/**
+	 * @return UuidInterface
+	 */
+	public function get_id(): UuidInterface {
+		return $this->id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_name(): string {
+		return $this->name;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_description(): string {
+		return $this->description;
+	}
+
+	/**
+	 * @return TrickGroup
+	 */
+	public function get_tricks_group(): TrickGroup {
+		return $this->tricks_group;
+	}
+
+	/**
+	 * @return ArrayCollection|Collection
+	 */
+	public function get_medias() {
+		return $this->medias;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function get_created_at(): DateTime {
+		return $this->created_at;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function get_updated_at(): DateTime {
+		return $this->updated_at;
+	}
 }
