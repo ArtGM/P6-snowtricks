@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/page/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/homepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Actions/Ajax/HomePageLoadMore.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Ajax/HomePageLoadMore.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Actions/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Homepage.php" afterDir="false" />
@@ -260,7 +259,7 @@
       <workItem from="1606466454441" duration="10593000" />
       <workItem from="1607014227117" duration="5250000" />
       <workItem from="1607069858971" duration="26000" />
-      <workItem from="1607069903392" duration="18750000" />
+      <workItem from="1607069903392" duration="22381000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -444,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607087635943</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Dev: query tricks and working on loadmore">
+      <created>1607092853074</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1607092853074</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,7 +494,8 @@
     <MESSAGE value="use path function in twig instead of hardcoded href,&#10;set logout route." />
     <MESSAGE value="add icon logout and remove hardcoded href" />
     <MESSAGE value="Dev: Create Trick form with images and TrickGroup fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dev: Create Trick form with images and TrickGroup fields" />
+    <MESSAGE value="Dev: query tricks and working on loadmore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dev: query tricks and working on loadmore" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
