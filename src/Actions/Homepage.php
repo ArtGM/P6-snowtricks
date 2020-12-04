@@ -30,9 +30,9 @@ class Homepage {
 
 		$trickRepository = $entityManager->getRepository( Trick::class );
 		$allTricks       = $trickRepository->findBy( [], [], 4 );
-
 		return $viewResponders( 'core/index.html.twig', [
-			'allTricks' => $allTricks
+			'allTricks' => $allTricks,
+			'nextPage'  => 2
 		] );
 	}
 

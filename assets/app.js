@@ -11,8 +11,8 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import 'bootstrap'
 import './scss/app.scss'
-import Homepage from './page/homepage'
+import { getTricks } from './page/homepage'
 
-Homepage()
+getTricks()
 
 //ReactDOM.render(<Wrapper/>, document.getElementById('root'))

@@ -32,7 +32,8 @@
             {% endfor %}
         </div>
         <div class="row justify-content-center my-2">
-            <button id="loadMoreTricks" class="btn btn-primary" data-page="" data-url="{{ path('load-more-tricks') }}">
+            <button id="loadMoreTricks" class="btn btn-primary" data-page="{{ nextPage }}"
+                    data-url="{{ path('load-more-tricks') }}">
                 Load More...
             </button>
         </div>

@@ -1,4 +1,4 @@
-export default function Homepage () {
+function getTricks () {
   const loadMoreButton = document.getElementById('loadMoreTricks')
   const homepageTricksList = document.getElementById('homeTricksList')
 
@@ -12,4 +12,8 @@ export default function Homepage () {
       },
     )
   }
+}
+
+export {
+  getTricks,
 }

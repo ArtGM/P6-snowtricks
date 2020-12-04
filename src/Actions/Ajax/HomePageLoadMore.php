@@ -28,11 +28,13 @@ class HomePageLoadMore {
 		$this->templating = $templating;
 	}
 
-	public function __invoke( Request $request, JsonResponders $jsonResponders, EntityManagerInterface $entityManager ): Response {
-
+	public function __invoke( Request $request, JsonResponders $jsonResponders, EntityManagerInterface $entityManager, int $page ): Response {
+		$offset           = $page * 4;
+		$nextPage         = $page + 1;
 		$tricksRepository = $entityManager->getRepository( Trick::class );
-		$getOtherTricks   = $tricksRepository->findBy( [], [], 4, 4 );
-		$html             = '';
+		$getOtherTricks   = $tricksRepository->findBy( [], [], 4, $offset );
+
+		$html = '';
 		foreach ( $getOtherTricks as $trickData ) {
 			$html .= $this->templating->render( 'components/trick_miniature.html.twig', [
 				'trick' => $trickData
@@ -40,7 +42,8 @@ class HomePageLoadMore {
 		}
 
 		return $jsonResponders( [
-			'html' => $html,
+			'html'     => $html,
+			'nextPage' => $nextPage
 		] );
 
 	}
