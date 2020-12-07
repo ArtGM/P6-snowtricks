@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Create New Account</h1>
+    <div class="row my-3 justify-content-center">
+        {{ form_start(signUpForm, {
+            'attr': {
+                'class': 'col-6'
+            }
+        }) }}
+
+
+        {{ form_widget(signUpForm) }}
+
+        <button class="btn btn-primary my-2" type="submit">Sign Up</button>
+        {{ form_end(signUpForm) }}
+
+    </div>
+    <p class="text-center">
+        <a href="{{ path('user_login') }}">Already have an account ?</a>
+    </p>
+{% endblock %}
+

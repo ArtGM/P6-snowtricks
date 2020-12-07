@@ -7,8 +7,8 @@ use App\Repository\CommentRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
-use Doctrine\ORM\Mapping\OneToOne;
+use Ramsey\Uuid\UuidInterface;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 
 /**
  * @ORM\Table (name="st_comment")
@@ -16,73 +16,41 @@ use Doctrine\ORM\Mapping\OneToOne;
  */
 class Comment {
 	/**
-	 * @var int
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id()
-	 * @ORM\Column (type="integer")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue (strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator (class=UuidGenerator::class)
 	 */
-	private $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
 	 */
-	private $content;
+	private string $content;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 	/**
 	 * @var int
 	 * Many Comments have One trick
 	 * @ManyToOne (targetEntity="App\Entity\Trick")
 	 */
-	private $trick;
+	private int $trick;
 
 	/**
 	 * @var int
 	 * Many Comments have one user
 	 * @ManyToOne (targetEntity="App\Entity\User")
 	 */
-	private $user;
+	private int $user;
 
-	/**
-	 * @return int
-	 */
-	public function get_id(): int {
-		return $this->id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_content(): string {
-		return $this->content;
-	}
-
-	/**
-	 * @return DateTime
-	 */
-	public function get_createdat(): DateTime {
-		return $this->created_at;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_trick(): int {
-		return $this->trick;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_user(): int {
-		return $this->user;
-	}
 }

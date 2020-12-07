@@ -3,64 +3,72 @@
 
 namespace App\Entity;
 
+use App\Domain\User\RegistrationDTO;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
+use Ramsey\Uuid\UuidInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table (name="st_user")
  * @ORM\Entity (repositoryClass=UserRepository::class)
  */
-class User {
+class User implements UserInterface {
 
 	/**
-	 * @var int
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id ()
-	 * @ORM\Column (type="integer")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue(strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator(class=UuidGenerator::class)
 	 */
-	private $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
 	 */
-	private $email;
+	private string $email;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $password;
+	private string $password;
 
 	/**
-	 * @var string
+	 * @var array
 	 *
-	 * @ORM\Column (type="string")
+	 * @ORM\Column (type="array")
 	 */
-	private $roles;
+	private array $roles;
 
 	/**
 	 * many user has one avatar
 	 * @ORM\ManyToOne(targetEntity="App\Entity\Media")
+	 * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=true)
 	 */
-	private $avatar_id;
+	private string $avatar_id;
 
 	/**
 	 * Many Users have Many Trick
 	 * @ORM\ManyToMany (targetEntity="App\Entity\Trick")
 	 * @ORM\JoinTable(name="user_has_tricks",
-	 *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-	 *      inverseJoinColumns={@ORM\JoinColumn(name="trick_id", referencedColumnName="id")}
+	 *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="trick_id", referencedColumnName="id", nullable=true)}
 	 *     )
 	 */
 	private $contributions;
@@ -70,48 +78,60 @@ class User {
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 	/**
-	 * @return mixed
+	 * User constructor.
+	 *
+	 * @param string $name
+	 * @param string $email
+	 * @param string $password
+	 * @param array|string[] $roles
 	 */
-	public function get_contributions() {
-		return $this->contributions;
+	public function __construct( string $name, string $email, string $password, array $roles = [ 'ROLE_USER' ] ) {
+		$this->name       = $name;
+		$this->email      = $email;
+		$this->password   = $password;
+		$this->created_at = new DateTime();
+		$this->roles      = $roles;
+
 	}
 
 	/**
-	 * @return int
+	 * @param RegistrationDTO $registrationDto
+	 *
+	 * @return User
 	 */
-	public function get_id(): int {
-		return $this->id;
+	public static function createFromDto( RegistrationDTO $registrationDto ): User {
+		return new self( $registrationDto->name, $registrationDto->email, $registrationDto->password );
 	}
 
 	/**
 	 * @return string
 	 */
-	public function get_name(): string {
-		return $this->name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_email(): string {
-		return $this->email;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_password(): string {
+	public function getPassword(): string {
 		return $this->password;
 	}
 
 	/**
-	 * @return int
+	 * @return string
 	 */
-	public function get_avatar(): int {
-		return $this->avatar;
+	public function getUsername(): string {
+		return $this->name;
 	}
 
+	/**
+	 * @return array|string[]
+	 */
+	public function getRoles(): array {
+		return $this->roles;
+	}
+
+	public function getSalt(): ?string {
+		return null;
+	}
+
+	public function eraseCredentials() {
+		// TODO: Implement eraseCredentials() method.
+	}
 }

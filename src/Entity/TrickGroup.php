@@ -6,6 +6,8 @@ namespace App\Entity;
 use App\Repository\TricksGroupRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 
 /**
  * @ORM\Table (name="st_trick_group")
@@ -13,54 +15,35 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TrickGroup {
 	/**
-	 * @var string
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id()
-	 * @ORM\Column (type="integer")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue (strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator (class=UuidGenerator::class)
 	 */
-	private $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
 	 */
-	private $description;
-
-	/**
-	 * @return string
-	 */
-	public function get_id(): string {
-		return $this->id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_name(): string {
-		return $this->name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_description(): string {
-		return $this->description;
-	}
+	private string $description;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 
 

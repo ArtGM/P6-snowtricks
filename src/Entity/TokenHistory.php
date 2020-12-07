@@ -5,6 +5,8 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 
 /**
  * @ORM\Table (name="st_token_history")
@@ -13,33 +15,35 @@ use Doctrine\ORM\Mapping as ORM;
 class TokenHistory {
 
 	/**
-	 * @var int
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id()
-	 * @ORM\Column (type="integer")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue (strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator (class=UuidGenerator::class)
 	 */
-	private $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $value;
+	private string $value;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $type;
+	private string $type;
 
 	/**
 	 * Many tokens has one user

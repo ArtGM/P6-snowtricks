@@ -4,37 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.php-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/components/HeaderContent.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/components/Home.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/components/TrickForm.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/components/Wrapper.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickFormType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/core/trick-form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
+    <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/icons/box_arrow_right.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201027091103.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201106121340.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TokenHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TokenHistory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TrickGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TrickGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="create-update-tricks" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -118,7 +91,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
       <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/doctrine/common" />
@@ -126,16 +98,29 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
-      <path value="$PROJECT_DIR$/vendor/zendframework/zend-code" />
-      <path value="$PROJECT_DIR$/vendor/zendframework/zend-eventmanager" />
       <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
-      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
       <path value="$PROJECT_DIR$/vendor/symfony/form" />
-      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
-      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid-doctrine" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iCHQCxDY3dMTc8mJMbVUvTvxrZ" />
@@ -143,7 +128,6 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="foldersAlwaysOnTop" value="false" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
@@ -158,7 +142,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lamb-of-code" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Domain/User" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -169,6 +153,7 @@
     <property name="node.js.selected.package.standard" value="C:\Users\Arthur\AppData\Roaming\npm\node_modules\standard" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
@@ -176,6 +161,7 @@
       <recent name="F:\Sites\www\snowtrick" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Sites\www\snowtrick\src\Domain\User\Registration" />
       <recent name="F:\Sites\www\snowtrick\src\Domain\Trick" />
       <recent name="F:\Sites\www\snowtrick\src\Entity" />
       <recent name="F:\Sites\www\snowtrick\templates" />
@@ -236,7 +222,17 @@
       <workItem from="1604669909744" duration="633000" />
       <workItem from="1604671808566" duration="65000" />
       <workItem from="1604671976935" duration="171000" />
-      <workItem from="1604837510494" duration="338000" />
+      <workItem from="1604837510494" duration="4564000" />
+      <workItem from="1604865298666" duration="985000" />
+      <workItem from="1604866404396" duration="3135000" />
+      <workItem from="1605033775101" duration="5217000" />
+      <workItem from="1605252815447" duration="20506000" />
+      <workItem from="1605436398294" duration="9571000" />
+      <workItem from="1605470498790" duration="911000" />
+      <workItem from="1605645900234" duration="1991000" />
+      <workItem from="1605729448468" duration="3011000" />
+      <workItem from="1605812356717" duration="5874000" />
+      <workItem from="1605859455470" duration="14525000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -252,7 +248,154 @@
       <option name="project" value="LOCAL" />
       <updated>1603792043911</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name">
+      <created>1604837875925</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604837875925</updated>
+    </task>
+    <task id="LOCAL-00004" summary="* Config: change php version to 7.4">
+      <created>1604838815248</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604838815248</updated>
+    </task>
+    <task id="LOCAL-00005" summary="* Dev: add type declaration on Entity property">
+      <created>1604839612106</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604839612106</updated>
+    </task>
+    <task id="LOCAL-00006" summary="* Dev: set ADR pattern">
+      <created>1604870266191</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604870266191</updated>
+    </task>
+    <task id="LOCAL-00007" summary="* Dev: Change name">
+      <created>1605254689911</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605254689911</updated>
+    </task>
+    <task id="LOCAL-00008" summary="* COnfig: Add security bundle component">
+      <created>1605256312048</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605256312048</updated>
+    </task>
+    <task id="LOCAL-00009" summary="* Dev: Sign up Action, form and templates + add bootstrap">
+      <created>1605273853047</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605273853047</updated>
+    </task>
+    <task id="LOCAL-00010" summary="* Dev: Build front end">
+      <created>1605273877261</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605273877261</updated>
+    </task>
+    <task id="LOCAL-00011" summary="* Dev: Hash Password on registering">
+      <created>1605280260849</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605280260849</updated>
+    </task>
+    <task id="LOCAL-00012" summary="* Dev: Add unique entity constraint (not working on DTO)">
+      <created>1605458301469</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605458301469</updated>
+    </task>
+    <task id="LOCAL-00013" summary="* Dev: Use uuid for all entities">
+      <created>1605732134803</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605732134803</updated>
+    </task>
+    <task id="LOCAL-00014" summary="* Fix: remove uuid form constructor">
+      <created>1605732250690</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1605732250690</updated>
+    </task>
+    <task id="LOCAL-00015" summary="* Dev: Add confirm password">
+      <created>1605860293718</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1605860293718</updated>
+    </task>
+    <task id="LOCAL-00016" summary="* Dev: Unique entity DTO Validator">
+      <created>1605864285094</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1605864285094</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Rollback to bootstrap 4 instead of v5">
+      <created>1605869439207</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605869439207</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add Bootstrap 4 form theme">
+      <created>1605873281201</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873281201</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Move To Registration folder">
+      <created>1605873319186</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873319186</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add error and lastusername">
+      <created>1605873339076</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873339076</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Improve form template">
+      <created>1605873371031</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1605873371031</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Rename twig template to match snake case">
+      <created>1605874213088</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1605874213088</updated>
+    </task>
+    <task id="LOCAL-00023" summary="use path function in twig instead of hardcoded href,&#10;set logout route.">
+      <created>1605875366382</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1605875366382</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +417,28 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="* Dev: set development environment" />
     <MESSAGE value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
-    <option name="LAST_COMMIT_MESSAGE" value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
+    <MESSAGE value="* Config: change php version to 7.4" />
+    <MESSAGE value="* Dev: add type declaration on Entity property" />
+    <MESSAGE value="* Dev: set ADR pattern" />
+    <MESSAGE value="* Dev: Change name" />
+    <MESSAGE value="* COnfig: Add security bundle component" />
+    <MESSAGE value="* Dev: Sign up Action, form and templates + add bootstrap" />
+    <MESSAGE value="* Dev: Build front end" />
+    <MESSAGE value="* Dev: Hash Password on registering" />
+    <MESSAGE value="* Dev: Add unique entity constraint (not working on DTO)" />
+    <MESSAGE value="* Dev: Use uuid for all entities" />
+    <MESSAGE value="* Fix: remove uuid form constructor" />
+    <MESSAGE value="* Dev: Add confirm password" />
+    <MESSAGE value="* Dev: Unique entity DTO Validator" />
+    <MESSAGE value="Rollback to bootstrap 4 instead of v5" />
+    <MESSAGE value="Add Bootstrap 4 form theme" />
+    <MESSAGE value="Move To Registration folder" />
+    <MESSAGE value="Add error and lastusername" />
+    <MESSAGE value="Improve form template" />
+    <MESSAGE value="Rename twig template to match snake case" />
+    <MESSAGE value="use path function in twig instead of hardcoded href,&#10;set logout route." />
+    <option name="LAST_COMMIT_MESSAGE" value="use path function in twig instead of hardcoded href,&#10;set logout route." />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

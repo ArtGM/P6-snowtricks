@@ -6,6 +6,8 @@ namespace App\Entity;
 use App\Repository\MediaRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 
 /**
  * @ORM\Table (name="st_media")
@@ -14,82 +16,49 @@ use Doctrine\ORM\Mapping as ORM;
 class Media {
 
 	/**
-	 * @var int
+	 * @var UuidInterface
 	 *
 	 * @ORM\Id()
-	 * @ORM\Column (type="integer")
+	 * @ORM\Column (type="uuid", unique=true)
+	 * @ORM\GeneratedValue (strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator (class=UuidGenerator::class)
 	 */
-	private $id;
+	private UuidInterface $id;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
 	 */
-	private $description;
+	private string $description;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $file;
+	private string $file;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="string")
 	 */
-	private $type;
+	private string $type;
 
 	/**
 	 * @var DateTime
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private $created_at;
+	private DateTime $created_at;
 
-
-	/**
-	 * @return int
-	 */
-	public function get_id(): int {
-		return $this->id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_name(): string {
-		return $this->name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_description(): string {
-		return $this->description;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_file(): string {
-		return $this->file;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_type(): string {
-		return $this->type;
-	}
 
 }
