@@ -1,1 +1,44 @@
 @import "node_modules/bootstrap/scss/bootstrap";
+
+.footer {
+    margin-top: 70px;
+    min-height: 300px;
+}
+
+.list__trick {
+    position: relative;
+    transition: all 0.2s linear;
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+
+    .bi-arrow-counterclockwise {
+        font-size: 6rem;
+        animation: spinner 1s linear infinite;
+    }
+
+    .is-loading & {
+        display: block;
+    }
+
+}
+
+.is-loading {
+    opacity: 0.5;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+
+}

@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/shifty.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/icons/arrow-counterclockwise.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/page/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Ajax/HomePageLoadMore.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Ajax/HomePageLoadMore.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +145,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/twig/string-extra" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iCHQCxDY3dMTc8mJMbVUvTvxrZ" />
@@ -176,6 +187,7 @@
       <recent name="F:\Sites\www\snowtrick" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Sites\www\snowtrick\public\images" />
       <recent name="F:\Sites\www\snowtrick\src\Domain\User\Registration" />
       <recent name="F:\Sites\www\snowtrick\src\Domain\Trick" />
       <recent name="F:\Sites\www\snowtrick\src\Entity" />
@@ -260,6 +272,10 @@
       <workItem from="1607014227117" duration="5250000" />
       <workItem from="1607069858971" duration="26000" />
       <workItem from="1607069903392" duration="22381000" />
+      <workItem from="1607541148494" duration="50000" />
+      <workItem from="1607541230597" duration="3582000" />
+      <workItem from="1607625603392" duration="4780000" />
+      <workItem from="1607672711420" duration="5431000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>

@@ -2,28 +2,28 @@ const getTricks = () => {
   const loadMoreButton = document.getElementById('loadMoreTricks')
   const homepageTricksList = document.getElementById('homeTricksList')
 
-  loadMoreButton.onclick = function () {
-    const url = `${this.dataset.url}/${this.dataset.page}`
-    homepageTricksList.style.opacity = '0.5'
-    console.log(url)
+  loadMoreButton.addEventListener('click', event => {
+    const element = event.target
+    const url = `${element.dataset.url}/${element.dataset.page}`
+    homepageTricksList.classList.add('is-loading')
     fetch(url).then(
       response => response.json(),
     ).then(
       data => {
         const trickTemplate = data.html
-        if (data.html !== '') {
+        const endMessage = data.message
+        homepageTricksList.classList.remove('is-loading')
+        if (trickTemplate !== '') {
           homepageTricksList.innerHTML += trickTemplate
-          this.dataset.page++
-          if (data.message !== '') {
-            this.innerText = data.message
-            this.setAttribute('disabled', 'disabled')
+          element.dataset.page++
+          if (endMessage !== '') {
+            element.innerText = endMessage
+            element.setAttribute('disabled', 'disabled')
           }
         }
       },
-    ).then(
-      () => homepageTricksList.style.opacity = '1',
     )
-  }
+  })
 }
 
 export {

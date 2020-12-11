@@ -6,7 +6,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img loading="lazy" src="https://picsum.photos/1920/1000" class="d-block w-100" alt="...">
+                    <img loading="lazy" src="/images/shifty.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img loading="lazy" src="https://picsum.photos/1920/1000" class="d-block w-100" alt="...">
@@ -27,7 +27,10 @@
     </section>
 
     <section class="container">
-        <div class="row" id="homeTricksList">
+        <div class="row list__trick" id="homeTricksList">
+            <span class="loader" id="spinner">
+                {% include 'icons/arrow-counterclockwise.html.twig' %}
+            </span>
             {% for trick in allTricks %}
                 {% include 'components/trick_miniature.html.twig' %}
             {% endfor %}
