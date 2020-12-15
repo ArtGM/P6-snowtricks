@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/shifty.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/icons/arrow-counterclockwise.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201211202554.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/200px-snowboard-indygrab2-jpg-5fd90e46e473c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Actions/Trick/TrickSinglePage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/trick_single.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/page/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,6 +202,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -276,6 +273,7 @@
       <workItem from="1607541230597" duration="3582000" />
       <workItem from="1607625603392" duration="4780000" />
       <workItem from="1607672711420" duration="5431000" />
+      <workItem from="1608059389995" duration="2894000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>

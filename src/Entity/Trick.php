@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Domain\Trick\TrickDTO;
 use App\Repository\TricksRepository;
 use DateTime;
+use Symfony\Component\String\AbstractUnicodeString;
+use Symfony\Component\String\Slugger\AsciiSlugger;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -74,6 +77,13 @@ class Trick {
 	 */
 	private DateTime $updated_at;
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	private string $slug;
+
 	public function __construct( string $name, string $description, TrickGroup $trickGroup, ArrayCollection $medias ) {
 		$this->name         = $name;
 		$this->description  = $description;
@@ -81,12 +91,23 @@ class Trick {
 		$this->updated_at   = new DateTime();
 		$this->tricks_group = $trickGroup;
 		$this->medias       = $medias;
+		$this->slug         = $this->createSlug( $name );
 	}
 
 	public static function createFromDto( TrickDTO $trickDto, array $mediaEntity ): Trick {
 		$medias = new ArrayCollection( $mediaEntity );
 
 		return new self( $trickDto->name, $trickDto->description, $trickDto->trickGroup, $medias );
+	}
+
+	private function createSlug( string $name ) {
+		$slugger = new AsciiSlugger();
+
+		return strtolower( $slugger->slug( $name ) );
+	}
+
+	public function get_slug(): string {
+		return $this->slug;
 	}
 
 	/**

@@ -73,5 +73,47 @@ class Media {
 		return new self( $mediaDTO->name, $mediaDTO->description, $fileWithExtension, $type );
 	}
 
+	/**
+	 * @return UuidInterface
+	 */
+	public function get_id(): UuidInterface {
+		return $this->id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_name(): string {
+		return $this->name;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_description(): string {
+		return $this->description;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_file(): string {
+		return $this->file;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_type(): string {
+		return $this->type;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function get_created_at(): DateTime {
+		return $this->created_at;
+	}
+
 
 }
