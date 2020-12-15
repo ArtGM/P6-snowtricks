@@ -1,18 +1,19 @@
 const getTricks = () => {
   const loadMoreButton = document.getElementById('loadMoreTricks')
   const homepageTricksList = document.getElementById('homeTricksList')
+  const spinner = document.getElementById('spinner')
 
   loadMoreButton.addEventListener('click', event => {
     const element = event.target
     const url = `${element.dataset.url}/${element.dataset.page}`
-    homepageTricksList.classList.add('is-loading')
+    homepageTricksList.style.opacity = '0.5'
+    spinner.classList.add('is-loading')
     fetch(url).then(
       response => response.json(),
     ).then(
       data => {
         const trickTemplate = data.html
         const endMessage = data.message
-        homepageTricksList.classList.remove('is-loading')
         if (trickTemplate !== '') {
           homepageTricksList.innerHTML += trickTemplate
           element.dataset.page++
@@ -21,6 +22,8 @@ const getTricks = () => {
             element.setAttribute('disabled', 'disabled')
           }
         }
+        spinner.classList.remove('is-loading')
+        homepageTricksList.style.opacity = '1'
       },
     )
   })

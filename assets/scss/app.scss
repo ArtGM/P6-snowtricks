@@ -10,7 +10,7 @@
     transition: all 0.2s linear;
 }
 
-.loader {
+.spinner-container {
     display: none;
     position: absolute;
     left: 50%;
@@ -18,20 +18,15 @@
     transform: translate(-50%);
     z-index: 1;
 
-    .bi-arrow-counterclockwise {
-        font-size: 6rem;
-        animation: spinner 1s linear infinite;
-    }
-
-    .is-loading & {
+    &.is-loading {
         display: block;
     }
-
 }
 
-.is-loading {
-    opacity: 0.5;
+.bg-overlay {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
+
 
 @keyframes spinner {
     from {

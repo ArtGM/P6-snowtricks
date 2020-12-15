@@ -28,9 +28,11 @@
 
     <section class="container">
         <div class="row list__trick" id="homeTricksList">
-            <span class="loader" id="spinner">
-                {% include 'icons/arrow-counterclockwise.html.twig' %}
-            </span>
+            <div class="spinner-container" id="spinner">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
             {% for trick in allTricks %}
                 {% include 'components/trick_miniature.html.twig' %}
             {% endfor %}

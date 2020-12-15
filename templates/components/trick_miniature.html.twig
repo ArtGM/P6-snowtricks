@@ -7,7 +7,8 @@
 
             <h5 class="card-title"> {{ trick.get_name }}</h5>
             <p class="card-text">{{ trick.get_description|u.truncate(100, '...', false) }}</p>
-            <a href="{{ path('trick-single', { 'slug': trick.get_slug }) }}" class="btn btn-primary">See More</a>
+            <a href="{{ path('trick-single', { 'slug': trick.get_slug }) }}" class="btn btn-primary stretched-link">See
+                More</a>
         </div>
     </div>
 </div>

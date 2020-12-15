@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/page/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/200px-snowboard-indygrab2-jpg-5fd90e46e473c.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/200px-snowboard-indygrab2-jpg-5fd90e46e473c.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/trick_single.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_single.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,11 +181,11 @@
       <recent name="F:\Sites\www\snowtrick" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Sites\www\snowtrick\public\uploads" />
       <recent name="F:\Sites\www\snowtrick\public\images" />
       <recent name="F:\Sites\www\snowtrick\src\Domain\User\Registration" />
       <recent name="F:\Sites\www\snowtrick\src\Domain\Trick" />
       <recent name="F:\Sites\www\snowtrick\src\Entity" />
-      <recent name="F:\Sites\www\snowtrick\templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -265,7 +271,7 @@
       <workItem from="1607541230597" duration="3582000" />
       <workItem from="1607625603392" duration="4780000" />
       <workItem from="1607672711420" duration="5431000" />
-      <workItem from="1608059389995" duration="3279000" />
+      <workItem from="1608059389995" duration="5938000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -463,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608062456344</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Dev: change media path to get first on homepage">
+      <created>1608062799658</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1608062799658</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
     <MESSAGE value="* Config: change php version to 7.4" />
     <MESSAGE value="* Dev: add type declaration on Entity property" />
     <MESSAGE value="* Dev: set ADR pattern" />
@@ -508,7 +520,8 @@
     <MESSAGE value="Dev: Create Trick form with images and TrickGroup fields" />
     <MESSAGE value="Dev: query tricks and working on loadmore" />
     <MESSAGE value="Dev: create single page trick" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dev: create single page trick" />
+    <MESSAGE value="Dev: change media path to get first on homepage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dev: change media path to get first on homepage" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

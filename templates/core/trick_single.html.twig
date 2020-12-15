@@ -1,8 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="row my-3 justify-content-center">
-        {{ singleTrick.get_name }}
-    </div>
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-dark text-white">
+                    <img src="{{ asset('uploads/' ~ singleTrick.get_medias[0].get_file) }}" class="card-img" alt="...">
+                    <div class="card-img-overlay bg-overlay d-flex justify-content-center align-items-center">
+                        <h5 class="card-title">{{ singleTrick.get_name }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <p class="col">{{ singleTrick.get_description }}</p>
+        </div>
+    </section>
 
 {% endblock %}
