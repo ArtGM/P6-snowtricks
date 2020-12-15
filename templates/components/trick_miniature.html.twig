@@ -1,9 +1,8 @@
 <div class="col-3">
     <div class="card m-2">
         {% set medias = trick.get_medias %}
-        {% for media in medias %}
-            <img loading="lazy" src="{{ asset('uploads/' ~ media.get_file) }}" class="card-img-top" alt="kittens">
-        {% endfor %}
+        <img loading="lazy" src="{{ asset('uploads/' ~ medias[0].get_file) }}" class="card-img-top"
+             alt="{{ medias[0].get_name }}">
         <div class="card-body">
 
             <h5 class="card-title"> {{ trick.get_name }}</h5>

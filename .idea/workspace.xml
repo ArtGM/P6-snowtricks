@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201211202554.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/200px-snowboard-indygrab2-jpg-5fd90e46e473c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Actions/Trick/TrickSinglePage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/core/trick_single.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="create-update-tricks" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -273,7 +265,7 @@
       <workItem from="1607541230597" duration="3582000" />
       <workItem from="1607625603392" duration="4780000" />
       <workItem from="1607672711420" duration="5431000" />
-      <workItem from="1608059389995" duration="2894000" />
+      <workItem from="1608059389995" duration="3279000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -464,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607092853074</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Dev: create single page trick">
+      <created>1608062456344</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1608062456344</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +483,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="* Dev: set development environment" />
     <MESSAGE value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
     <MESSAGE value="* Config: change php version to 7.4" />
     <MESSAGE value="* Dev: add type declaration on Entity property" />
@@ -509,7 +507,8 @@
     <MESSAGE value="add icon logout and remove hardcoded href" />
     <MESSAGE value="Dev: Create Trick form with images and TrickGroup fields" />
     <MESSAGE value="Dev: query tricks and working on loadmore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dev: query tricks and working on loadmore" />
+    <MESSAGE value="Dev: create single page trick" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dev: create single page trick" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
