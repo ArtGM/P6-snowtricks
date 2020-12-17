@@ -10,6 +10,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
+/**
+ * Class TrickDTO
+ * @package App\Domain\Trick
+ * TODO: UniqueTrick DTO
+ */
 class TrickDTO {
 
 	/**
