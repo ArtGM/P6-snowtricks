@@ -1,13 +1,13 @@
 const getTricks = () => {
   const loadMoreButton = document.getElementById('loadMoreTricks')
   const homepageTricksList = document.getElementById('homeTricksList')
-  const spinner = document.getElementById('spinner')
+  const spinner = document.querySelector('.spinner-container')
 
   loadMoreButton.addEventListener('click', event => {
     const element = event.target
     const url = `${element.dataset.url}/${element.dataset.page}`
     homepageTricksList.style.opacity = '0.5'
-    spinner.classList.add('is-loading')
+    spinner.style.display = 'block'
     fetch(url).then(
       response => response.json(),
     ).then(
@@ -22,9 +22,10 @@ const getTricks = () => {
             element.setAttribute('disabled', 'disabled')
           }
         }
-        spinner.classList.remove('is-loading')
         homepageTricksList.style.opacity = '1'
       },
+    ).then(
+      () => spinner.style.display = 'none',
     )
   })
 }

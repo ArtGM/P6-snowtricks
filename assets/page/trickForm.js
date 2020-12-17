@@ -13,3 +13,5 @@ addImageButton.onclick = () => {
   listTags.innerHTML = newWidget
   trickFormImageField.appendChild(listTags)
 }
+
+
