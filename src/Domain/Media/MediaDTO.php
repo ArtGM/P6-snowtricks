@@ -4,6 +4,7 @@
 namespace App\Domain\Media;
 
 
+use App\Entity\Media;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -23,6 +24,5 @@ class MediaDTO {
 	 * @Assert\Image()
 	 */
 	public ?UploadedFile $file;
-
 
 }

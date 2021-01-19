@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="text-center">Create New Trick</h1>
+    <h1 class="text-center">Create Trick</h1>
     <div class="row justify-content-center">
         {{ form_start(createTrickForm, {
             'attr': {
@@ -9,30 +9,27 @@
             }
         }) }}
 
-
         {{ form_row(createTrickForm.name) }}
         {{ form_row(createTrickForm.description) }}
+        {{ form_row(createTrickForm.trickGroup) }}
         <div class="form-group">
-            <div id="dragAndDrop"></div>
-            {{ form_label(createTrickForm.images) }}
-            <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
-                    id="addImageButton">Add
-                Image
-            </button>
-            <ul class="list-group list-group-flush" id="imagesFieldsList"
+            <ul class="form-row" id="imagesFieldsList"
                 data-prototype="{{ form_widget(createTrickForm.images.vars.prototype)|e }}"
-                data-widget-tags="{{ '<li class="list-group-item"></li>'|e }}"
+                data-widget-tags="{{ '<div class="card h-100 justify-content-space-between"></div>'|e }}"
                 data-widget-counter="{{ createTrickForm.images|length }}">
                 {% for imageField in createTrickForm.images %}
-                    <li>
+                    <div class="col-4">
                         {{ form_errors(imageField) }}
                         {{ form_widget(imageField) }}
-                    </li>
+                    </div>
                 {% endfor %}
             </ul>
+            <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
+                    id="addImageButton">Add
+                Media
+            </button>
         </div>
 
-        {{ form_row(createTrickForm.trickGroup) }}
         <button class="btn btn-primary" type="submit">Add</button>
         {{ form_end(createTrickForm) }}
     </div>

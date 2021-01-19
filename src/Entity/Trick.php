@@ -91,7 +91,6 @@ class Trick {
 		$this->updated_at   = new DateTime();
 		$this->tricks_group = $trickGroup;
 		$this->medias       = $medias;
-		$this->slug         = $this->createSlug( $name );
 	}
 
 	public static function createFromDto( TrickDTO $trickDto, array $mediaEntity ): Trick {
@@ -100,13 +99,13 @@ class Trick {
 		return new self( $trickDto->name, $trickDto->description, $trickDto->trickGroup, $medias );
 	}
 
-	private function createSlug( string $name ) {
-		$slugger = new AsciiSlugger();
 
-		return strtolower( $slugger->slug( $name ) );
-	}
+
 
 	public function get_slug(): string {
+		$slugger    = new AsciiSlugger();
+		$this->slug = strtolower( $slugger->slug( $this->name ) );
+
 		return $this->slug;
 	}
 

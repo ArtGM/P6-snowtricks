@@ -5,6 +5,7 @@ namespace App\Domain\Trick;
 
 
 use App\Domain\TrickGroup\TrickGroupDTO;
+use App\Entity\Trick;
 use App\Entity\TrickGroup;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -44,5 +45,11 @@ class TrickDTO {
 	 *
 	 */
 	public TrickGroup $trickGroup;
+
+	public static function createFromEntity( Trick $trick ): TrickDTO {
+
+
+		return new self();
+	}
 
 }

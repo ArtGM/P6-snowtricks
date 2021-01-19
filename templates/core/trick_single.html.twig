@@ -13,7 +13,10 @@
             </div>
         </div>
         <div class="row">
-
+            <a class="btn btn-primary" role="button"
+               href="{{ path('trick-edition',  { 'slug': singleTrick.get_slug }) }}">
+                Edit
+            </a>
         </div>
         <div class="row">
             <p class="col">{{ singleTrick.get_description }}</p>

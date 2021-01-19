@@ -15,11 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class TrickSinglePage
  * @package App\Actions\Trick
  * @Route ("/trick/{slug}", name="trick-single")
- * @ParamConverter("trick", class="App:Trick")
  */
 class TrickSinglePage {
 
-	public function __invoke( Request $request, ViewResponders $viewResponders, EntityManagerInterface $entityManager, string $slug ) {
+	public function __invoke( Request $request, ViewResponders $viewResponders, EntityManagerInterface $entityManager, string $slug ): Response {
 		$trickRepository = $entityManager->getRepository( Trick::class );
 		$singleTrick     = $trickRepository->findOneByName( $slug );
 

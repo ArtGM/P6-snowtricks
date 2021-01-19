@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Edit Trick</h1>
+    <div class="row justify-content-center">
+        {{ form_start(editTrickForm, {
+            'attr': {
+                'class': 'col-lg-6'
+            }
+        }) }}
+
+        {{ form_row(editTrickForm.name) }}
+        {{ form_row(editTrickForm.description) }}
+        {{ form_row(editTrickForm.trickGroup) }}
+
+        <div class="form-group">
+            <div class="form-row my-3" id="imagesFieldsList"
+                 data-prototype="{{ form_widget(editTrickForm.images.vars.prototype)|e }}"
+                 data-widget-tags="{{ '<div class="card"></div>'|e }}"
+                 data-widget-counter="{{ editTrickForm.images|length }}">
+                {% for imageField in editTrickForm.images %}
+
+                    {
+                    <div class="col-4" id="col-id-{{ loop.index }}">
+                        <div class="card h-100 justify-content-between">
+                            <img class="card-img-top" src="/uploads/{{ imageField.name }}"
+                                 alt="{{ imageField.description }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ imageField.name }}</h5>
+                                <button type="button" class="btn btn-danger remove-image"
+                                        data-col-id="col-id-{{ loop.index }}"><i class="bi bi-x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
+                    id="addImageButton">Add Image
+            </button>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Update</button>
+        {{ form_end(editTrickForm, { 'render_rest': false }) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('trickForm') }}
+{% endblock %}
