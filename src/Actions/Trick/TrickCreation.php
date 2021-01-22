@@ -20,10 +20,10 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route ("/trick-form", name="trick-form")
- * Class TrickCreate
+ * Class TrickCreation
  * @package App\Actions\Trick
  */
-class TrickCreate {
+class TrickCreation {
 
 	/** @var FormFactoryInterface */
 	private FormFactoryInterface $formFactory;
@@ -47,7 +47,7 @@ class TrickCreate {
 	private MediaCreation $mediaCreation;
 
 	/**
-	 * TrickCreate constructor.
+	 * TrickCreation constructor.
 	 *
 	 * @param EntityManagerInterface $entity_manager
 	 * @param FormFactoryInterface $form_factory

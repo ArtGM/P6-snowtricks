@@ -34,16 +34,17 @@ addImageButton.onclick = () => {
   column.appendChild(cardLayout)
   trickFormImageField.appendChild(column)
 
-  if (removeImage !== null) {
-    removeImage.addEventListener('click', function (e) {
-      let colIdToDelete = e.target.getAttribute('data-col-id')
-      let coltodelete = document.getElementById(colIdToDelete)
-      coltodelete.parentNode.removeChild(coltodelete)
-    })
-  }
-
-  console.warn(deleteButton)
+  console.log(deleteButton)
   addRemoveEventToButton(deleteButton)
+}
+
+if (removeImage !== null) {
+  removeImage.addEventListener('click', function (e) {
+    let colIdToDelete = e.target.getAttribute('data-col-id')
+    let coltodelete = document.getElementById(colIdToDelete)
+    coltodelete.parentNode.removeChild(coltodelete)
+    counter--
+  })
 }
 
 function addRemoveEventToButton (elem) {

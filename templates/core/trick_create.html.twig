@@ -31,7 +31,8 @@
         </div>
 
         <button class="btn btn-primary" type="submit">Add</button>
-        {{ form_end(createTrickForm) }}
+        {{ form_widget(createTrickForm._token) }}
+        {{ form_end(createTrickForm, {'render_rest': false}) }}
     </div>
 {% endblock %}
 

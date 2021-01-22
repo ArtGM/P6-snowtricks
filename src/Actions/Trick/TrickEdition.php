@@ -3,15 +3,12 @@
 
 namespace App\Actions\Trick;
 
-use App\Actions\Media\MediaCreation;
 use App\Domain\Factory\TrickDtoFactory;
-use App\Domain\Trick\TrickDTO;
+use App\Domain\Trick\Handlers\TrickEditionHandler;
 use App\Domain\Trick\TrickFormType;
-use App\Entity\Trick;
 use App\Repository\TricksRepository;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
-use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +32,9 @@ class TrickEdition {
 	/** @var TrickDtoFactory */
 	private TrickDtoFactory $trickDtoFactory;
 
+	/** @var TrickEditionHandler */
+	private TrickEditionHandler $trickEditionHandler;
+
 	public function __construct(
 		FormFactoryInterface $formFactory,
 		EntityManagerInterface $entityManager,
@@ -46,15 +46,21 @@ class TrickEdition {
 		$this->trickDtoFactory = $trickDtoFactory;
 	}
 
+	/**
+	 * @param Request $request
+	 * @param TricksRepository $tricksRepository
+	 * @param ViewResponders $viewResponders
+	 * @param string $slug
+	 * @param RedirectResponders $redirectResponders
+	 *
+	 * @return Response
+	 */
 	public function __invoke(
 		Request $request,
 		TricksRepository $tricksRepository,
 		ViewResponders $viewResponders,
-		EntityManagerInterface $entityManager,
 		string $slug,
-		FileUploader $fileUploader,
-		RedirectResponders $redirectResponders,
-		MediaCreation $mediaCreation
+		RedirectResponders $redirectResponders
 	): Response {
 
 		$trick = $tricksRepository->findOneBySlug( $slug );
@@ -64,24 +70,7 @@ class TrickEdition {
 		$trickEditionForm = $this->formFactory->create( TrickFormType::class, $trickDto )->handleRequest( $request );
 
 		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
-			dump( 'toto' );
-			exit();
-			/** @var TrickDTO $trickDto */
-			$trickDto = $trickEditionForm->getData();
-
-			$medias = $trickDto->images;
-
-			if ( $medias ) {
-				foreach ( $medias as $mediaDTO ) {
-					$fileType          = $mediaDTO->file->getClientMimeType();
-					$fileWithExtension = $fileUploader->upload( $mediaDTO->file );
-					$mediasEntity[]    = $mediaCreation->generateMediaEntity( $mediaDTO, $fileWithExtension, $fileType );
-				}
-
-			}
-
-			$this->entityManager->persist( $trick );
-			$this->entityManager->flush();
+			$this->trickEditionHandler->handle( $trickEditionForm, $trick );
 
 			return $redirectResponders( 'homepage' );
 		}
