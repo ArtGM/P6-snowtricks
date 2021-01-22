@@ -44,10 +44,7 @@ class TrickEditionHandler {
 	public function handle( FormInterface $trickEditionForm, Trick $trick ) {
 
 		/** @var TrickDTO $trickDto */
-		$trickDto = $trickEditionForm->getViewData();
-
-
-		var_dump( $trickDto );
+		$trickDto = $trickEditionForm->getData();
 
 		$medias = $trick->get_medias();
 
@@ -59,7 +56,7 @@ class TrickEditionHandler {
 				$medias[]          = $this->mediaCreation->generateMediaEntity( $mediaDTO, $fileWithExtension, $fileType );
 			}
 		}
-
+		$trick->update( $trickDto, $medias );
 		$this->entityManager->persist( $trick );
 		$this->entityManager->flush();
 

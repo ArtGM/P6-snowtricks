@@ -99,7 +99,21 @@ class Trick {
 		return new self( $trickDto->name, $trickDto->description, $trickDto->trickGroup, $medias );
 	}
 
+	/**
+	 * @param TrickDTO $trickDTO
+	 * @param array $mediaEntity
+	 *
+	 * @return $this
+	 */
+	public function update( TrickDTO $trickDTO, array $mediaEntity ): Trick {
+		$this->name         = (string) $trickDTO->name;
+		$this->description  = (string) $trickDTO->description;
+		$this->tricks_group = $trickDTO->trickGroup;
+		$this->updated_at   = new DateTime();
+		$this->medias       = new ArrayCollection( $mediaEntity );
 
+		return $this;
+	}
 
 
 	public function get_slug(): string {

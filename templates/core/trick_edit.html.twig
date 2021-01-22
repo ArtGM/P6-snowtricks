@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="text-center">Edit Trick</h1>
+    <h1 class="text-center">Edit {{ trickName }} Trick </h1>
     <div class="row justify-content-center">
         {{ form_start(editTrickForm, {
             'attr': {
                 'class': 'col-lg-6'
             }
         }) }}
-        {{ form_row(editTrickForm.name) }}
+
+        <input type="hidden" value="{{ editTrickForm.name.vars.value }}"
+               name="trick_form[{{ editTrickForm.name.vars.name }}]" id="{{ editTrickForm.name.vars.id }}">
         {{ form_row(editTrickForm.description) }}
         {{ form_row(editTrickForm.trickGroup) }}
 
@@ -20,8 +22,6 @@
                 {% for imageField in editTrickForm.images %}
                     <div class="col-4" id="col-id-{{ loop.index }}">
                         <div class="card h-100 justify-content-between">
-
-                            <img class="img-thumbnail" src="/uploads/{{ imageField.vars.value.file.filename }}" alt="">
 
                             {{ form_errors(imageField) }}
                             <div class="card-body">

@@ -1,4 +1,8 @@
 import 'bootstrap'
+import tinymce from 'tinymce/tinymce'
+import 'tinymce/icons/default'
+import 'tinymce/themes/silver'
+
 const addImageButton = document.getElementById('addImageButton')
 const trickFormImageField = document.getElementById('imagesFieldsList')
 let counter = trickFormImageField.getAttribute('data-widget-counter') ||
@@ -55,4 +59,10 @@ function addRemoveEventToButton (elem) {
     coltodelete.parentNode.removeChild(coltodelete)
   })
 }
+
+tinymce.init({
+  selector: 'textarea',
+  skin_url: '/skins/ui/oxide-dark',
+})
+
 
