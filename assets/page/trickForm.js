@@ -1,3 +1,4 @@
+import 'bootstrap'
 const addImageButton = document.getElementById('addImageButton')
 const trickFormImageField = document.getElementById('imagesFieldsList')
 let counter = trickFormImageField.getAttribute('data-widget-counter') ||

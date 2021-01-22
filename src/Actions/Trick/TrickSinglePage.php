@@ -22,6 +22,7 @@ class TrickSinglePage {
 		$trickRepository = $entityManager->getRepository( Trick::class );
 		$singleTrick     = $trickRepository->findOneByName( $slug );
 
+		//dump($singleTrick->get_medias());
 		return $viewResponders( 'core/trick_single.html.twig', [
 			'singleTrick' => $singleTrick,
 		] );

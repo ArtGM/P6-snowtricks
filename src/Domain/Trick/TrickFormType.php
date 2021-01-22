@@ -41,7 +41,8 @@ class TrickFormType extends AbstractType {
 				CollectionType::class, [
 					'entry_type'   => ImageFormType::class,
 					'allow_add'    => true,
-					'by_reference' => false
+					'by_reference' => false,
+					'required'     => false
 				]
 			)
 			->add(

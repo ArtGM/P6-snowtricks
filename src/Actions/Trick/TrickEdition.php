@@ -32,9 +32,6 @@ class TrickEdition {
 	/** @var TrickDtoFactory */
 	private TrickDtoFactory $trickDtoFactory;
 
-	/** @var TrickEditionHandler */
-	private TrickEditionHandler $trickEditionHandler;
-
 	public function __construct(
 		FormFactoryInterface $formFactory,
 		EntityManagerInterface $entityManager,
@@ -50,6 +47,7 @@ class TrickEdition {
 	 * @param Request $request
 	 * @param TricksRepository $tricksRepository
 	 * @param ViewResponders $viewResponders
+	 * @param TrickEditionHandler $trickEditionHandler
 	 * @param string $slug
 	 * @param RedirectResponders $redirectResponders
 	 *
@@ -59,6 +57,7 @@ class TrickEdition {
 		Request $request,
 		TricksRepository $tricksRepository,
 		ViewResponders $viewResponders,
+		TrickEditionHandler $trickEditionHandler,
 		string $slug,
 		RedirectResponders $redirectResponders
 	): Response {
@@ -69,8 +68,9 @@ class TrickEdition {
 
 		$trickEditionForm = $this->formFactory->create( TrickFormType::class, $trickDto )->handleRequest( $request );
 
+
 		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
-			$this->trickEditionHandler->handle( $trickEditionForm, $trick );
+			$trickEditionHandler->handle( $trickEditionForm, $trick );
 
 			return $redirectResponders( 'homepage' );
 		}

@@ -28,7 +28,9 @@ class ImageFormType extends AbstractType {
 			)
 			->add(
 				'file',
-				FileType::class,
+				FileType::class, [
+					'required' => false
+				]
 			);
 	}
 

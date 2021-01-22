@@ -44,12 +44,15 @@ class TrickEditionHandler {
 	public function handle( FormInterface $trickEditionForm, Trick $trick ) {
 
 		/** @var TrickDTO $trickDto */
-		$trickDto = $trickEditionForm->getData();
+		$trickDto = $trickEditionForm->getViewData();
+
+
+		var_dump( $trickDto );
 
 		$medias = $trick->get_medias();
 
 		if ( ! empty( $trickDto->images ) ) {
-			foreach ( $medias as $mediaDTO ) {
+			foreach ( $trickDto->images as $mediaDTO ) {
 
 				$fileType          = $mediaDTO->file->getClientMimeType();
 				$fileWithExtension = $this->fileUploader->upload( $mediaDTO->file );
