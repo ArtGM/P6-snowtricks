@@ -11,16 +11,16 @@ use App\Entity\Trick;
  * @package App\Domain\Factory
  */
 final class TrickDtoFactory {
-	/** @var MediaDtoFactory */
-	private MediaDtoFactory $mediaToDto;
+	/** @var ImageDtoFactory */
+	private ImageDtoFactory $mediaToDto;
 
 
 	/**
 	 * TrickDTOFactory constructor.
 	 *
-	 * @param MediaDtoFactory $mediaToDto
+	 * @param ImageDtoFactory $mediaToDto
 	 */
-	public function __construct( MediaDtoFactory $mediaToDto ) {
+	public function __construct( ImageDtoFactory $mediaToDto ) {
 		$this->mediaToDto = $mediaToDto;
 
 	}
@@ -34,7 +34,7 @@ final class TrickDtoFactory {
 		$trickDto = new TrickDTO();
 
 
-		$imagesCollection = $trick->get_medias();
+		$imagesCollection = $trick->getMedias();
 		$imagesDto        = [];
 
 		foreach ( $imagesCollection->getValues() as $imageEntity ) {
@@ -42,9 +42,9 @@ final class TrickDtoFactory {
 		}
 		$trickDto->images = $imagesDto;
 
-		$trickDto->name        = $trick->get_name();
-		$trickDto->trickGroup  = $trick->get_tricks_group();
-		$trickDto->description = $trick->get_description();
+		$trickDto->name        = $trick->getName();
+		$trickDto->trickGroup  = $trick->getTricksGroup();
+		$trickDto->description = $trick->getDescription();
 		$trickDto->images      = $imagesDto;
 
 		return $trickDto;

@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 /**
@@ -66,8 +67,7 @@ class TrickEdition {
 
 		$trickDto = $this->trickDtoFactory->create( $trick );
 
-		$trickEditionForm = $this->formFactory->create( TrickFormType::class, $trickDto )->handleRequest( $request );
-
+		$trickEditionForm = $this->formFactory->create( TrickFormType::class, $trickDto, [ 'validation_groups' => [ 'update' ] ] )->handleRequest( $request );
 
 		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
 			$trickEditionHandler->handle( $trickEditionForm, $trick );
@@ -77,7 +77,8 @@ class TrickEdition {
 
 		$templateVars = [
 			'editTrickForm' => $trickEditionForm->createView(),
-			'trickName'     => $trick->get_name()
+			'trickMedias'   => $trick->getMedias(),
+			'trickName'     => $trick->getName()
 		];
 
 		return $viewResponders( 'core/trick_edit.html.twig', $templateVars );

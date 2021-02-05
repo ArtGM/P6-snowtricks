@@ -20,6 +20,12 @@ use Ramsey\Uuid\Doctrine\UuidGenerator;
  */
 class Trick {
 	/**
+	 * @var string
+	 *
+	 * @ORM\Column(type="string", length=255)
+	 */
+	protected string $name;
+	/**
 	 * @var UuidInterface
 	 *
 	 * @ORM\Id()
@@ -28,15 +34,6 @@ class Trick {
 	 * @ORM\CustomIdGenerator (class=UuidGenerator::class)
 	 */
 	private UuidInterface $id;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(type="string", length=255)
-	 */
-	protected string $name;
-
-
 	/**
 	 * @var string
 	 *
@@ -55,8 +52,12 @@ class Trick {
 	/**
 	 * Many tricks have Many medias
 	 *
-	 * @ORM\ManyToMany(targetEntity="App\Entity\Media")
-	 * @ORM\JoinTable(name="trick_has_media",
+	 * @ORM\ManyToMany(
+	 *     targetEntity="App\Entity\Media",
+	 *     cascade={"persist", "remove"}
+	 *     )
+	 * @ORM\JoinTable(
+	 *      name="trick_has_media",
 	 *      joinColumns={@ORM\JoinColumn(name="trick_id", referencedColumnName="id")},
 	 *      inverseJoinColumns={@ORM\JoinColumn(name="media_id", referencedColumnName="id")}
 	 *     )
@@ -85,18 +86,36 @@ class Trick {
 	private string $slug;
 
 	public function __construct( string $name, string $description, TrickGroup $trickGroup, ArrayCollection $medias ) {
+		$slugger = new AsciiSlugger();
+
 		$this->name         = $name;
 		$this->description  = $description;
 		$this->created_at   = new DateTime();
 		$this->updated_at   = new DateTime();
 		$this->tricks_group = $trickGroup;
 		$this->medias       = $medias;
+		$this->slug         = strtolower( $slugger->slug( $name ) );
 	}
 
 	public static function createFromDto( TrickDTO $trickDto, array $mediaEntity ): Trick {
 		$medias = new ArrayCollection( $mediaEntity );
 
 		return new self( $trickDto->name, $trickDto->description, $trickDto->trickGroup, $medias );
+	}
+
+
+	/**
+	 * @param Media $media
+	 */
+	public function removeMedia( Media $media ) {
+		if ( ! $this->medias->contains( $media ) ) {
+			return;
+		}
+		$this->medias->removeElement( $media );
+	}
+
+	public static function updateFromDto( TrickDTO $trickDto, array $modifiedMedias ) {
+
 	}
 
 	/**
@@ -115,60 +134,59 @@ class Trick {
 		return $this;
 	}
 
-
-	public function get_slug(): string {
-		$slugger    = new AsciiSlugger();
-		$this->slug = strtolower( $slugger->slug( $this->name ) );
-
-		return $this->slug;
-	}
-
 	/**
 	 * @return UuidInterface
 	 */
-	public function get_id(): UuidInterface {
+	public function getId(): UuidInterface {
 		return $this->id;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function get_name(): string {
+	public function getSlug(): string {
+		return $this->slug;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName(): string {
 		return $this->name;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function get_description(): string {
+	public function getDescription(): string {
 		return $this->description;
 	}
 
 	/**
 	 * @return TrickGroup
 	 */
-	public function get_tricks_group(): TrickGroup {
+	public function getTricksGroup(): TrickGroup {
 		return $this->tricks_group;
 	}
 
 	/**
 	 * @return ArrayCollection|Collection
 	 */
-	public function get_medias() {
+	public function getMedias() {
 		return $this->medias;
 	}
 
 	/**
 	 * @return DateTime
 	 */
-	public function get_created_at(): DateTime {
+	public function getCreatedAt(): DateTime {
 		return $this->created_at;
 	}
 
 	/**
 	 * @return DateTime
 	 */
-	public function get_updated_at(): DateTime {
+	public function getUpdatedAt(): DateTime {
 		return $this->updated_at;
 	}
 }

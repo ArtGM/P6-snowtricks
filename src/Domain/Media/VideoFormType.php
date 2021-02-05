@@ -4,14 +4,14 @@
 namespace App\Domain\Media;
 
 
-use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ImageFormType extends AbstractType {
+class VideoFormType extends AbstractType {
 
 	/**
 	 * @param FormBuilderInterface $builder
@@ -30,17 +30,32 @@ class ImageFormType extends AbstractType {
 				]
 			)
 			->add(
-				'name',
-				TextType::class
+				'title',
+				TextType::class, [
+					'required' => false,
+					'label'    => false,
+					'attr'     => [
+						'hidden' => true
+					]
+				]
 			)
 			->add(
 				'description',
-				TextType::class,
+				TextType::class, [
+					'required' => false,
+					'label'    => false,
+					'attr'     => [
+						'hidden' => true
+					]
+				]
 			)
 			->add(
-				'file',
-				FileType::class, [
-					'required' => false
+				'url',
+				UrlType::class, [
+					'required' => false,
+					'attr'     => [
+						'class' => 'watchChange'
+					]
 				]
 			);
 	}
@@ -50,7 +65,7 @@ class ImageFormType extends AbstractType {
 	 */
 	public function configureOptions( OptionsResolver $resolver ) {
 		$resolver->setDefaults( [
-			'data_class' => ImageDTO::class
+			'data_class' => VideoDTO::class
 		] );
 	}
 }

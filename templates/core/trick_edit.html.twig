@@ -3,14 +3,15 @@
 {% block body %}
     <h1 class="text-center">Edit {{ trickName }} Trick </h1>
     <div class="row justify-content-center">
+
         {{ form_start(editTrickForm, {
             'attr': {
                 'class': 'col-lg-6'
             }
         }) }}
 
-        <input type="hidden" value="{{ editTrickForm.name.vars.value }}"
-               name="trick_form[{{ editTrickForm.name.vars.name }}]" id="{{ editTrickForm.name.vars.id }}">
+
+        {{ form_row(editTrickForm.name) }}
         {{ form_row(editTrickForm.description) }}
         {{ form_row(editTrickForm.trickGroup) }}
 
@@ -22,17 +23,23 @@
                 {% for imageField in editTrickForm.images %}
                     <div class="col-4" id="col-id-{{ loop.index }}">
                         <div class="card h-100 justify-content-between">
-
                             {{ form_errors(imageField) }}
                             <div class="card-body">
+                                <img class="img-thumbnail"
+                                     src="{{ asset('uploads/' ~ imageField.vars.value.file.filename) }}" alt="">
                                 <button type="button" data-toggle="collapse"
-                                        data-target="#edit{{ imageField.vars.data.name }}" aria-expanded="false"
+                                        data-target="#edit{{ loop.index }}" aria-expanded="false"
                                         aria-controls="collapseImageEdit" class="btn btn-sm btn-outline-success w-100">
                                     Edit
                                 </button>
-                                <div class="collapse" id="edit{{ imageField.vars.data.name }}">
+                                <div class="collapse" id="edit{{ loop.index }}">
                                     {{ form_rest(imageField) }}
                                 </div>
+                                {% if loop.index != 1 %}
+                                    <button class="btn  btn-sm btn-outline-danger w-100 mt-3 remove-image" type="button"
+                                            data-id="col-id-{{ loop.index }}">delete
+                                    </button>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -41,6 +48,34 @@
             </div>
             <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
                     id="addImageButton">Add Image
+            </button>
+        </div>
+
+        <div class="form-group">
+            <ul class="form-row" id="videoFieldsList"
+                data-prototype="{{ form_widget(editTrickForm.video.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
+                data-widget-counter="{{ editTrickForm.video|length }}">
+                {% for videoField in editTrickForm.video %}
+                    <li id="field-id-{{ loop.index }}">
+                        <div id="trick_form_video_0">
+                            <div class="form-group">
+                                <input type="text" id="trick_form_video_0_id" name="trick_form[video][0][id]"
+                                       class="form-control" hidden="hidden">
+                            </div>
+                            <div class="form-group">
+                                <label for="trick_form_video_0_url">Url</label>
+                                <input type="text" id="trick_form_video_0_url" name="trick_form[video][0][url]"
+                                       inputmode="url" class="form-control"></div>
+                        </div>
+                    </li>
+                    {{ form_errors(videoField) }}
+                    {{ form_widget(videoField) }}
+                {% endfor %}
+            </ul>
+            <button type="button" data-list-selector="#videoFieldsList" class="btn btn-sm btn-success"
+                    id="addVideoButton">Add
+                Video
             </button>
         </div>
 

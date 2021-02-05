@@ -13,20 +13,38 @@
         {{ form_row(createTrickForm.description) }}
         {{ form_row(createTrickForm.trickGroup) }}
         <div class="form-group">
-            <ul class="form-row" id="imagesFieldsList"
-                data-prototype="{{ form_widget(createTrickForm.images.vars.prototype)|e }}"
-                data-widget-tags="{{ '<div class="card h-100 justify-content-space-between"></div>'|e }}"
-                data-widget-counter="{{ createTrickForm.images|length }}">
+            <div class="form-row" id="imagesFieldsList"
+                 data-prototype="{{ form_widget(createTrickForm.images.vars.prototype)|e }}"
+                 data-widget-tags="{{ '<div class="card h-100 justify-content-space-between"></div>'|e }}"
+                 data-widget-counter="{{ createTrickForm.images|length }}">
                 {% for imageField in createTrickForm.images %}
                     <div class="col-4">
                         {{ form_errors(imageField) }}
                         {{ form_widget(imageField) }}
                     </div>
                 {% endfor %}
-            </ul>
+            </div>
             <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
                     id="addImageButton">Add
-                Media
+                Image
+            </button>
+        </div>
+        <div class="form-group">
+            <ul class="form-row" id="videoFieldsList"
+                data-prototype="{{ form_widget(createTrickForm.video.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
+                data-widget-counter="{{ createTrickForm.video|length }}">
+                {% for videoField in createTrickForm.video %}
+                    {{ form_errors(videoField) }}
+                    {{ form_widget(videoField.id) }}
+                    {{ form_widget(videoField.title) }}
+                    {{ form_widget(videoField.description) }}
+                    {{ form_widget(videoField.url) }}
+                {% endfor %}
+            </ul>
+            <button type="button" data-list-selector="#videoFieldsList" class="btn btn-sm btn-success"
+                    id="addVideoButton">Add
+                Video
             </button>
         </div>
 

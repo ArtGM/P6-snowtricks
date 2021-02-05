@@ -5,6 +5,7 @@ namespace App\Domain\Trick;
 
 
 use App\Domain\Media\ImageFormType;
+use App\Domain\Media\VideoFormType;
 use App\Entity\TrickGroup;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -40,6 +41,15 @@ class TrickFormType extends AbstractType {
 				'images',
 				CollectionType::class, [
 					'entry_type'   => ImageFormType::class,
+					'allow_add'    => true,
+					'by_reference' => false,
+					'required'     => false
+				]
+			)
+			->add(
+				'video',
+				CollectionType::class, [
+					'entry_type'   => VideoFormType::class,
 					'allow_add'    => true,
 					'by_reference' => false,
 					'required'     => false

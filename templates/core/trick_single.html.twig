@@ -3,24 +3,37 @@
 {% block body %}
     <section class="container">
         <div class="row">
-            <div class="col">
-                <div class="card bg-dark text-white">
-                    <img src="{{ asset('uploads/' ~ singleTrick.get_medias[0].get_file) }}" class="card-img" alt="...">
-                    <div class="card-img-overlay bg-overlay d-flex justify-content-center align-items-center">
-                        <h5 class="card-title">{{ singleTrick.get_name }}</h5>
-                    </div>
-                </div>
+            <div class="col image-highlight">
+                {% for image in singleTrick.getMedias %}
+                    <figure>
+                        <img class="img-fluid" src="/uploads/{{ image.file }}" alt="{{ image.description }}">
+                        <figcaption>{{ image.name }}</figcaption>
+                    </figure>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col block-trick-gallery">
+                {% for image in singleTrick.getMedias %}
+                    <figure>
+                        <img class="img-thumbnail" src="/uploads/{{ image.file }}" alt="{{ image.description }}">
+                    </figure>
+                {% endfor %}
             </div>
         </div>
         <div class="row">
             <a class="btn btn-primary" role="button"
-               href="{{ path('trick-edition',  { 'slug': singleTrick.get_slug }) }}">
+               href="{{ path('trick-edition',  { 'slug': singleTrick.getSlug }) }}">
                 Edit
             </a>
         </div>
         <div class="row">
-            <p class="col">{{ singleTrick.get_description }}</p>
+            <p class="col">{{ singleTrick.getDescription }}</p>
         </div>
     </section>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('trickSingle') }}
 {% endblock %}

@@ -3,7 +3,7 @@
 
 namespace App\Actions\Trick;
 
-use App\Actions\Media\MediaCreation;
+use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Trick\TrickDTO;
 use App\Domain\Trick\TrickFormType;
 use App\Entity\Trick;
@@ -42,9 +42,9 @@ class TrickCreation {
 	private string $uploadDir;
 
 	/**
-	 * @var MediaCreation
+	 * @var MediaHandler
 	 */
-	private MediaCreation $mediaCreation;
+	private MediaHandler $mediaCreation;
 
 	/**
 	 * TrickCreation constructor.
@@ -53,14 +53,14 @@ class TrickCreation {
 	 * @param FormFactoryInterface $form_factory
 	 * @param SluggerInterface $slugger
 	 * @param string $uploadDir
-	 * @param MediaCreation $mediaCreation
+	 * @param MediaHandler $mediaCreation
 	 */
 	public function __construct(
 		EntityManagerInterface $entity_manager,
 		FormFactoryInterface $form_factory,
 		SluggerInterface $slugger,
 		string $uploadDir,
-		MediaCreation $mediaCreation
+		MediaHandler $mediaCreation
 	) {
 		$this->formFactory   = $form_factory;
 		$this->entityManager = $entity_manager;
@@ -85,7 +85,7 @@ class TrickCreation {
 		RedirectResponders $redirectResponders,
 		FileUploader $fileUploader
 	) {
-		$createTrickForm = $this->formFactory->create( TrickFormType::class )
+		$createTrickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
 		                                     ->handleRequest( $request );
 
 		if ( $createTrickForm->isSubmitted() && $createTrickForm->isValid() ) {
@@ -93,20 +93,30 @@ class TrickCreation {
 			/** @var TrickDTO $trickDto */
 			$trickDto = $createTrickForm->getData();
 
-			$medias = $trickDto->images;
+			$images = $trickDto->images;
+			$video  = $trickDto->video;
 
 			$mediasEntity = [];
 
-			if ( $medias ) {
-				foreach ( $medias as $mediaDTO ) {
-					$fileType          = $mediaDTO->file->getClientMimeType();
-					$fileWithExtension = $fileUploader->upload( $mediaDTO->file );
-					$mediasEntity[]    = $this->mediaCreation->generateMediaEntity( $mediaDTO, $fileWithExtension, $fileType );
+			if ( $images ) {
+				foreach ( $images as $imageDto ) {
+					$fileType          = $imageDto->file->getClientMimeType();
+					$fileWithExtension = $fileUploader->upload( $imageDto->file );
+					$mediasEntity[]    = $this->mediaCreation->generateMediaEntity( $imageDto, $fileWithExtension, $fileType );
 				}
 
 			}
 
+			if ( $video ) {
+				foreach ( $video as $videoDto ) {
+					$fileType          = 'video';
+					$fileWithExtension = null;
+					$mediasEntity[]    = $this->mediaCreation->generateMediaEntity( $videoDto, $fileWithExtension, $fileType );
+				}
+			}
+
 			$newTrick = Trick::createFromDto( $trickDto, $mediasEntity );
+
 			$this->entityManager->persist( $newTrick );
 			$this->entityManager->flush();
 

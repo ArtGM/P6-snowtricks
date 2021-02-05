@@ -1,16 +1,19 @@
 <div class="col-3">
     <div class="card m-2">
-        {% set medias = trick.get_medias %}
+        {% set medias = trick.getMedias %}
 
         {% if medias.getValues %}
-            <img loading="lazy" src="{{ asset('uploads/' ~ medias.getValues[0].get_file) }}" class="card-img-top"
-                 alt="{{ medias[0].get_name }}">
+            <img loading="lazy" src="{{ asset('uploads/' ~ medias.getValues[0].getFile) }}" class="card-img-top"
+                 alt="{{ medias[0].getName }}">
         {% endif %}
+
+
         <div class="card-body">
 
-            <h5 class="card-title"> {{ trick.get_name }}</h5>
-            <p class="card-text">{{ trick.get_description|u.truncate(100, '...', false) }}</p>
-            <a href="{{ path('trick-single', { 'slug': trick.get_slug }) }}" class="btn btn-primary stretched-link">See
+            <h5 class="card-title"> {{ trick.getName }}</h5>
+            <p class="card-text">{{ trick.getDescription|u.truncate(100, '...', false) }}</p>
+
+            <a href="{{ path('trick-single', { 'slug': trick.getSlug }) }}" class="btn btn-primary stretched-link">See
                 More</a>
         </div>
     </div>
