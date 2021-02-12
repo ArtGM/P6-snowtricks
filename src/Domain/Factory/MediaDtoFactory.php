@@ -5,10 +5,11 @@ namespace App\Domain\Factory;
 
 
 use App\Domain\Media\ImageDTO;
+use App\Domain\Media\VideoDTO;
 use App\Entity\Media;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class ImageDtoFactory {
+class MediaDtoFactory {
 
 	/** @var string */
 	private string $uploadDir;
@@ -27,7 +28,7 @@ class ImageDtoFactory {
 	 *
 	 * @return ImageDTO
 	 */
-	public function create( Media $media ): ImageDTO {
+	public function createImage( Media $media ): ImageDTO {
 		$uploadedFile          = new UploadedFile( $this->uploadDir . '/' . $media->getFile(), $media->getFile() );
 		$mediaDto              = new ImageDTO();
 		$mediaDto->id          = $media->getId();
@@ -36,6 +37,17 @@ class ImageDtoFactory {
 		$mediaDto->file        = $uploadedFile;
 
 		return $mediaDto;
+	}
+
+	public function createVideo( Media $media ): VideoDTO {
+
+		$videoDto              = new VideoDTO();
+		$videoDto->id          = $media->getId();
+		$videoDto->title       = $media->getName();
+		$videoDto->description = $media->getDescription();
+		$videoDto->url         = $media->getFile();
+
+		return $videoDto;
 	}
 
 }

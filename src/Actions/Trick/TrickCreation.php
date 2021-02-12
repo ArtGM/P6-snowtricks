@@ -100,18 +100,13 @@ class TrickCreation {
 
 			if ( $images ) {
 				foreach ( $images as $imageDto ) {
-					$fileType          = $imageDto->file->getClientMimeType();
-					$fileWithExtension = $fileUploader->upload( $imageDto->file );
-					$mediasEntity[]    = $this->mediaCreation->generateMediaEntity( $imageDto, $fileWithExtension, $fileType );
+					$mediasEntity[] = $this->mediaCreation->generateImage( $imageDto );
 				}
-
 			}
 
 			if ( $video ) {
 				foreach ( $video as $videoDto ) {
-					$fileType          = 'video';
-					$fileWithExtension = null;
-					$mediasEntity[]    = $this->mediaCreation->generateMediaEntity( $videoDto, $fileWithExtension, $fileType );
+					$mediasEntity[] = $this->mediaCreation->generateVideo( $videoDto );
 				}
 			}
 

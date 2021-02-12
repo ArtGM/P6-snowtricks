@@ -1,8 +1,6 @@
 import 'bootstrap'
 import * as url from 'url'
 
-const ytApiKey = 'AIzaSyAPeb0svJ0nvaxDikiRRSLApNnhJXEvJz0'
-
 // TODO: clean code... Use template to create Element
 
 const addImageButton = document.getElementById('addImageButton')
@@ -10,6 +8,8 @@ const addVideoButton = document.getElementById('addVideoButton')
 
 const trickFormImageField = document.getElementById('imagesFieldsList')
 const trickFormVideoField = document.getElementById('videoFieldsList')
+
+const ytApiKey = trickFormVideoField.getAttribute('data-youtube-api')
 
 let imageCounter = trickFormImageField.getAttribute('data-widget-counter') ||
   trickFormImageField.children.length
@@ -123,13 +123,8 @@ document.addEventListener('change', function (e) {
     const title = document.getElementById(getMainSelector + '_title')
     const description = document.getElementById(
       getMainSelector + '_description')
-    try {
-      const url = new URL(e.target.value).searchParams
-    }
-    catch (e) {
-      alert(e.message)
-      return
-    }
+
+    const url = new URL(e.target.value).searchParams
     const videoId = url.get('v')
 
     if (videoId !== null) {

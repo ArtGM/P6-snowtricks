@@ -11,16 +11,16 @@ use App\Entity\Trick;
  * @package App\Domain\Factory
  */
 final class TrickDtoFactory {
-	/** @var ImageDtoFactory */
-	private ImageDtoFactory $mediaToDto;
+	/** @var MediaDtoFactory */
+	private MediaDtoFactory $mediaToDto;
 
 
 	/**
 	 * TrickDTOFactory constructor.
 	 *
-	 * @param ImageDtoFactory $mediaToDto
+	 * @param MediaDtoFactory $mediaToDto
 	 */
-	public function __construct( ImageDtoFactory $mediaToDto ) {
+	public function __construct( MediaDtoFactory $mediaToDto ) {
 		$this->mediaToDto = $mediaToDto;
 
 	}
@@ -34,17 +34,24 @@ final class TrickDtoFactory {
 		$trickDto = new TrickDTO();
 
 
-		$imagesCollection = $trick->getMedias();
-		$imagesDto        = [];
+		$mediaCollection = $trick->getMedias();
+		$imagesDto       = [];
+		$videoDto        = [];
 
-		foreach ( $imagesCollection->getValues() as $imageEntity ) {
-			$imagesDto[] = $this->mediaToDto->create( $imageEntity );
+		foreach ( $mediaCollection->getValues() as $mediaEntity ) {
+			if ( $mediaEntity->getType() === 'image/jpeg' ) {
+				$imagesDto[] = $this->mediaToDto->createImage( $mediaEntity );
+			}
+			if ( $mediaEntity->getType() === 'video' ) {
+				$videoDto[] = $this->mediaToDto->createVideo( $mediaEntity );
+			}
 		}
-		$trickDto->images = $imagesDto;
+
 
 		$trickDto->name        = $trick->getName();
 		$trickDto->trickGroup  = $trick->getTricksGroup();
 		$trickDto->description = $trick->getDescription();
+		$trickDto->video       = $videoDto;
 		$trickDto->images      = $imagesDto;
 
 		return $trickDto;

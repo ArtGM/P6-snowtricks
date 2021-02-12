@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use App\Domain\Media\ImageDTO;
+use App\Domain\Media\VideoDTO;
 use App\Repository\MediaRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
@@ -78,14 +79,16 @@ class Media {
 	}
 
 	/**
-	 * @param ImageDTO $mediaDTO
+	 * @param ImageDTO|VideoDTO $mediaDTO
 	 * @param $fileWithExtension
 	 * @param $type
 	 *
 	 * @return Media
 	 */
-	public static function createMedia( ImageDTO $mediaDTO, $fileWithExtension, $type ): Media {
-		return new self( $mediaDTO->name, $mediaDTO->description, $fileWithExtension, $type );
+	public static function createMedia( $mediaDTO, $fileWithExtension, $type ): Media {
+		$type === 'video' ? $name = $mediaDTO->title : $name = $mediaDTO->name;
+
+		return new self( $name, $mediaDTO->description, $fileWithExtension, $type );
 	}
 
 	/**

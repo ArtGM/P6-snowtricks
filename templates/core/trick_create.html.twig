@@ -33,7 +33,8 @@
             <ul class="form-row" id="videoFieldsList"
                 data-prototype="{{ form_widget(createTrickForm.video.vars.prototype)|e }}"
                 data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
-                data-widget-counter="{{ createTrickForm.video|length }}">
+                data-widget-counter="{{ createTrickForm.video|length }}"
+                data-youtube-api="{{ youtubeApiKey }}">
                 {% for videoField in createTrickForm.video %}
                     {{ form_errors(videoField) }}
                     {{ form_widget(videoField.id) }}

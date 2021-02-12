@@ -5,97 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/page/trickSingle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/1-qde76dcnvhn1i84l5ml4ga-jpeg-60143dc5144cb.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/200px-snowboard-indygrab2-jpg-601319e225b3c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-6019ac7cf2d5a.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-6019b3981a1c4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-6019b6293f938.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-6019ba253a3a5.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-uewifihgxxq-unsplash-jpg-6019ab8e1aa5b.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-uewifihgxxq-unsplash-jpg-601d2594144c9.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-uewifihgxxq-unsplash-jpg-601d657bed135.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/external-content-duckduckgo-com-jpg-601319aaac0bd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/external-content-duckduckgo-com-jpg-601319c0b1c37.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/external-content-duckduckgo-com-jpg-60143e7edca13.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/front-japan-air-jpg-6013de2462248.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/front-japan-air-jpg-6013ded51bd0d.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/front-japan-air-jpg-6013e3b649264.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/front-japan-air-jpg-601429785c6ad.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/front-japan-air-jpg-60143e008a6b1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/front-japan-air-jpg-6019aa7f6491f.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/nose-grab-jpg-601319f94372c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/photo0186-jpg-60143e40393cd.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/siteon0-e5814-png-6013ddd22baad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/weway98epgp01-jpg-6013ca47ab84c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/weway98epgp01-jpg-6013ccca201d3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/weway98epgp01-jpg-6013cce14f15b.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/weway98epgp01-jpg-6013d572aebaa.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/weway98epgp01-jpg-60142633a3fbd.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/weway98epgp01-jpg-601429d21142f.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Factory/VideoDtoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Media/VideoDTO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Media/VideoFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-602630ae9c1ec.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-60264097598bd.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-60264dee41d68.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-60264e7c6a006.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-uewifihgxxq-unsplash-jpg-602640976d6e5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-uewifihgxxq-unsplash-jpg-6026462f6d4b3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/HeaderContent.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/TrickForm.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/page/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/homepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/page/trickForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/trickForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/dark/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/dark/content.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/default/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/default/content.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/document/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/document/content.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/writer/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/content/writer/content.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/content.inline.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/content.inline.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/content.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/content.mobile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/content.mobile.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/fonts/tinymce-mobile.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/skin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/skin.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/skin.mobile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/skin.mobile.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/skin.shadowdom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide-dark/skin.shadowdom.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/content.inline.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/content.inline.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/content.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/content.mobile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/content.mobile.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/fonts/tinymce-mobile.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/skin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/skin.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/skin.mobile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/skin.mobile.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/skin.shadowdom.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/skins/ui/oxide/skin.shadowdom.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Media/MediaCreation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Media/Handlers/MediaHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Actions/Trick/TrickCreation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Trick/TrickCreation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Trick/TrickEdition.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Trick/TrickEdition.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Factory/MediaDtoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Factory/ImageDtoFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Factory/ImageDtoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Factory/MediaDtoFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Domain/Factory/TrickDtoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Factory/TrickDtoFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Media/ImageFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Media/ImageFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Media/MediaDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Media/ImageDTO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Factory/VideoDtoFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Media/Handlers/MediaHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Media/Handlers/MediaHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Domain/Trick/Handlers/TrickEditionHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Trick/Handlers/TrickEditionHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickDTO.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Trick/TrickFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Trick/TrickFormType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/trick_miniature.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/core/trick_create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_create.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/core/trick_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/core/trick_single.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_single.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,7 +314,9 @@
       <workItem from="1612040188969" duration="1478000" />
       <workItem from="1612293384254" duration="5092000" />
       <workItem from="1612298549751" duration="784000" />
-      <workItem from="1612512952448" duration="21288000" />
+      <workItem from="1612512952448" duration="21543000" />
+      <workItem from="1613070925307" duration="6409000" />
+      <workItem from="1613112801454" duration="10344000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -611,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611328324566</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Add video Field and Handling">
+      <created>1612543036521</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1612543036521</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +581,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="* Dev: Change name" />
     <MESSAGE value="* COnfig: Add security bundle component" />
     <MESSAGE value="* Dev: Sign up Action, form and templates + add bootstrap" />
     <MESSAGE value="* Dev: Build front end" />
@@ -668,7 +605,8 @@
     <MESSAGE value="Add handler for edition form" />
     <MESSAGE value="Add unique entity constraint on trick DTO" />
     <MESSAGE value="Add tiny MCE to trick form textarea" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tiny MCE to trick form textarea" />
+    <MESSAGE value="Add video Field and Handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add video Field and Handling" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
