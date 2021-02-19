@@ -135,7 +135,10 @@ class TrickEditionHandler {
 	 * @return bool
 	 */
 	private function mediaAlreadyExist( $mediaDTO, $mediaEntity ): bool {
+		if (isset($mediaEntity)) {
 		return $mediaDTO->id === (string) $mediaEntity->getId();
+		}
+		return false;
 	}
 
 	/**
