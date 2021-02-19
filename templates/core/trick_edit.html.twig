@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Edit {{ trickName }} Trick </h1>
+    <div class="row justify-content-center">
+
+        {{ form_start(editTrickForm, {
+            'attr': {
+                'class': 'col-lg-6'
+            }
+        }) }}
+
+
+        {{ form_row(editTrickForm.name) }}
+        {{ form_row(editTrickForm.description) }}
+        {{ form_row(editTrickForm.trickGroup) }}
+
+        <div class="form-group">
+            <div class="form-row my-3" id="imagesFieldsList"
+                 data-prototype="{{ form_rest(editTrickForm.images.vars.prototype)|e }}"
+                 data-widget-tags="{{ '<div class="card"></div>'|e }}"
+                 data-widget-counter="{{ editTrickForm.images|length }}">
+                {% for imageField in editTrickForm.images %}
+                    <div class="col-4" id="col-id-{{ loop.index }}">
+                        <div class="card h-100 justify-content-between">
+                            {{ form_errors(imageField) }}
+                            <div class="card-body">
+                                <img class="img-thumbnail"
+                                     src="{{ asset('uploads/' ~ imageField.vars.value.file.filename) }}" alt="">
+                                <button type="button" data-toggle="collapse"
+                                        data-target="#edit{{ loop.index }}" aria-expanded="false"
+                                        aria-controls="collapseImageEdit" class="btn btn-sm btn-outline-success w-100">
+                                    Edit
+                                </button>
+                                <div class="collapse" id="edit{{ loop.index }}">
+                                    {{ form_rest(imageField) }}
+                                </div>
+                                {% if loop.index != 1 %}
+                                    <button class="btn  btn-sm btn-outline-danger w-100 mt-3 remove-image" type="button"
+                                            data-id="col-id-{{ loop.index }}">delete
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
+                    id="addImageButton">Add Image
+            </button>
+        </div>
+
+        <div class="form-group">
+            <ul class="form-row list-group-flush" id="videoFieldsList"
+                data-prototype="{{ form_widget(editTrickForm.video.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
+                data-widget-counter="{{ editTrickForm.video|length }}"
+                data-youtube-api="{{ youtubeApiKey }}">
+
+                {% for videoField in editTrickForm.video %}
+                    <li class="list-group-item" id="field-id-{{ loop.index }}">
+                        <div id="{{ videoField.vars.id }}">
+                            <img src="https://img.youtube.com/vi/{{ videoField.vars.value.url }}/default.jpg" alt="">
+                            <div class="form-group">
+                                <input type="text" id="{{ videoField.vars.id }}_id"
+                                       name="{{ videoField.vars.full_name }}[id]"
+                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
+                                <input type="text" id="{{ videoField.vars.id }}_title"
+                                       name="{{ videoField.vars.full_name }}[title]"
+                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.title }}">
+                                <input type="text" id="{{ videoField.vars.id }}_description"
+                                       name="{{ videoField.vars.full_name }}[description]"
+                                       class="form-control" hidden="hidden"
+                                       value="{{ videoField.vars.value.description }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="{{ videoField.vars.id }}_url"
+                                       name="{{ videoField.vars.full_name }}[url]"
+                                       inputmode="url" class="form-control"
+                                       value="https://www.youtube.com/watch?v={{ videoField.vars.value.url }}">
+                            </div>
+                        </div>
+                    </li>
+                    {{ form_errors(videoField) }}
+                {% endfor %}
+            </ul>
+            <button type="button" data-list-selector="#videoFieldsList" class="btn btn-sm btn-success"
+                    id="addVideoButton">Add
+                Video
+            </button>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Update</button>
+        {{ form_row(editTrickForm._token) }}
+        {{ form_end(editTrickForm, {'render_rest': false}) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('trickForm') }}
+{% endblock %}

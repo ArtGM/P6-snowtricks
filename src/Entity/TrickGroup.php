@@ -32,6 +32,13 @@ class TrickGroup {
 	private string $name;
 
 	/**
+	 * @return string
+	 */
+	public function getName(): string {
+		return $this->name;
+	}
+
+	/**
 	 * @var string
 	 *
 	 * @ORM\Column (type="text")
@@ -45,6 +52,10 @@ class TrickGroup {
 	 */
 	private DateTime $created_at;
 
-
+	public function __construct( string $name, string $description ) {
+		$this->name        = $name;
+		$this->description = $description;
+		$this->created_at  = new DateTime();
+	}
 
 }

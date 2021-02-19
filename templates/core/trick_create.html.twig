@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Create Trick</h1>
+    <div class="row justify-content-center">
+        {{ form_start(createTrickForm, {
+            'attr': {
+                'class': 'col-lg-6'
+            }
+        }) }}
+
+        {{ form_row(createTrickForm.name) }}
+        {{ form_row(createTrickForm.description) }}
+        {{ form_row(createTrickForm.trickGroup) }}
+        <div class="form-group">
+            <div class="form-row" id="imagesFieldsList"
+                 data-prototype="{{ form_widget(createTrickForm.images.vars.prototype)|e }}"
+                 data-widget-tags="{{ '<div class="card h-100 justify-content-space-between"></div>'|e }}"
+                 data-widget-counter="{{ createTrickForm.images|length }}">
+                {% for imageField in createTrickForm.images %}
+                    <div class="col-4">
+                        {{ form_errors(imageField) }}
+                        {{ form_widget(imageField) }}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
+                    id="addImageButton">Add
+                Image
+            </button>
+        </div>
+        <div class="form-group">
+            <ul class="form-row" id="videoFieldsList"
+                data-prototype="{{ form_widget(createTrickForm.video.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
+                data-widget-counter="{{ createTrickForm.video|length }}"
+                data-youtube-api="{{ youtubeApiKey }}">
+                {% for videoField in createTrickForm.video %}
+                    {{ form_errors(videoField) }}
+                    {{ form_widget(videoField.id) }}
+                    {{ form_widget(videoField.title) }}
+                    {{ form_widget(videoField.description) }}
+                    {{ form_widget(videoField.url) }}
+                {% endfor %}
+            </ul>
+            <button type="button" data-list-selector="#videoFieldsList" class="btn btn-sm btn-success"
+                    id="addVideoButton">Add
+                Video
+            </button>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add</button>
+        {{ form_errors(createTrickForm) }}
+        {{ form_widget(createTrickForm._token) }}
+        {{ form_end(createTrickForm, {'render_rest': false}) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('trickForm') }}
+{% endblock %}

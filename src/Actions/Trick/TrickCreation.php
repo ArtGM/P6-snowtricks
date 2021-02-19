@@ -3,25 +3,27 @@
 
 namespace App\Actions\Trick;
 
+use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Trick\TrickDTO;
 use App\Domain\Trick\TrickFormType;
 use App\Entity\Trick;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route ("/trick-form", name="trick-form")
- * Class TrickCreate
+ * Class TrickCreation
  * @package App\Actions\Trick
  */
-class TrickCreate {
+class TrickCreation {
 
 	/** @var FormFactoryInterface */
 	private FormFactoryInterface $formFactory;
@@ -30,17 +32,41 @@ class TrickCreate {
 	private EntityManagerInterface $entityManager;
 
 	/**
-	 * TrickCreate constructor.
+	 * @var SluggerInterface
+	 */
+	private SluggerInterface $slugger;
+
+	/**
+	 * @var string
+	 */
+	private string $uploadDir;
+
+	/**
+	 * @var MediaHandler
+	 */
+	private MediaHandler $mediaCreation;
+
+	/**
+	 * TrickCreation constructor.
 	 *
 	 * @param EntityManagerInterface $entity_manager
 	 * @param FormFactoryInterface $form_factory
+	 * @param SluggerInterface $slugger
+	 * @param string $uploadDir
+	 * @param MediaHandler $mediaCreation
 	 */
 	public function __construct(
 		EntityManagerInterface $entity_manager,
-		FormFactoryInterface $form_factory
+		FormFactoryInterface $form_factory,
+		SluggerInterface $slugger,
+		string $uploadDir,
+		MediaHandler $mediaCreation
 	) {
 		$this->formFactory   = $form_factory;
 		$this->entityManager = $entity_manager;
+		$this->slugger       = $slugger;
+		$this->uploadDir     = $uploadDir;
+		$this->mediaCreation = $mediaCreation;
 	}
 
 
@@ -49,27 +75,51 @@ class TrickCreate {
 	 * @param ViewResponders $viewResponders
 	 * @param RedirectResponders $redirectResponders
 	 *
+	 * @param FileUploader $fileUploader
+	 *
 	 * @return RedirectResponse|Response
 	 */
 	public function __invoke(
 		Request $request,
 		ViewResponders $viewResponders,
-		RedirectResponders $redirectResponders
+		RedirectResponders $redirectResponders,
+		FileUploader $fileUploader
 	) {
-		$createTrickForm = $this->formFactory->create( TrickFormType::class )
+		$createTrickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
 		                                     ->handleRequest( $request );
+
 		if ( $createTrickForm->isSubmitted() && $createTrickForm->isValid() ) {
 
 			/** @var TrickDTO $trickDto */
 			$trickDto = $createTrickForm->getData();
 
-			$newTrick = Trick::createFromDto( $trickDto );
+			$images = $trickDto->images;
+			$video  = $trickDto->video;
+
+			$mediasEntity = [];
+
+			if ( $images ) {
+				foreach ( $images as $imageDto ) {
+					$mediasEntity[] = $this->mediaCreation->generateImage( $imageDto );
+				}
+			}
+
+			if ( $video ) {
+				foreach ( $video as $videoDto ) {
+					$mediasEntity[] = $this->mediaCreation->generateVideo( $videoDto );
+				}
+			}
+
+			$newTrick = Trick::createFromDto( $trickDto, $mediasEntity );
+
 			$this->entityManager->persist( $newTrick );
 			$this->entityManager->flush();
 
 			return $redirectResponders( 'homepage' );
 		}
 
-		return $viewResponders( 'core/trick_form.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
+		return $viewResponders( 'core/trick_create.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
 	}
+
+
 }

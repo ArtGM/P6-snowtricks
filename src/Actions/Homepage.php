@@ -4,7 +4,9 @@
 namespace App\Actions;
 
 
+use App\Entity\Trick;
 use App\Responders\ViewResponders;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,12 +20,20 @@ class Homepage {
 
 	/**
 	 * @param Request $request
-	 * @param ViewResponders $view_responders
+	 * @param ViewResponders $viewResponders
+	 *
+	 * @param EntityManagerInterface $entityManager
 	 *
 	 * @return Response
 	 */
-	public function __invoke( Request $request, ViewResponders $view_responders ): Response {
-		return $view_responders( 'core/index.html.twig' );
+	public function __invoke( Request $request, ViewResponders $viewResponders, EntityManagerInterface $entityManager ): Response {
+
+		$trickRepository = $entityManager->getRepository( Trick::class );
+		$allTricks       = $trickRepository->findBy( [], [], 4 );
+		return $viewResponders( 'core/index.html.twig', [
+			'allTricks'   => $allTricks,
+			'currentPage' => 1
+		] );
 	}
 
 }
