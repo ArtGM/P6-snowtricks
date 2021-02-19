@@ -16,4 +16,7 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
-/.idea
+.idea/
+.idea/workspace.xml
+/public/images/
+/public/uploads/
