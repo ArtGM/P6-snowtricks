@@ -3,7 +3,7 @@
 
 namespace App\Entity;
 
-use App\Domain\User\RegistrationDTO;
+use App\Domain\User\Registration\RegistrationDTO;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
