@@ -16,7 +16,4 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
-/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_10_2020_15_16_[Default_Changelist]/shelved.patch
-/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_11_2020_14_48_[Default_Changelist]/shelved.patch
-/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_11_2020_14_48_[Default_Changelist]1/shelved.patch
-/.idea/shelf/Uncommitted_changes_before_Merge_at_20_11_2020_14_50_[Default_Changelist]/shelved.patch
+/.idea

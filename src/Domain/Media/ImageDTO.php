@@ -4,10 +4,18 @@
 namespace App\Domain\Media;
 
 
+use App\Entity\Media;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class MediaDTO {
+class ImageDTO {
+
+	/**
+	 * @var string|null
+	 */
+	public ?string $id;
+
 	/**
 	 * @var string|null
 	 */
@@ -23,6 +31,5 @@ class MediaDTO {
 	 * @Assert\Image()
 	 */
 	public ?UploadedFile $file;
-
 
 }

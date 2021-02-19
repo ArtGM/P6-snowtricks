@@ -3,62 +3,70 @@
 
 namespace App\Actions\Trick;
 
-use App\Domain\Media\MediaDTO;
+use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Trick\TrickDTO;
 use App\Domain\Trick\TrickFormType;
-use App\Entity\Media;
 use App\Entity\Trick;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
 use App\Service\FileUploader;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route ("/trick-form", name="trick-form")
- * Class TrickCreate
+ * Class TrickCreation
  * @package App\Actions\Trick
  */
-class TrickCreate {
+class TrickCreation {
 
 	/** @var FormFactoryInterface */
 	private FormFactoryInterface $formFactory;
 
 	/** @var EntityManagerInterface */
 	private EntityManagerInterface $entityManager;
+
 	/**
 	 * @var SluggerInterface
 	 */
 	private SluggerInterface $slugger;
 
+	/**
+	 * @var string
+	 */
 	private string $uploadDir;
 
 	/**
-	 * TrickCreate constructor.
+	 * @var MediaHandler
+	 */
+	private MediaHandler $mediaCreation;
+
+	/**
+	 * TrickCreation constructor.
 	 *
 	 * @param EntityManagerInterface $entity_manager
 	 * @param FormFactoryInterface $form_factory
 	 * @param SluggerInterface $slugger
 	 * @param string $uploadDir
+	 * @param MediaHandler $mediaCreation
 	 */
 	public function __construct(
 		EntityManagerInterface $entity_manager,
 		FormFactoryInterface $form_factory,
 		SluggerInterface $slugger,
-		string $uploadDir
+		string $uploadDir,
+		MediaHandler $mediaCreation
 	) {
 		$this->formFactory   = $form_factory;
 		$this->entityManager = $entity_manager;
 		$this->slugger       = $slugger;
 		$this->uploadDir     = $uploadDir;
+		$this->mediaCreation = $mediaCreation;
 	}
 
 
@@ -77,43 +85,41 @@ class TrickCreate {
 		RedirectResponders $redirectResponders,
 		FileUploader $fileUploader
 	) {
-		$createTrickForm = $this->formFactory->create( TrickFormType::class )
+		$createTrickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
 		                                     ->handleRequest( $request );
+
 		if ( $createTrickForm->isSubmitted() && $createTrickForm->isValid() ) {
 
 			/** @var TrickDTO $trickDto */
 			$trickDto = $createTrickForm->getData();
 
-			$medias = $trickDto->images;
+			$images = $trickDto->images;
+			$video  = $trickDto->video;
 
 			$mediasEntity = [];
 
-			if ( $medias ) {
-				foreach ( $medias as $mediaDTO ) {
-					$fileType          = $mediaDTO->file->getClientMimeType();
-					$fileWithExtension = $fileUploader->upload( $mediaDTO->file );
-					$mediasEntity[]    = $this->generateMediaEntity( $mediaDTO, $fileWithExtension, $fileType );
+			if ( $images ) {
+				foreach ( $images as $imageDto ) {
+					$mediasEntity[] = $this->mediaCreation->generateImage( $imageDto );
 				}
-
 			}
 
+			if ( $video ) {
+				foreach ( $video as $videoDto ) {
+					$mediasEntity[] = $this->mediaCreation->generateVideo( $videoDto );
+				}
+			}
 
 			$newTrick = Trick::createFromDto( $trickDto, $mediasEntity );
+
 			$this->entityManager->persist( $newTrick );
 			$this->entityManager->flush();
 
 			return $redirectResponders( 'homepage' );
 		}
 
-		return $viewResponders( 'core/trick_form.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
+		return $viewResponders( 'core/trick_create.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
 	}
 
 
-	private function generateMediaEntity( $mediaDTO, $fileWithExtension, $fileType ) {
-		$newMedia = Media::createMedia( $mediaDTO, $fileWithExtension, $fileType );
-		$this->entityManager->persist( $newMedia );
-		$this->entityManager->flush();
-
-		return $newMedia;
-	}
 }

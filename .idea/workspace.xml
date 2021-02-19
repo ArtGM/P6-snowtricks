@@ -5,20 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805cc454-1c88-4906-8098-2b6fcd52b62d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/shifty.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/icons/arrow-counterclockwise.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/snowtrick.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtrick.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-602630ae9c1ec.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-60264097598bd.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-60264dee41d68.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-p93we9s6isk-unsplash-jpg-60264e7c6a006.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-uewifihgxxq-unsplash-jpg-602640976d6e5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/austin-neill-uewifihgxxq-unsplash-jpg-6026462f6d4b3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/page/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/core/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/page/trickForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/page/trickForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Actions/Trick/TrickCreation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Trick/TrickCreation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Factory/ImageDtoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Factory/MediaDtoFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Factory/TrickDtoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Factory/TrickDtoFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Factory/VideoDtoFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Media/Handlers/MediaHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Media/Handlers/MediaHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Trick/Handlers/TrickEditionHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Trick/Handlers/TrickEditionHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/trick_create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/trick_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/core/trick_single.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/trick_single.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +46,18 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="create-update-tricks" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -168,7 +182,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Domain/User" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/core" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -180,18 +194,19 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Sites\www\snowtrick\templates\core" />
       <recent name="F:\Sites\www\snowtrick" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Sites\www\snowtrick\public\images" />
-      <recent name="F:\Sites\www\snowtrick\src\Domain\User\Registration" />
-      <recent name="F:\Sites\www\snowtrick\src\Domain\Trick" />
-      <recent name="F:\Sites\www\snowtrick\src\Entity" />
-      <recent name="F:\Sites\www\snowtrick\templates" />
+      <recent name="F:\Sites\www\snowtrick\src\Media\Handlers" />
+      <recent name="F:\Sites\www\snowtrick\public\uploads" />
+      <recent name="F:\Sites\www\snowtrick\public" />
+      <recent name="F:\Sites\www\snowtrick\assets\lib\tinymce" />
+      <recent name="F:\Sites\www\snowtrick\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -276,6 +291,32 @@
       <workItem from="1607541230597" duration="3582000" />
       <workItem from="1607625603392" duration="4780000" />
       <workItem from="1607672711420" duration="5431000" />
+      <workItem from="1608059389995" duration="5938000" />
+      <workItem from="1609874882629" duration="3580000" />
+      <workItem from="1609963689850" duration="1447000" />
+      <workItem from="1610094757376" duration="7286000" />
+      <workItem from="1610287590380" duration="6655000" />
+      <workItem from="1610391815280" duration="1658000" />
+      <workItem from="1610395426319" duration="2117000" />
+      <workItem from="1610478415502" duration="3589000" />
+      <workItem from="1610564457037" duration="6952000" />
+      <workItem from="1610695690587" duration="16735000" />
+      <workItem from="1610912304539" duration="34000" />
+      <workItem from="1611074507846" duration="6342000" />
+      <workItem from="1611294271241" duration="40000" />
+      <workItem from="1611294350465" duration="430000" />
+      <workItem from="1611294803072" duration="23998000" />
+      <workItem from="1611687679636" duration="3061000" />
+      <workItem from="1611863505288" duration="4853000" />
+      <workItem from="1611906829768" duration="27000" />
+      <workItem from="1611906878936" duration="25576000" />
+      <workItem from="1611947665250" duration="5425000" />
+      <workItem from="1612040188969" duration="1478000" />
+      <workItem from="1612293384254" duration="5092000" />
+      <workItem from="1612298549751" duration="784000" />
+      <workItem from="1612512952448" duration="21543000" />
+      <workItem from="1613070925307" duration="6409000" />
+      <workItem from="1613112801454" duration="10344000" />
     </task>
     <task id="LOCAL-00001" summary="* Dev: set development environment">
       <created>1601730896422</created>
@@ -466,7 +507,49 @@
       <option name="project" value="LOCAL" />
       <updated>1607092853074</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Dev: create single page trick">
+      <created>1608062456344</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1608062456344</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Dev: change media path to get first on homepage">
+      <created>1608062799658</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1608062799658</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Add handler for edition form">
+      <created>1611305335908</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1611305335908</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Add unique entity constraint on trick DTO">
+      <created>1611322518905</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1611322518905</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Add tiny MCE to trick form textarea">
+      <created>1611328324566</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1611328324566</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add video Field and Handling">
+      <created>1612543036521</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1612543036521</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +560,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -486,12 +581,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="* Dev: set development environment" />
-    <MESSAGE value="* Dev: add TokenHistory entity&#10;Update Relational Mapping&#10;Rename Entities with singular name" />
-    <MESSAGE value="* Config: change php version to 7.4" />
-    <MESSAGE value="* Dev: add type declaration on Entity property" />
-    <MESSAGE value="* Dev: set ADR pattern" />
-    <MESSAGE value="* Dev: Change name" />
     <MESSAGE value="* COnfig: Add security bundle component" />
     <MESSAGE value="* Dev: Sign up Action, form and templates + add bootstrap" />
     <MESSAGE value="* Dev: Build front end" />
@@ -511,7 +600,13 @@
     <MESSAGE value="add icon logout and remove hardcoded href" />
     <MESSAGE value="Dev: Create Trick form with images and TrickGroup fields" />
     <MESSAGE value="Dev: query tricks and working on loadmore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dev: query tricks and working on loadmore" />
+    <MESSAGE value="Dev: create single page trick" />
+    <MESSAGE value="Dev: change media path to get first on homepage" />
+    <MESSAGE value="Add handler for edition form" />
+    <MESSAGE value="Add unique entity constraint on trick DTO" />
+    <MESSAGE value="Add tiny MCE to trick form textarea" />
+    <MESSAGE value="Add video Field and Handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add video Field and Handling" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

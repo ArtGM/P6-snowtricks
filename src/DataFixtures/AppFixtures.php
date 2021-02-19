@@ -37,5 +37,7 @@ class AppFixtures extends Fixture {
 			$manager->persist( $newTrickGroup );
 			$manager->flush();
 		}
+
+
 	}
 }

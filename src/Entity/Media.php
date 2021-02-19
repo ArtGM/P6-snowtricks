@@ -3,7 +3,8 @@
 
 namespace App\Entity;
 
-use App\Domain\Media\MediaDTO;
+use App\Domain\Media\ImageDTO;
+use App\Domain\Media\VideoDTO;
 use App\Repository\MediaRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
@@ -61,6 +62,14 @@ class Media {
 	 */
 	private DateTime $created_at;
 
+	/**
+	 * Media constructor.
+	 *
+	 * @param string $name
+	 * @param string $description
+	 * @param string $file
+	 * @param string $type
+	 */
 	public function __construct( string $name, string $description, string $file, string $type ) {
 		$this->name        = $name;
 		$this->description = $description;
@@ -69,8 +78,73 @@ class Media {
 		$this->created_at  = new DateTime();
 	}
 
-	public static function createMedia( MediaDTO $mediaDTO, $fileWithExtension, $type ): Media {
-		return new self( $mediaDTO->name, $mediaDTO->description, $fileWithExtension, $type );
+	/**
+	 * @param ImageDTO|VideoDTO $mediaDTO
+	 * @param $fileWithExtension
+	 * @param $type
+	 *
+	 * @return Media
+	 */
+	public static function createMedia( $mediaDTO, $fileWithExtension, $type ): Media {
+		$type === 'video' ? $name = $mediaDTO->title : $name = $mediaDTO->name;
+
+		return new self( $name, $mediaDTO->description, $fileWithExtension, $type );
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function updateName( string $name ) {
+		$this->name = $name;
+	}
+
+	/**
+	 * @param string $description
+	 */
+	public function updateDescription( string $description ) {
+		$this->description = $description;
+	}
+
+	/**
+	 * @return UuidInterface
+	 */
+	public function getId(): UuidInterface {
+		return $this->id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName(): string {
+		return $this->name;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDescription(): string {
+		return $this->description;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFile(): string {
+		return $this->file;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getType(): string {
+		return $this->type;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function getCreatedAt(): DateTime {
+		return $this->created_at;
 	}
 
 

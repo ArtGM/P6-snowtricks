@@ -4,6 +4,7 @@
 namespace App\Domain\Media;
 
 
+use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,8 +20,14 @@ class ImageFormType extends AbstractType {
 	public function buildForm( FormBuilderInterface $builder, array $options ) {
 		$builder
 			->add(
-				'file',
-				FileType::class,
+				'id',
+				TextType::class, [
+					'required' => false,
+					'label'    => false,
+					'attr'     => [
+						'hidden' => true
+					]
+				]
 			)
 			->add(
 				'name',
@@ -28,7 +35,13 @@ class ImageFormType extends AbstractType {
 			)
 			->add(
 				'description',
-				TextType::class
+				TextType::class,
+			)
+			->add(
+				'file',
+				FileType::class, [
+					'required' => false
+				]
 			);
 	}
 
@@ -37,7 +50,7 @@ class ImageFormType extends AbstractType {
 	 */
 	public function configureOptions( OptionsResolver $resolver ) {
 		$resolver->setDefaults( [
-			'data_class' => MediaDTO::class
+			'data_class' => ImageDTO::class
 		] );
 	}
 }

@@ -1,10 +1,27 @@
 <div class="col-3">
     <div class="card m-2">
-        <img loading="lazy" src="https://placekitten.com/400/300" class="card-img-top" alt="kittens">
+        {% set medias = trick.getMedias %}
+
+        {% if medias.getValues %}
+            {% if medias.getValues[0].getType == 'video' %}
+                <img loading="lazy" src="https://i1.ytimg.com/vi/{{ medias.getValues[0].file }}/sddefault.jpg"
+                     class="card-img-top"
+                     alt="{{ medias[0].getName }}">
+            {% else %}
+                <img loading="lazy" src="{{ asset('uploads/' ~ medias.getValues[0].getFile) }}" class="card-img-top"
+                     alt="{{ medias[0].getName }}">
+            {% endif %}
+
+        {% endif %}
+
+
         <div class="card-body">
-            <h5 class="card-title"> {{ trick.get_name }}</h5>
-            <p class="card-text">{{ trick.get_description|u.truncate(100, '...', false) }}</p>
-            <a href="#" class="btn btn-primary">See More</a>
+
+            <h5 class="card-title"> {{ trick.getName }}</h5>
+            <p class="card-text">{{ trick.getDescription|u.truncate(100, '...', false) }}</p>
+
+            <a href="{{ path('trick-single', { 'slug': trick.getSlug }) }}" class="btn btn-primary stretched-link">See
+                More</a>
         </div>
     </div>
 </div>
