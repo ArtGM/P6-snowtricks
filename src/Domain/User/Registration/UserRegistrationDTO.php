@@ -7,14 +7,14 @@ use App\Validator\Constraints\UniqueEntityDto;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class RegistrationDTO
+ * Class UserRegistrationDTO
  * @package App\Domain\User
  * @UniqueEntityDto(
  *     entityClass="App\Entity\User",
  *     fieldMapping={"email": "email"}
  * )
  */
-class RegistrationDTO {
+class UserRegistrationDTO {
 	/**
 	 * @var string|null
 	 *
