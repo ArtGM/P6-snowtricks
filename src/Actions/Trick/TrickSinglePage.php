@@ -20,9 +20,8 @@ class TrickSinglePage {
 
 	public function __invoke( Request $request, ViewResponders $viewResponders, EntityManagerInterface $entityManager, string $slug ): Response {
 		$trickRepository = $entityManager->getRepository( Trick::class );
-		$singleTrick     = $trickRepository->findOneByName( $slug );
+		$singleTrick     = $trickRepository->findOneBySlug( $slug );
 
-		//dump($singleTrick->get_medias());
 		return $viewResponders( 'core/trick_single.html.twig', [
 			'singleTrick' => $singleTrick,
 		] );
