@@ -26,7 +26,7 @@ class UserProfileFormType extends AbstractType {
 				EmailType::class
 			)
 			->add('avatar',
-				ImageFormType::class
+				TextType::class
 			);
 	}
 

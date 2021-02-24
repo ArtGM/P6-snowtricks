@@ -28,6 +28,7 @@ Encore
   addEntry('app', './assets/app.js').
   addEntry('trickForm', './assets/page/trickForm.js').
   addEntry('trickSingle', './assets/page/trickSingle.js').
+  addEntry('userProfile', './assets/page/userProfile.js').
   addEntry('main', './assets/styles/app.css')
   //.addEntry('page2', './assets/page2.components')
 

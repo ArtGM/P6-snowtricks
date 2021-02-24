@@ -4,8 +4,7 @@
 namespace App\Domain\User\Profile;
 
 
-use App\Domain\Media\ImageDTO;
-use App\Entity\Media;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UserProfileDTO {
@@ -33,8 +32,8 @@ class UserProfileDTO {
 	public ?string $email;
 
 	/**
-	 * @var ImageDTO
+	 * @var string
 	 */
-	public ImageDTO $avatar;
+	public string $avatar;
 
 }

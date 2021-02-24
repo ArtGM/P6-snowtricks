@@ -6,7 +6,7 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center justify-content-start text-center px-3">
                     {% if user.avatar is null %}
-                        <img data-toggle="modal" data-target="#avatarChange" class="rounded-circle avatar-add" src="https://placekitten.com/300" width="200">
+                        <img id="userAvatar" data-toggle="modal" data-target="#avatarChange" class="rounded-circle avatar-add" src="https://placekitten.com/300" width="200">
                     {% else %}
 
                     {% endif %}
@@ -33,11 +33,44 @@
         <div class="modal fade" id="avatarChange" tabindex="-1" role="dialog" aria-labelledby="avatarChangeLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    {{ form_start(userProfileForm) }}
-                    {{ form_row(userProfileForm.avatar) }}
-                    {{ form_end(userProfileForm, {'render_rest': false}) }}
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            Change Your Avatar
+                        </div>
+                    </div>
+
+                    {{ form_start(userAvatarForm, {
+                        'attr': {
+                            'id': 'js-handle-avatar',
+                        }
+                    }) }}
+                    <div class="modal-body">
+                    {{ form_widget(userAvatarForm.name,  {
+                        'attr': {
+                            'hidden': 'hidden',
+                            'value': user.username
+                        }
+                    }) }}
+                    {{ form_widget(userAvatarForm.description,  {
+                        'attr': {
+                            'hidden': 'hidden',
+                            'value': user.username ~ "'s avatar"
+                        }
+                    }) }}
+                    {{ form_widget(userAvatarForm.file) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="submitForm" class="btn btn-success">Save</button>
+                    </div>
+
+                    {{ form_end(userAvatarForm) }}
+
                 </div>
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('userProfile') }}
 {% endblock %}
