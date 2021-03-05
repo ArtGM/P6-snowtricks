@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="container">
+        <div class="row my-5">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center justify-content-start text-center px-3">
+                    {% if user.avatar is null %}
+                        <img id="userAvatar" data-toggle="modal" data-target="#avatarChange"
+                             class="rounded-circle avatar-add" src="https://placekitten.com/300" width="200">
+                    {% else %}
+                        <img id="userAvatar" data-toggle="modal" data-target="#avatarChange"
+                             class="rounded-circle avatar-add" src="{{ asset('uploads/' ~ avatarName) }}" width="200">
+                    {% endif %}
+                    <span class="font-weight-bold">{{ user.username }}</span>
+                    <span class="text-black-50">{{ user.email }}</span>
+                </div>
+            </div>
+            <div class="col-5">
+                {{ form_start(userProfileForm) }}
+                {{ form_row(userProfileForm.avatar,  {
+                    'attr': {
+                        'hidden': 'hidden',
+                        'value': user.avatar
+                    },
+                    'label_attr': { 'hidden': 'hidden'}
+                }) }}
+                {{ form_row(userProfileForm.username) }}
+                {{ form_row(userProfileForm.email) }}
+                {{ form_row(userProfileForm._token) }}
+
+                <button class="btn btn-primary" type="button">Reset Password</button>
+                <button class="btn btn-success" type="submit">Save Change</button>
+                {{ form_end(userProfileForm, {'render_rest': false}) }}
+            </div>
+            <div class="col-md-4 border-left">
+                <p class="font-weight-bolder">Activity</p>
+                <hr>
+                <p class="font-weight-bolder">Last Comments</p>
+            </div>
+        </div>
+        <div class="modal fade" id="avatarChange" tabindex="-1" role="dialog" aria-labelledby="avatarChangeLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    {% include '/components/avatar_form.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('userProfile') }}
+{% endblock %}

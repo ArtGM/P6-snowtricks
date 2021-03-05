@@ -1897,6 +1897,14 @@ bootstrap-icons@^1.2.1:
   resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.2.1.tgz#20eac9ec348744edc8b9e184a0f7057d1430f609"
   integrity sha512-c63G57gFN9Yz1Dmi1RRpBd+cm/Lil31nRsnYxX8VeC/2wTk1Z54OU4twyLAVpgj2lX2lyHx0M8+xhEdkr79RAg==
 
+bootstrap.native@^3.0.14-f:
+  version "3.0.14-f"
+  resolved "https://registry.yarnpkg.com/bootstrap.native/-/bootstrap.native-3.0.14-f.tgz#c2f20cd18c231172bd27471e92a05041fd61397d"
+  integrity sha512-aywZwNNv2ExeIR191FLelUG0cFPu2ePLArP1HTO4BBLEaRznC9sMl+5HZ+yE8f50bwPcEey6dI1XkL4Utv1g+A==
+  dependencies:
+    minifill "^0.0.14"
+    shorter-js "^0.1.10b"
+
 bootstrap@^4.5.3:
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.3.tgz#c6a72b355aaf323920be800246a6e4ef30997fe6"
@@ -2008,6 +2016,11 @@ browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.8.5:
     electron-to-chromium "^1.3.571"
     escalade "^3.1.0"
     node-releases "^1.1.61"
+
+bs-custom-file-input@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/bs-custom-file-input/-/bs-custom-file-input-1.3.4.tgz#c275cb8d4f1c02ba026324292509fa9a747dbda8"
+  integrity sha512-NBsQzTnef3OW1MvdKBbMHAYHssCd613MSeJV7z2McXznWtVMnJCy7Ckyc+PwxV6Pk16cu6YBcYWh/ZE0XWNKCA==
 
 buffer-from@^1.0.0:
   version "1.1.1"
@@ -5257,6 +5270,11 @@ mini-store@^3.0.1:
     hoist-non-react-statics "^3.3.2"
     shallowequal "^1.0.2"
 
+minifill@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/minifill/-/minifill-0.0.14.tgz#34879e369b1b586689f827ea6dd931c737765b92"
+  integrity sha512-4s1twSnTRcIwk0ogQfXmXtwjewlv0hI9WiGMkh7aSW5+zPBMzot+X3F9Eqt3YWgwh4nDdhpnW8hESb7yHrcYNQ==
+
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
@@ -7594,6 +7612,11 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
+
+shorter-js@^0.1.10b:
+  version "0.1.10-b"
+  resolved "https://registry.yarnpkg.com/shorter-js/-/shorter-js-0.1.10-b.tgz#4dc75577bec2f2d45d3f715c235c472248ecdbd0"
+  integrity sha512-bEWafNEUpV8IUUUl9w3l1fX7oT5TYPHoA4F5EsrlckClJsowJORiPJHHnqpa3uaiqecvXbTL0BuJxqAf+Vdv8Q==
 
 side-channel@^1.0.2:
   version "1.0.3"

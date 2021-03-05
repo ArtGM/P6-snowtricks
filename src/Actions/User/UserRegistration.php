@@ -4,8 +4,8 @@
 namespace App\Actions\User;
 
 
-use App\Domain\User\Registration\RegistrationDTO;
-use App\Domain\User\Registration\RegistrationFormType;
+use App\Domain\User\Registration\UserRegistrationDTO;
+use App\Domain\User\Registration\UserRegistrationFormType;
 use App\Entity\User;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
@@ -67,7 +67,7 @@ class UserRegistration {
 
 		if ( $signUpForm->isSubmitted() && $signUpForm->isValid() ) {
 
-			/** @var RegistrationDTO $registrationDto */
+			/** @var UserRegistrationDTO $registrationDto */
 			$registrationDto = $signUpForm->getData();
 
 			$registrationDto->password = $this->encodedPassword( $registrationDto->password );
@@ -93,7 +93,7 @@ class UserRegistration {
 	 * @return FormInterface
 	 */
 	private function signUpForm( $request ): FormInterface {
-		return $this->formFactory->create( RegistrationFormType::class )->handleRequest( $request );
+		return $this->formFactory->create( UserRegistrationFormType::class )->handleRequest( $request );
 	}
 
 	/**

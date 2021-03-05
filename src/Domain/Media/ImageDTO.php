@@ -29,6 +29,10 @@ class ImageDTO {
 	/**
 	 * @var UploadedFile|string|null
 	 * @Assert\Image()
+	 * @Assert\NotBlank (
+	 *     message="avatar required",
+	 *     groups={"avatar"}
+	 * )
 	 */
 	public ?UploadedFile $file;
 

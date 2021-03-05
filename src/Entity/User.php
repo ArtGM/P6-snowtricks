@@ -3,11 +3,13 @@
 
 namespace App\Entity;
 
-use App\Domain\User\RegistrationDTO;
+use App\Domain\User\Profile\UserProfileDTO;
+use App\Domain\User\Registration\UserRegistrationDTO;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -61,7 +63,7 @@ class User implements UserInterface {
 	 * @ORM\ManyToOne(targetEntity="App\Entity\Media")
 	 * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=true)
 	 */
-	private string $avatar_id;
+	private ?Media $avatarId = null;
 
 	/**
 	 * Many Users have Many Trick
@@ -98,12 +100,40 @@ class User implements UserInterface {
 	}
 
 	/**
-	 * @param RegistrationDTO $registrationDto
+	 * @param UserRegistrationDTO $registrationDto
 	 *
 	 * @return User
 	 */
-	public static function createFromDto( RegistrationDTO $registrationDto ): User {
+	public static function createFromDto( UserRegistrationDTO $registrationDto ): User {
 		return new self( $registrationDto->name, $registrationDto->email, $registrationDto->password );
+	}
+
+	/**
+	 * @param UserProfileDTO $userDTO
+	 * @param Media $newAvatar
+	 *
+	 * @return $this
+	 */
+	public function update( UserProfileDTO $userDTO, Media $newAvatar ): User {
+		$this->name     = (string) $userDTO->username;
+		$this->email    = (string) $userDTO->email;
+		$this->avatarId = $newAvatar;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getId(): string {
+		return $this->id->toString();
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getEmail(): string {
+		return $this->email;
 	}
 
 	/**
@@ -133,5 +163,16 @@ class User implements UserInterface {
 
 	public function eraseCredentials() {
 		// TODO: Implement eraseCredentials() method.
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getAvatar(): ?string {
+		if ( empty( $this->avatarId ) ) {
+			return $this->avatarId;
+		}
+
+		return $this->avatarId->getId()->toString();
 	}
 }

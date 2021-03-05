@@ -1,9 +1,11 @@
 <?php
 
 
-namespace App\Domain\User\Registration;
+namespace App\Domain\User\Profile;
 
 
+
+use App\Domain\Media\ImageFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -12,32 +14,25 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RegistrationFormType extends AbstractType {
-
+class UserProfileFormType extends AbstractType {
 	public function buildForm( FormBuilderInterface $builder, array $options ) {
 
 		$builder
 			->add(
-				'name',
+				'username',
 				TextType::class
 			)
 			->add( 'email',
 				EmailType::class
 			)
-			->add(
-				'password',
-				RepeatedType::class, [
-				'type'            => PasswordType::class,
-				'invalid_message' => 'The password fields must match.',
-				'required'        => true,
-				'first_options'   => [ 'label' => 'Password' ],
-				'second_options'  => [ 'label' => 'Confirm Password' ],
-			] );
+			->add('avatar',
+				TextType::class
+			);
 	}
 
 	public function configureOptions( OptionsResolver $resolver ) {
 		$resolver->setDefaults( [
-			'data_class' => RegistrationDTO::class,
+			'data_class' => UserProfileDTO::class,
 		] );
 	}
 }
