@@ -5,15 +5,12 @@ namespace App\Actions\Ajax;
 
 
 use App\Domain\Media\Handlers\MediaHandler;
-use App\Domain\Media\ImageDTO;
 use App\Domain\Media\ImageFormType;
-use App\Entity\Media;
 use App\Repository\MediaRepository;
 use App\Responders\JsonResponders;
 use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,23 +42,31 @@ class NewUserAvatar {
 		MediaHandler $mediaHandler,
 		ImageFormType $imageFormType,
 		FormFactoryInterface $formFactory,
-		MediaRepository $mediaRepository
+		MediaRepository $mediaRepository,
+		ViewResponders $viewResponders
 
 	): Response {
+		$avatarForm = $formFactory->create(ImageFormType::class, null, ['validation_groups' => ['avatar']])->handleRequest($request);
 
-		$imageData = $request->request->all('image_form');
+		$imageDto = $avatarForm->getData();
 
-		$imageDto = new ImageDTO();
-		$imageDto->name = $imageData['name'];
-		$imageDto->description = $imageData['description'];
-		$uploadedFile          = $request->files->get('image_form');
-		$imageDto->file = $uploadedFile['file'];
-		$newImage = $mediaHandler->generateImage($imageDto);
+		if ($avatarForm->isSubmitted() && $avatarForm->isValid()) {
+			$newImage = $mediaHandler->generateImage($imageDto);
+			return $jsonResponders( [
+				'validation' => 'success',
+				'newAvatar' => $newImage->getId()->toString()
+			] );
+		}
+		$user = [
+			'username' => $imageDto->name,
+			'description' => $imageDto->description
+		];
 
-
-		return $jsonResponders( [
-			'newAvatar' => $newImage->getId()->toString()
-		] );
+		return $viewResponders('components/avatar_form.html.twig', [
+			'validation' => 'error',
+			'userAvatarForm' => $avatarForm->createView(),
+			'user' => $user
+		]);
 
 	}
 }

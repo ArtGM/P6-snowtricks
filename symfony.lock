@@ -99,6 +99,12 @@
     "egulias/email-validator": {
         "version": "2.1.24"
     },
+    "laminas/laminas-code": {
+        "version": "3.5.0"
+    },
+    "laminas/laminas-eventmanager": {
+        "version": "3.3.0"
+    },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
     },
@@ -222,6 +228,9 @@
             "./.env"
         ]
     },
+    "symfony/form": {
+        "version": "v5.1.8"
+    },
     "symfony/framework-bundle": {
         "version": "5.1",
         "recipe": {
@@ -271,6 +280,9 @@
             "./config/packages/mailer.yaml"
         ]
     },
+    "symfony/intl": {
+        "version": "v5.1.8"
+    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -281,6 +293,9 @@
         }
     },
     "symfony/mime": {
+        "version": "v5.1.8"
+    },
+    "symfony/options-resolver": {
         "version": "v5.1.8"
     },
     "symfony/monolog-bridge": {
@@ -310,6 +325,9 @@
     "symfony/polyfill-intl-idn": {
         "version": "v1.20.0"
     },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.20.0"
+    },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.18.1"
     },
@@ -324,6 +342,12 @@
     },
     "symfony/profiler-pack": {
         "version": "v1.0.5"
+    },
+    "symfony/property-access": {
+        "version": "v5.1.8"
+    },
+    "symfony/property-info": {
+        "version": "v5.1.8"
     },
     "symfony/routing": {
         "version": "5.1",

@@ -1,7 +1,9 @@
-import 'bootstrap/js/dist/modal'
+import Modal from 'bootstrap.native'
+
 
 const submitFormButton = document.getElementById('submitForm')
 const avatarForm = document.getElementById('js-handle-avatar')
+const handleUrl = avatarForm.getAttribute('data-avatar-url')
 
 avatarForm.addEventListener('submit', function (e) {
     e.preventDefault()
@@ -9,7 +11,7 @@ avatarForm.addEventListener('submit', function (e) {
     const formData = new FormData(avatarForm)
 
 
-        fetch('/user/profile/handle-avatar/', {
+        fetch(handleUrl, {
             method: 'post',
             body: formData
         })

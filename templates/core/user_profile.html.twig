@@ -33,38 +33,7 @@
         <div class="modal fade" id="avatarChange" tabindex="-1" role="dialog" aria-labelledby="avatarChangeLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="modal-title">
-                            Change Your Avatar
-                        </div>
-                    </div>
-
-                    {{ form_start(userAvatarForm, {
-                        'attr': {
-                            'id': 'js-handle-avatar',
-                        }
-                    }) }}
-                    <div class="modal-body">
-                    {{ form_widget(userAvatarForm.name,  {
-                        'attr': {
-                            'hidden': 'hidden',
-                            'value': user.username
-                        }
-                    }) }}
-                    {{ form_widget(userAvatarForm.description,  {
-                        'attr': {
-                            'hidden': 'hidden',
-                            'value': user.username ~ "'s avatar"
-                        }
-                    }) }}
-                    {{ form_widget(userAvatarForm.file) }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" id="submitForm" class="btn btn-success">Save</button>
-                    </div>
-
-                    {{ form_end(userAvatarForm) }}
-
+                    {% include '/components/avatar_form.html.twig' %}
                 </div>
             </div>
         </div>
