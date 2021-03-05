@@ -49,21 +49,21 @@ class TrickCreation {
 	/**
 	 * TrickCreation constructor.
 	 *
-	 * @param EntityManagerInterface $entity_manager
-	 * @param FormFactoryInterface $form_factory
+	 * @param EntityManagerInterface $entityManager
+	 * @param FormFactoryInterface $formFactory
 	 * @param SluggerInterface $slugger
 	 * @param string $uploadDir
 	 * @param MediaHandler $mediaCreation
 	 */
 	public function __construct(
-		EntityManagerInterface $entity_manager,
-		FormFactoryInterface $form_factory,
+		EntityManagerInterface $entityManager,
+		FormFactoryInterface $formFactory,
 		SluggerInterface $slugger,
 		string $uploadDir,
 		MediaHandler $mediaCreation
 	) {
-		$this->formFactory   = $form_factory;
-		$this->entityManager = $entity_manager;
+		$this->formFactory   = $formFactory;
+		$this->entityManager = $entityManager;
 		$this->slugger       = $slugger;
 		$this->uploadDir     = $uploadDir;
 		$this->mediaCreation = $mediaCreation;

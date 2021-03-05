@@ -1,0 +1,69 @@
+<h2>Commentaries</h2>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="comment-wrapper">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    {% if app.getToken().getRoleNames() is not empty %}
+                        {{ form_start(commentForm) }}
+                        {{ form_end(commentForm) }}
+                    {% else %}
+                        <p class="alert alert-info">Please <a href="{{ path('user_login') }}">sign in</a> to leave a
+                            comment</p>
+                    {% endif %}
+
+                    <ul class="media-list">
+                        <li class="media">
+                            <a href="#" class="pull-left">
+                                <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                            </a>
+                            <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted">30 min ago</small>
+                                </span>
+                                <strong class="text-success">@MartinoMont</strong>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <a href="#" class="pull-left">
+                                <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                            </a>
+                            <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted">30 min ago</small>
+                                </span>
+                                <strong class="text-success">@LaurenceCorreil</strong>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing elit.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <a href="#" class="pull-left">
+                                <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                            </a>
+                            <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted">30 min ago</small>
+                                </span>
+                                <strong class="text-success">@JohnNida</strong>
+                                <p>
+                                    Lorem ipsum dolor <a href="#">#sitamet</a> sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
