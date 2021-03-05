@@ -17,16 +17,17 @@ class RedirectResponders {
 	 *
 	 * @param UrlGeneratorInterface $url_generator
 	 */
-	public function __construct(UrlGeneratorInterface $url_generator) {
+	public function __construct( UrlGeneratorInterface $url_generator ) {
 		$this->url_generator = $url_generator;
 	}
 
 	/**
 	 * @param string $name
+	 * @param array $params
 	 *
 	 * @return RedirectResponse
 	 */
-	public function __invoke(string $name): RedirectResponse {
-	return new RedirectResponse($this->url_generator->generate($name));
+	public function __invoke( string $name, $params = [] ): RedirectResponse {
+		return new RedirectResponse( $this->url_generator->generate( $name, $params ) );
 	}
 }

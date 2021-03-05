@@ -175,4 +175,8 @@ class User implements UserInterface {
 
 		return $this->avatarId->getId()->toString();
 	}
+
+	public function getAvatarImgPath(): string {
+		return $this->avatarId->getFile();
+	}
 }

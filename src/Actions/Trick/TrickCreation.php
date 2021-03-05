@@ -85,13 +85,13 @@ class TrickCreation {
 		RedirectResponders $redirectResponders,
 		FileUploader $fileUploader
 	) {
-		$createTrickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
-		                                     ->handleRequest( $request );
+		$trickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
+		                               ->handleRequest( $request );
 
-		if ( $createTrickForm->isSubmitted() && $createTrickForm->isValid() ) {
+		if ( $trickForm->isSubmitted() && $trickForm->isValid() ) {
 
 			/** @var TrickDTO $trickDto */
-			$trickDto = $createTrickForm->getData();
+			$trickDto = $trickForm->getData();
 
 			$images = $trickDto->images;
 			$video  = $trickDto->video;
@@ -118,7 +118,7 @@ class TrickCreation {
 			return $redirectResponders( 'homepage' );
 		}
 
-		return $viewResponders( 'core/trick_create.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
+		return $viewResponders( 'core/trick_create.html.twig', [ 'trickForm' => $trickForm->createView() ] );
 	}
 
 

@@ -8,9 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class CommentDTO {
 
-	/** @var string */
-	public string $id;
-
 	/**
 	 * @var string
 	 * @Assert\NotBlank
@@ -21,9 +18,4 @@ class CommentDTO {
 	 */
 	public string $content;
 
-	/** @var string */
-	public string $trick;
-
-	/** @var string */
-	public string $user;
 }

@@ -4,7 +4,12 @@
 namespace App\Actions\Trick;
 
 use App\Domain\Comment\CommentFormType;
+use App\Entity\Comment;
 use App\Entity\Trick;
+use App\Entity\User;
+use App\Repository\CommentRepository;
+use App\Repository\TricksRepository;
+use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -33,27 +38,48 @@ class TrickSinglePage {
 	public function __invoke(
 		Request $request,
 		ViewResponders $viewResponders,
+		RedirectResponders $redirectResponders,
+		TricksRepository $tricksRepository,
+		CommentRepository $commentRepository,
 		EntityManagerInterface $entityManager,
 		string $slug,
 		TokenStorageInterface $tokenStorage
 	): Response {
-		$trickRepository = $entityManager->getRepository( Trick::class );
-		$singleTrick     = $trickRepository->findOneBySlug( $slug );
+
+		/** @var Trick $singleTrick */
+		$singleTrick  = $tricksRepository->findOneBySlug( $slug );
+		$commentsList = $commentRepository->findBy( [
+			'trick' => $singleTrick
+		] );
+
 
 		$token           = $tokenStorage->getToken();
 		$isAuthenticated = $token->isAuthenticated();
-		if ( $isAuthenticated && ! empty( $token->getRoleNames() ) ) {
-			$createCommentForm = $this->formFactory->create( CommentFormType::class )->handleRequest( $request );
 
-			return $viewResponders( 'core/trick_single.html.twig', [
-				'singleTrick' => $singleTrick,
-				'commentForm' => $createCommentForm->createView()
-			] );
+		$templateVars = [
+			'singleTrick'  => $singleTrick,
+			'commentsList' => $commentsList
+		];
+
+		if ( $isAuthenticated && ! empty( $token->getRoleNames() ) ) {
+			$commentForm = $this->formFactory->create( CommentFormType::class )->handleRequest( $request );
+
+			if ( $commentForm->isSubmitted() && $commentForm->isValid() ) {
+				/** @var User $user */
+				$user       = $token->getUser();
+				$commentDto = $commentForm->getData();
+
+				$newComment = Comment::createFromDto( $commentDto, $singleTrick, $user );
+				$entityManager->persist( $newComment );
+				$entityManager->flush();
+
+				return $redirectResponders( 'trick-single', [ 'slug' => $slug ] );
+			}
+
+			$templateVars['commentForm'] = $commentForm->createView();
 		}
 
-		return $viewResponders( 'core/trick_single.html.twig', [
-			'singleTrick' => $singleTrick,
-		] );
+		return $viewResponders( 'core/trick_single.html.twig', $templateVars );
 
 	}
 }

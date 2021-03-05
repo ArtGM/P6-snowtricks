@@ -72,15 +72,17 @@ fieldset {
     }
 
     .media-list {
-        .media img {
-            width: 64px;
-            height: 64px;
-            border: 2px solid #e5e7e8;
-        }
-
         .media {
             border-bottom: 1px dashed #efefef;
             margin-bottom: 25px;
+
+            img {
+                box-sizing: border-box;
+                margin-right: 5px;
+                width: 64px;
+                height: 64px;
+                border: 2px solid #e5e7e8;
+            }
         }
     }
 }
