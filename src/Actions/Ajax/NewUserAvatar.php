@@ -6,6 +6,7 @@ namespace App\Actions\Ajax;
 
 use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Media\ImageFormType;
+use App\Entity\Media;
 use App\Repository\MediaRepository;
 use App\Responders\JsonResponders;
 use App\Responders\ViewResponders;
@@ -51,19 +52,24 @@ class NewUserAvatar {
 		$imageDto = $avatarForm->getData();
 
 		if ($avatarForm->isSubmitted() && $avatarForm->isValid()) {
-			$newImage = $mediaHandler->generateImage($imageDto);
+			$newImage = $mediaHandler->generateImage( $imageDto );
+
+			/** @var Media $imagePath */
+			$imagePath = $mediaRepository->findOneById( [ $newImage->getId() ] );
+
 			return $jsonResponders( [
-				'validation' => 'success',
-				'newAvatar' => $newImage->getId()->toString()
+				'validation'  => 'success',
+				'newAvatarId' => $newImage->getId()->toString(),
+				'newAvatar'   => '/uploads/' . $imagePath->getFile()
 			] );
 		}
+
 		$user = [
 			'username' => $imageDto->name,
 			'description' => $imageDto->description
 		];
 
 		return $viewResponders('components/avatar_form.html.twig', [
-			'validation' => 'error',
 			'userAvatarForm' => $avatarForm->createView(),
 			'user' => $user
 		]);

@@ -6,9 +6,11 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center justify-content-start text-center px-3">
                     {% if user.avatar is null %}
-                        <img id="userAvatar" data-toggle="modal" data-target="#avatarChange" class="rounded-circle avatar-add" src="https://placekitten.com/300" width="200">
+                        <img id="userAvatar" data-toggle="modal" data-target="#avatarChange"
+                             class="rounded-circle avatar-add" src="https://placekitten.com/300" width="200">
                     {% else %}
-
+                        <img id="userAvatar" data-toggle="modal" data-target="#avatarChange"
+                             class="rounded-circle avatar-add" src="{{ asset('uploads/' ~ avatarName) }}" width="200">
                     {% endif %}
                     <span class="font-weight-bold">{{ user.username }}</span>
                     <span class="text-black-50">{{ user.email }}</span>
@@ -16,6 +18,13 @@
             </div>
             <div class="col-5">
                 {{ form_start(userProfileForm) }}
+                {{ form_row(userProfileForm.avatar,  {
+                    'attr': {
+                        'hidden': 'hidden',
+                        'value': user.avatar
+                    },
+                    'label_attr': { 'hidden': 'hidden'}
+                }) }}
                 {{ form_row(userProfileForm.username) }}
                 {{ form_row(userProfileForm.email) }}
                 {{ form_row(userProfileForm._token) }}

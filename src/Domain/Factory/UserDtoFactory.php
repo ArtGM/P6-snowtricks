@@ -38,10 +38,9 @@ class UserDtoFactory {
 	public function create( User $user ): UserProfileDTO {
 		$userProfileDto = new UserProfileDTO();
 		$avatarId = $user->getAvatar();
+
 		if (isset($avatarId)) {
-			$mediaEntity = $this->mediaRepository->find($avatarId);
-			$imageDto = $this->mediaToDto->createImage($mediaEntity);
-			$userProfileDto->avatar       = $imageDto;
+			$userProfileDto->avatar = $avatarId;
 		}
 
 		$userProfileDto->username        = $user->getUsername();
