@@ -3,12 +3,15 @@
 
 namespace App\Entity;
 
+use App\Domain\Comment\CommentDTO;
 use App\Repository\CommentRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\Persistence\ObjectRepository;
 use Ramsey\Uuid\UuidInterface;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table (name="st_comment")
@@ -40,17 +43,80 @@ class Comment {
 	private DateTime $created_at;
 
 	/**
-	 * @var int
+	 * @var Trick
 	 * Many Comments have One trick
 	 * @ManyToOne (targetEntity="App\Entity\Trick")
 	 */
-	private int $trick;
+	private Trick $trick;
 
 	/**
-	 * @var int
+	 * @var User
 	 * Many Comments have one user
 	 * @ManyToOne (targetEntity="App\Entity\User")
 	 */
-	private int $user;
+	private User $user;
+
+
+	/**
+	 * Comment constructor.
+	 *
+	 * @param string $content
+	 * @param Trick $trick
+	 * @param User $user
+	 */
+	public function __construct( string $content, Trick $trick, User $user ) {
+		$this->content    = $content;
+		$this->trick      = $trick;
+		$this->user       = $user;
+		$this->created_at = new DateTime();
+
+	}
+
+	/**
+	 * @param CommentDTO $commentDto
+	 * @param Trick $trick
+	 * @param User $user
+	 *
+	 * @return Comment
+	 */
+	public static function createFromDto( CommentDTO $commentDto, Trick $trick, User $user ): Comment {
+		return new self( $commentDto->content, $trick, $user );
+	}
+
+	/**
+	 * @return UuidInterface
+	 */
+	public function getId(): UuidInterface {
+		return $this->id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getContent(): string {
+		return $this->content;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCreatedAt(): string {
+		return $this->created_at->format( 'd M Y' );
+	}
+
+	/**
+	 * @return Trick
+	 */
+	public function getTrick(): Trick {
+		return $this->trick;
+	}
+
+	/**
+	 * @return User
+	 */
+	public function getUser(): User {
+		return $this->user;
+	}
+
 
 }

@@ -1,0 +1,51 @@
+<h2>Commentaries</h2>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="comment-wrapper">
+            <div class="panel panel-info">
+                <div class="panel-body">
+
+                    {% if app.getToken().getRoleNames() is not empty %}
+                        {{ form_start(commentForm) }}
+                        <div class="form-group">
+                            <strong>{{ form_label(commentForm.content, 'Leave a comment') }}</strong>
+                            {{ form_widget(commentForm.content) }}
+                            {{ form_errors(commentForm.content) }}
+                        </div>
+
+                        <button class="btn btn-success" type="submit">Comment</button>
+                        {{ form_end(commentForm) }}
+                    {% else %}
+                        <p class="alert alert-info">Please <a href="{{ path('user_login') }}">sign in</a> to leave a
+                            comment</p>
+                    {% endif %}
+
+                    <ul class="media-list">
+                        {% for comment in commentsList %}
+                            <li class="media">
+                            <span class="pull-left">
+                                <img src="{{ asset('uploads/' ~ comment.user.getAvatarImgPath()) }}" alt=""
+                                     class="img-circle">
+                            </span>
+                                <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted">{{ comment.createdAt }}</small>
+                                </span>
+                                    <strong class="text-success">@{{ comment.user.username }}</strong>
+                                    <p>
+                                        {{ comment.content }}
+                                    </p>
+                                </div>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -49,21 +49,21 @@ class TrickCreation {
 	/**
 	 * TrickCreation constructor.
 	 *
-	 * @param EntityManagerInterface $entity_manager
-	 * @param FormFactoryInterface $form_factory
+	 * @param EntityManagerInterface $entityManager
+	 * @param FormFactoryInterface $formFactory
 	 * @param SluggerInterface $slugger
 	 * @param string $uploadDir
 	 * @param MediaHandler $mediaCreation
 	 */
 	public function __construct(
-		EntityManagerInterface $entity_manager,
-		FormFactoryInterface $form_factory,
+		EntityManagerInterface $entityManager,
+		FormFactoryInterface $formFactory,
 		SluggerInterface $slugger,
 		string $uploadDir,
 		MediaHandler $mediaCreation
 	) {
-		$this->formFactory   = $form_factory;
-		$this->entityManager = $entity_manager;
+		$this->formFactory   = $formFactory;
+		$this->entityManager = $entityManager;
 		$this->slugger       = $slugger;
 		$this->uploadDir     = $uploadDir;
 		$this->mediaCreation = $mediaCreation;
@@ -85,13 +85,13 @@ class TrickCreation {
 		RedirectResponders $redirectResponders,
 		FileUploader $fileUploader
 	) {
-		$createTrickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
-		                                     ->handleRequest( $request );
+		$trickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
+		                               ->handleRequest( $request );
 
-		if ( $createTrickForm->isSubmitted() && $createTrickForm->isValid() ) {
+		if ( $trickForm->isSubmitted() && $trickForm->isValid() ) {
 
 			/** @var TrickDTO $trickDto */
-			$trickDto = $createTrickForm->getData();
+			$trickDto = $trickForm->getData();
 
 			$images = $trickDto->images;
 			$video  = $trickDto->video;
@@ -118,7 +118,7 @@ class TrickCreation {
 			return $redirectResponders( 'homepage' );
 		}
 
-		return $viewResponders( 'core/trick_create.html.twig', [ 'createTrickForm' => $createTrickForm->createView() ] );
+		return $viewResponders( 'core/trick_create.html.twig', [ 'trickForm' => $trickForm->createView() ] );
 	}
 
 
