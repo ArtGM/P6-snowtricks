@@ -11,6 +11,7 @@ use App\Repository\MediaRepository;
 use App\Responders\JsonResponders;
 use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,7 +45,8 @@ class NewUserAvatar {
 		ImageFormType $imageFormType,
 		FormFactoryInterface $formFactory,
 		MediaRepository $mediaRepository,
-		ViewResponders $viewResponders
+		ViewResponders $viewResponders,
+		CacheManager $imagineCacheManager
 
 	): Response {
 		$avatarForm = $formFactory->create(ImageFormType::class, null, ['validation_groups' => ['avatar']])->handleRequest($request);
@@ -55,12 +57,13 @@ class NewUserAvatar {
 			$newImage = $mediaHandler->generateImage( $imageDto );
 
 			/** @var Media $imagePath */
-			$imagePath = $mediaRepository->findOneById( [ $newImage->getId() ] );
+			$image     = $mediaRepository->findOneById( [ $newImage->getId() ] );
+			$imagePath = $imagineCacheManager->getBrowserPath( '/uploads/' . $image->getFile(), 'avatar' );
 
 			return $jsonResponders( [
 				'validation'  => 'success',
 				'newAvatarId' => $newImage->getId()->toString(),
-				'newAvatar'   => '/uploads/' . $imagePath->getFile()
+				'newAvatar'   => $imagePath
 			] );
 		}
 
