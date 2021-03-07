@@ -51,4 +51,12 @@ class TokenHistory {
 	 */
 	private $user_id;
 
+	public function __construct() {
+
+	}
+
+	public static function createToken() {
+
+	}
+
 }

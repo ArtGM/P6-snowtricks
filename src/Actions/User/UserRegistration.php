@@ -6,6 +6,7 @@ namespace App\Actions\User;
 
 use App\Domain\User\Registration\UserRegistrationDTO;
 use App\Domain\User\Registration\UserRegistrationFormType;
+use App\Entity\TokenHistory;
 use App\Entity\User;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
@@ -17,6 +18,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 /**
  * @Route("/sign-up", name="user_registration")
@@ -61,7 +64,8 @@ class UserRegistration {
 	public function __invoke(
 		Request $request,
 		RedirectResponders $redirectResponder,
-		ViewResponders $viewResponder
+		ViewResponders $viewResponder,
+		MailerInterface $mailer
 	) {
 		$signUpForm = $this->signUpForm( $request );
 
@@ -74,10 +78,21 @@ class UserRegistration {
 
 			$newUser = User::createFromDto( $registrationDto );
 
+			$token = TokenHistory::createToken();
+
+			$email = ( new TemplatedEmail() )
+				->to( $registrationDto->email )
+				->subject( 'Thank you for signing up to Snowtrick Community !' )
+				->htmlTemplate( 'emails/signup.html.twig' )
+				->context( [
+					'confirmAccountUrl' => $confirmAccountUrl,
+					'username'          => $registrationDto->name
+				] );
 
 			$this->entityManager->persist( $newUser );
 
 			$this->entityManager->flush();
+
 
 			return $redirectResponder( 'homepage' );
 
