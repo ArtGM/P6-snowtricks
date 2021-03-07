@@ -7,6 +7,7 @@ namespace App\Actions\Ajax;
 use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Media\ImageFormType;
 use App\Entity\Media;
+use App\Entity\User;
 use App\Repository\MediaRepository;
 use App\Responders\JsonResponders;
 use App\Responders\ViewResponders;
@@ -16,6 +17,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * Class NewUserAvatar
@@ -46,7 +48,8 @@ class NewUserAvatar {
 		FormFactoryInterface $formFactory,
 		MediaRepository $mediaRepository,
 		ViewResponders $viewResponders,
-		CacheManager $imagineCacheManager
+		CacheManager $imagineCacheManager,
+		TokenStorage $tokenStorage
 
 	): Response {
 		$avatarForm = $formFactory->create(ImageFormType::class, null, ['validation_groups' => ['avatar']])->handleRequest($request);
@@ -54,6 +57,10 @@ class NewUserAvatar {
 		$imageDto = $avatarForm->getData();
 
 		if ($avatarForm->isSubmitted() && $avatarForm->isValid()) {
+			/** @var User $currentUser */
+			$currentUser = $tokenStorage->getToken()->getUser();
+			$oldAvatar   = $mediaRepository->findOneBy( [ 'id' => $currentUser->getAvatar() ] );
+			$this->entityManager->remove( $oldAvatar );
 			$newImage = $mediaHandler->generateImage( $imageDto );
 
 			/** @var Media $imagePath */
