@@ -114,9 +114,6 @@ class Trick {
 		$this->medias->removeElement( $media );
 	}
 
-	public static function updateFromDto( TrickDTO $trickDto, array $modifiedMedias ) {
-
-	}
 
 	/**
 	 * @param TrickDTO $trickDTO

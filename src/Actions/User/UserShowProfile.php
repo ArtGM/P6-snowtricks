@@ -77,9 +77,14 @@ class UserShowProfile {
 			];
 
 			if ( $userProfileForm->isSubmitted() && $userProfileForm->isValid() ) {
-				$userDto     = $userProfileForm->getData();
-				$newAvatar   = $mediaRepository->findOneById( $userDto->avatar );
+				$userDto   = $userProfileForm->getData();
+				$oldAvatar = $mediaRepository->findOneBy( [ 'id' => $user->getAvatar() ] );
+				$newAvatar = $mediaRepository->findOneById( $userDto->avatar );
+
 				$updatedUser = $user->update( $userDto, $newAvatar );
+				$this->entityManager->remove( $oldAvatar );
+
+
 				$this->entityManager->persist( $updatedUser );
 				$this->entityManager->flush();
 

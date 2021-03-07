@@ -106,6 +106,7 @@ class User implements UserInterface {
 		return new self( $registrationDto->name, $registrationDto->email, $registrationDto->password );
 	}
 
+
 	/**
 	 * @param UserProfileDTO $userDTO
 	 * @param Media $newAvatar
