@@ -81,6 +81,13 @@ class User implements UserInterface {
 	private DateTime $created_at;
 
 	/**
+	 * @var bool
+	 *
+	 * @ORM\Column (type="boolean")
+	 */
+	private bool $isConfirmed;
+
+	/**
 	 * User constructor.
 	 *
 	 * @param string $name
@@ -89,11 +96,12 @@ class User implements UserInterface {
 	 * @param array|string[] $roles
 	 */
 	public function __construct( string $name, string $email, string $password, array $roles = [ 'ROLE_USER' ] ) {
-		$this->name       = $name;
-		$this->email      = $email;
-		$this->password   = $password;
-		$this->created_at = new DateTime();
-		$this->roles      = $roles;
+		$this->name        = $name;
+		$this->email       = $email;
+		$this->password    = $password;
+		$this->created_at  = new DateTime();
+		$this->roles       = $roles;
+		$this->isConfirmed = false;
 
 	}
 

@@ -77,22 +77,26 @@ class UserRegistration {
 			$registrationDto->password = $this->encodedPassword( $registrationDto->password );
 
 			$newUser = User::createFromDto( $registrationDto );
-
-			$token = TokenHistory::createToken();
-
-			$email = ( new TemplatedEmail() )
-				->to( $registrationDto->email )
-				->subject( 'Thank you for signing up to Snowtrick Community !' )
-				->htmlTemplate( 'emails/signup.html.twig' )
-				->context( [
-					'confirmAccountUrl' => $confirmAccountUrl,
-					'username'          => $registrationDto->name
-				] );
-
 			$this->entityManager->persist( $newUser );
-
 			$this->entityManager->flush();
 
+			$token             = TokenHistory::createToken( 'confirmAccount', $newUser->getId() );
+			$confirmAccountUrl = 'http://localhost:8000/confirm-account/' . $token->getValue();
+			try {
+				$email = ( new TemplatedEmail() )
+					->to( $registrationDto->email )
+					->subject( 'Thank you for signing up to Snowtrick Community !' )
+					->htmlTemplate( 'emails/signup.html.twig' )
+					->context( [
+						'confirmAccountUrl' => $confirmAccountUrl,
+						'username'          => $registrationDto->name,
+						'expiration_date'   => new \DateTime( '+1 day' )
+					] );
+
+				$mailer->send( $email );
+			} catch ( \Exception $e ) {
+				dd( $e );
+			}
 
 			return $redirectResponder( 'homepage' );
 

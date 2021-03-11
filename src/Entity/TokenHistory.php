@@ -49,14 +49,33 @@ class TokenHistory {
 	 * Many tokens has one user
 	 * @ORM\ManyToOne (targetEntity="App\Entity\User")
 	 */
-	private $user_id;
+	private string $userId;
 
-	public function __construct() {
-
+	/**
+	 * TokenHistory constructor.
+	 *
+	 * @param string $type
+	 * @param string $userId
+	 */
+	public function __construct( string $type, string $userId ) {
+		$this->created_at = new DateTime();
+		$this->value      = md5( uniqid() );
+		$this->type       = $type;
+		$this->userId     = $userId;
 	}
 
-	public static function createToken() {
+	/**
+	 * @param string $type
+	 * @param string $userId
+	 *
+	 * @return TokenHistory
+	 */
+	public static function createToken( string $type, string $userId ): TokenHistory {
+		return new self( $type, $userId );
+	}
 
+	public function getValue() {
+		return $this->getValue();
 	}
 
 }
