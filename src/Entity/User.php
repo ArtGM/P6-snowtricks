@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use App\Domain\User\Password\UserResetPasswordDTO;
 use App\Domain\User\Profile\UserProfileDTO;
 use App\Domain\User\Registration\UserRegistrationDTO;
 use App\Repository\UserRepository;
@@ -203,5 +204,16 @@ class User implements UserInterface {
 	 */
 	public function isConfirmed(): bool {
 		return $this->isConfirmed;
+	}
+
+	/**
+	 * @param string $newPassword
+	 *
+	 * @return User
+	 */
+	public function updatePassword( string $newPassword ): User {
+		$this->password = $newPassword;
+
+		return $this;
 	}
 }

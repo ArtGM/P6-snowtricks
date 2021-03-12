@@ -10,6 +10,7 @@ use App\Entity\TokenHistory;
 use App\Entity\User;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
+use App\Service\EncodePassword;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -60,6 +61,7 @@ class UserRegistration {
 	 * @param RedirectResponders $redirectResponder
 	 * @param ViewResponders $viewResponder
 	 * @param MailerInterface $mailer
+	 * @param EncodePassword $encoder
 	 *
 	 * @return RedirectResponse|Response
 	 */
@@ -67,7 +69,8 @@ class UserRegistration {
 		Request $request,
 		RedirectResponders $redirectResponder,
 		ViewResponders $viewResponder,
-		MailerInterface $mailer
+		MailerInterface $mailer,
+		EncodePassword $encoder
 	) {
 		$signUpForm = $this->signUpForm( $request );
 
@@ -76,7 +79,7 @@ class UserRegistration {
 			/** @var UserRegistrationDTO $registrationDto */
 			$registrationDto = $signUpForm->getData();
 
-			$registrationDto->password = $this->encodedPassword( $registrationDto->password );
+			$registrationDto->password = $encoder->encodedPassword( $registrationDto->password );
 
 			$newUser = User::createFromDto( $registrationDto );
 			$this->entityManager->persist( $newUser );
@@ -121,15 +124,6 @@ class UserRegistration {
 		return $this->formFactory->create( UserRegistrationFormType::class )->handleRequest( $request );
 	}
 
-	/**
-	 * @param $plainPassword
-	 *
-	 * @return string
-	 */
-	private function encodedPassword( $plainPassword ): string {
-		$passwordEncoder = $this->encoder->getEncoder( User::class );
 
-		return $passwordEncoder->encodePassword( $plainPassword, null );
-	}
 
 }

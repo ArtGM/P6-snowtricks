@@ -86,4 +86,8 @@ class TokenHistory {
 		return $this->userId->getId();
 	}
 
+	public function getType(): string {
+		return $this->type;
+	}
+
 }
