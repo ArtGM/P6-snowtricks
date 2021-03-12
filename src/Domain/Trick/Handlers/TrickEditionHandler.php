@@ -60,6 +60,7 @@ class TrickEditionHandler {
 	/**
 	 * @param array $dto
 	 * @param Trick $trick
+	 * TODO: Fix Diff algorythm
 	 *
 	 * @return array
 	 */

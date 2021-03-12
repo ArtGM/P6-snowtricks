@@ -102,7 +102,6 @@ class User implements UserInterface {
 		$this->created_at  = new DateTime();
 		$this->roles       = $roles;
 		$this->isConfirmed = false;
-
 	}
 
 	/**
@@ -183,7 +182,26 @@ class User implements UserInterface {
 		return $this->avatarId->getId()->toString();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getAvatarImgPath(): string {
 		return $this->avatarId->getFile();
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function confirmAccount(): User {
+		$this->isConfirmed = true;
+
+		return $this;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isConfirmed(): bool {
+		return $this->isConfirmed;
 	}
 }

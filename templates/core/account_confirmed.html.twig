@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="container">
+        <div class="row">
+            {% if confirmation is not null %}
+                {% if confirmation %}
+                    <div class="alert alert-success">
+                        Your account is confirmed ! please <a href="{{ path('user_login') }}">Log in</a>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        This link is expired ! <a href="">Send new confirmation email</a>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="alert alert-danger">
+                    This account does not exist, <a href="{{ path('user_registration') }}">create new account</a>
+                </div>
+            {% endif %}
+
+        </div>
+
+
+    </section>
+
+{% endblock %}

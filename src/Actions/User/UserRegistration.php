@@ -16,6 +16,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Mailer\MailerInterface;
@@ -58,6 +59,7 @@ class UserRegistration {
 	 * @param Request $request
 	 * @param RedirectResponders $redirectResponder
 	 * @param ViewResponders $viewResponder
+	 * @param MailerInterface $mailer
 	 *
 	 * @return RedirectResponse|Response
 	 */
@@ -78,10 +80,14 @@ class UserRegistration {
 
 			$newUser = User::createFromDto( $registrationDto );
 			$this->entityManager->persist( $newUser );
-			$this->entityManager->flush();
 
-			$token             = TokenHistory::createToken( 'confirmAccount', $newUser->getId() );
+
+			$token = TokenHistory::createToken( 'confirmAccount', $newUser );
+			$this->entityManager->persist( $token );
+
+			$this->entityManager->flush();
 			$confirmAccountUrl = 'http://localhost:8000/confirm-account/' . $token->getValue();
+
 			try {
 				$email = ( new TemplatedEmail() )
 					->to( $registrationDto->email )
@@ -94,8 +100,8 @@ class UserRegistration {
 					] );
 
 				$mailer->send( $email );
-			} catch ( \Exception $e ) {
-				dd( $e );
+			} catch ( TransportExceptionInterface $e ) {
+				print_r( $e );
 			}
 
 			return $redirectResponder( 'homepage' );
