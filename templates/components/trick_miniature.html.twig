@@ -16,6 +16,11 @@
 
 
         <div class="card-body">
+            {% if app.user is not null %}
+                <a href="{{ path('trick-edition', { 'slug': trick.getSlug }) }}" type="button"
+                   class="btn btn-primary"><i class="bi-pen"></i></a>
+                <a type="button" class="btn btn-danger"><i class="bi-trash"></i></a>
+            {% endif %}
 
             <h5 class="card-title"> {{ trick.getName }}</h5>
             <p class="card-text">{{ trick.getDescription|u.truncate(100, '...', false) }}</p>

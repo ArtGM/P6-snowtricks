@@ -5,7 +5,6 @@ namespace App\Actions\User;
 
 use App\Domain\Factory\MediaDtoFactory;
 use App\Domain\Factory\UserDtoFactory;
-use App\Domain\Media\ImageDTO;
 use App\Domain\Media\ImageFormType;
 use App\Domain\User\Profile\UserProfileFormType;
 use App\Repository\MediaRepository;

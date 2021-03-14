@@ -1,62 +1,18 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Snowtricks</title>
-
-
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
+    {% include 'components/head.html.twig' %}
     {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css"
+              href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
 <body>
-<header class="container-fluid bg-dark">
-    {% block header %}
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Snowtrick</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/trick-form">Trick</a>
-                        </li>
-                        {% if app.user == null %}
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ path('user_login') }}">{% include 'icons/person_circle.html.twig' with { 'fontSize': '2em'} %}</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                Hi {{ app.user.username }} !
-                            </li>
-                            <li class="nav-item">
-                                <a title="logout"
-                                   href="{{ path('logout') }}">{% include 'icons/box_arrow_right.html.twig' %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ path('user-profile', { 'id': app.user.id }) }}">Account Profile</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    {% endblock %}
-</header>
+
+{% include 'components/header.html.twig' %}
+
 <main class="content" role="content">
     {% block body %}
     {% endblock %}
