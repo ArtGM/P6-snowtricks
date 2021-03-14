@@ -28,7 +28,10 @@ class HomePageLoadMore {
 		$this->templating = $templating;
 	}
 
-	public function __invoke( Request $request, JsonResponders $jsonResponders, EntityManagerInterface $entityManager, int $page = 1 ): Response {
+	public function __invoke(
+		Request $request,
+		JsonResponders $jsonResponders, EntityManagerInterface $entityManager, int $page = 1
+	): Response {
 		$offset           = $page * 4;
 		$tricksRepository = $entityManager->getRepository( Trick::class );
 		$getOtherTricks   = $tricksRepository->findBy( [], [], 4, $offset );

@@ -15,17 +15,19 @@
         {% endif %}
 
 
-        <div class="card-body">
-            {% if app.user is not null %}
+        {% if app.user is not null %}
+            <div class="card-actions">
                 <a href="{{ path('trick-edition', { 'slug': trick.getSlug }) }}" type="button"
                    class="btn btn-primary"><i class="bi-pen"></i></a>
                 <a type="button" class="btn btn-danger"><i class="bi-trash"></i></a>
-            {% endif %}
+            </div>
+        {% endif %}
+        <div class="card-body">
 
             <h5 class="card-title"> {{ trick.getName }}</h5>
             <p class="card-text">{{ trick.getDescription|u.truncate(100, '...', false) }}</p>
 
-            <a href="{{ path('trick-single', { 'slug': trick.getSlug }) }}" class="btn btn-primary stretched-link">See
+            <a href="{{ path('trick-single', { 'slug': trick.getSlug }) }}" class="btn btn-primary">See
                 More</a>
         </div>
     </div>

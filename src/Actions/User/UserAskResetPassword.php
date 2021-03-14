@@ -7,12 +7,15 @@ namespace App\Actions\User;
 use App\Domain\User\Password\UserAskPasswordDTO;
 use App\Domain\User\Password\UserAskPasswordFormType;
 use App\Entity\TokenHistory;
+use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,58 +74,118 @@ class UserAskResetPassword {
 
 		$token           = $tokenStorage->getToken();
 		$isAuthenticated = $token->isAuthenticated();
-		$userRoles       = $token->getRoleNames();
 		$isGranted       = $authorizationChecker->isGranted( 'ROLE_USER' );
 
 		if ( $isAuthenticated && $isGranted ) {
 			$this->sendEmailTo( $token->getUser() );
 
 			return $redirectResponders( 'homepage' );
-		} else {
-
-			$emailFieldForm = $this->formFactory->create( UserAskPasswordFormType::class )->handleRequest( $request );
-
-			if ( $emailFieldForm->isSubmitted() && $emailFieldForm->isValid() ) {
-				/** @var UserAskPasswordDTO $userAskPasswordDto */
-				$userAskPasswordDto = $emailFieldForm->getData();
-				$user               = $userRepository->findOneBy( [ 'email' => $userAskPasswordDto->email ] );
-
-				if ( isset( $user ) ) {
-
-					$this->sendEmailTo( $user );
-
-					return $redirectResponders( 'homepage' );
-				}
-			}
-
-			return $viewResponders( 'core/ask_reset_password.html.twig', [
-				'emailFieldForm' => $emailFieldForm->createView()
-			] );
 		}
+
+		$emailFieldForm = $this->getForm( $request );
+
+		return $this->handleForm( $emailFieldForm, $userRepository, $redirectResponders, $viewResponders );
 
 	}
 
+	/**
+	 * @param $user
+	 */
 	private function sendEmailTo( $user ) {
-		$newToken = TokenHistory::createToken( 'resetPassword', $user );
+
+		$newToken = $this->createToken( $user );
 		$this->entityManager->persist( $newToken );
 		$this->entityManager->flush();
 
-		$resetPasswordUrl = 'http://localhost:8000/reset-password/' . $newToken->getValue();
+		$resetPasswordUrl = $this->getResetPasswordUrl( $newToken );
 
 		try {
-			$email = ( new TemplatedEmail() )
-				->to( $user->getEmail() )
-				->subject( 'Reset your password on Snowtrick' )
-				->htmlTemplate( 'emails/reset_password.html.twig' )
-				->context( [
-					'resetPasswordUrl' => $resetPasswordUrl,
-					'username'         => $user->getUsername(),
-					'expiration_date'  => new \DateTime( '+1 day' )
-				] );
-
+			$email = $this->getTemplatedEmail( $user, $resetPasswordUrl );
 			$this->mailer->send( $email );
 		} catch ( TransportExceptionInterface $e ) {
 			print_r( $e );
 		}
+	}
+
+	/**
+	 * @param $user
+	 *
+	 * @return TokenHistory
+	 */
+	private function createToken( $user ): TokenHistory {
+		return TokenHistory::createToken( 'resetPassword', $user );
+	}
+
+	/**
+	 * @param TokenHistory $newToken
+	 *
+	 * @return string
+	 */
+	private function getResetPasswordUrl( TokenHistory $newToken ): string {
+		return 'http://localhost:8000/reset-password/' . $newToken->getValue();
+	}
+
+	/**
+	 * @param $user
+	 * @param string $resetPasswordUrl
+	 *
+	 * @return object|TemplatedEmail
+	 */
+	private function getTemplatedEmail( $user, string $resetPasswordUrl ) {
+		return ( new TemplatedEmail() )
+			->to( $user->getEmail() )
+			->subject( 'Reset your password on Snowtrick' )
+			->htmlTemplate( 'emails/reset_password.html.twig' )
+			->context( [
+				'resetPasswordUrl' => $resetPasswordUrl,
+				'username'         => $user->getUsername(),
+				'expiration_date'  => new \DateTime( '+1 day' )
+			] );
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return FormInterface
+	 */
+	public function getForm( Request $request ): FormInterface {
+		return $this->formFactory->create( UserAskPasswordFormType::class )->handleRequest( $request );
+	}
+
+	/**
+	 * @param FormInterface $emailFieldForm
+	 * @param UserRepository $userRepository
+	 * @param RedirectResponders $redirectResponders
+	 * @param ViewResponders $viewResponders
+	 *
+	 * @return RedirectResponse|Response
+	 */
+	private function handleForm( FormInterface $emailFieldForm, UserRepository $userRepository, RedirectResponders $redirectResponders, ViewResponders $viewResponders ) {
+		if ( $emailFieldForm->isSubmitted() && $emailFieldForm->isValid() ) {
+			/** @var UserAskPasswordDTO $userAskPasswordDto */
+			$userAskPasswordDto = $emailFieldForm->getData();
+			$user               = $this->getUser( $userRepository, $userAskPasswordDto );
+
+			if ( isset( $user ) ) {
+
+				$this->sendEmailTo( $user );
+
+				return $redirectResponders( 'homepage' );
+			}
+		}
+
+		return $viewResponders( 'core/ask_reset_password.html.twig', [
+			'emailFieldForm' => $emailFieldForm->createView()
+		] );
+	}
+
+	/**
+	 * @param UserRepository $userRepository
+	 * @param UserAskPasswordDTO $userAskPasswordDto
+	 *
+	 * @return User|object|null
+	 */
+	public function getUser( UserRepository $userRepository, UserAskPasswordDTO $userAskPasswordDto ) {
+		return $userRepository->findOneBy( [ 'email' => $userAskPasswordDto->email ] );
 	}
 }
