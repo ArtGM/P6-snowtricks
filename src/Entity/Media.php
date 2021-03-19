@@ -147,5 +147,12 @@ class Media {
 		return $this->created_at;
 	}
 
+	/**
+	 * @param string $file
+	 */
+	public function updateFile( string $file ) {
+		$this->file = $file;
+	}
+
 
 }

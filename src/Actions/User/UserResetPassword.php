@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class UserResetPassword
  * @package App\Actions\User
- * @Route ("reset-password/{value}")
+ * @Route ("reset-password/{value}", name="reset_password")
  */
 class UserResetPassword {
 	/**
@@ -54,6 +54,9 @@ class UserResetPassword {
 		/** @var TokenHistory $token */
 		$token = $tokenHistoryRepository->findOneBy( [ 'value' => $value ] );
 
+		if ( ! $token instanceof TokenHistory ) {
+			return $redirectResponders( 'homepage' );
+		}
 		$tokenDate   = $token->getCreatedAt();
 		$currentDate = new \DateTime( 'now' );
 		$interval    = $tokenDate->diff( $currentDate );

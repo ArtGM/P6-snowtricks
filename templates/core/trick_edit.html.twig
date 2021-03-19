@@ -62,7 +62,6 @@
                     <li class="list-group-item" id="field-id-{{ loop.index }}">
                         <div id="{{ videoField.vars.id }}">
                             <img src="https://img.youtube.com/vi/{{ videoField.vars.value.url }}/default.jpg" alt="">
-                            <div class="form-group">
                                 <input type="text" id="{{ videoField.vars.id }}_id"
                                        name="{{ videoField.vars.full_name }}[id]"
                                        class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
@@ -73,7 +72,6 @@
                                        name="{{ videoField.vars.full_name }}[description]"
                                        class="form-control" hidden="hidden"
                                        value="{{ videoField.vars.value.description }}">
-                            </div>
                             <div class="form-group">
                                 <input type="text" id="{{ videoField.vars.id }}_url"
                                        name="{{ videoField.vars.full_name }}[url]"
@@ -81,6 +79,9 @@
                                        value="https://www.youtube.com/watch?v={{ videoField.vars.value.url }}">
                             </div>
                         </div>
+                        <button class="btn btn-danger remove-video" data-id="field-id-{{ loop.index }}" type="button">
+                            X
+                        </button>
                     </li>
                     {{ form_errors(videoField) }}
                 {% endfor %}
