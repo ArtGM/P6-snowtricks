@@ -71,6 +71,8 @@ class TrickEditionHandler {
 		$j                   = 0;
 		$medias              = $trick->getMedias()->getValues();
 		$mediasToAddOrUpdate = [];
+		$mediaToDelete       = [];
+
 		while ( $i < count( $dto ) || $j < count( $medias ) ) {
 
 			/** @var ImageDTO|VideoDTO $mediaDTO */
@@ -95,7 +97,8 @@ class TrickEditionHandler {
 
 			} else {
 
-				$trick->removeMedia( $mediaEntity );
+				$mediaToDelete[] = $mediaEntity;
+				//$trick->removeMedia( $mediaEntity );
 
 				$j ++;
 			}
@@ -113,9 +116,9 @@ class TrickEditionHandler {
 	 * @return bool
 	 */
 	private function isNewImage( $mediaDTO ): bool {
-		$reflectionPropertyImage = new ReflectionProperty( 'App\Domain\Media\ImageDTO', 'id' );
 
-		return $mediaDTO instanceof ImageDTO && ! $reflectionPropertyImage->isInitialized( $mediaDTO );
+
+		return $mediaDTO instanceof ImageDTO && ! $mediaDTO->id;
 	}
 
 	/**
@@ -124,9 +127,7 @@ class TrickEditionHandler {
 	 * @return bool
 	 */
 	private function isNewVideo( $mediaDTO ): bool {
-		$reflectionPropertyVideo = new ReflectionProperty( 'App\Domain\Media\VideoDTO', 'id' );
-
-		return $mediaDTO instanceof VideoDTO && ! $reflectionPropertyVideo->isInitialized( $mediaDTO );
+		return $mediaDTO instanceof VideoDTO && ! $mediaDTO->id;
 	}
 
 	/**
@@ -137,7 +138,7 @@ class TrickEditionHandler {
 	 */
 	private function mediaAlreadyExist( $mediaDTO, $mediaEntity ): bool {
 		if (isset($mediaEntity)) {
-		return $mediaDTO->id === (string) $mediaEntity->getId();
+			return $mediaDTO->id === (string) $mediaEntity->getId();
 		}
 		return false;
 	}
@@ -155,6 +156,7 @@ class TrickEditionHandler {
 		if ( isset( $mediaEntity ) && $name !== $mediaEntity->getName() ) {
 			$mediaEntity->updateName( $name );
 		}
+
 		if ( $mediaDTO->description !== $mediaEntity->getDescription() ) {
 			$mediaEntity->updateDescription( $mediaDTO->description );
 		}

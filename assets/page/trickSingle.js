@@ -13,7 +13,7 @@ imageHighLight.slick({
 })
 
 gallery.slick({
-  slidesToShow: 3,
+  slidesToShow: 5,
   slidesToScroll: 1,
   asNavFor: imageHighLight,
   dots: true,

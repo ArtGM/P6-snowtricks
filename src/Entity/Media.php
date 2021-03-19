@@ -86,6 +86,7 @@ class Media {
 	 * @return Media
 	 */
 	public static function createMedia( $mediaDTO, $fileWithExtension, $type ): Media {
+		dump( $mediaDTO );
 		$type === 'video' ? $name = $mediaDTO->title : $name = $mediaDTO->name;
 
 		return new self( $name, $mediaDTO->description, $fileWithExtension, $type );

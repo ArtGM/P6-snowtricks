@@ -10,7 +10,7 @@ class VideoDTO {
 	/**
 	 * @var string|null
 	 */
-	public ?string $id;
+	public ?string $id = null;
 
 	/**
 	 * @var string

@@ -18,15 +18,20 @@
     top: 50%;
     transform: translate(-50%);
     z-index: 1;
-
-    &.is-loading {
-        display: block;
-    }
 }
 
 .bg-overlay {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
+
+.loading {
+    opacity: 0.5;
+
+    .spinner-container {
+        display: block;
+    }
+}
+
 
 fieldset {
     border: 1px groove #ddd !important;

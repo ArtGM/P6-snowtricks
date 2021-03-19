@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -62,6 +63,7 @@ class UserRegistration {
 	 * @param ViewResponders $viewResponder
 	 * @param MailerInterface $mailer
 	 * @param EncodePassword $encoder
+	 * @param UrlGeneratorInterface $urlGenerator
 	 *
 	 * @return RedirectResponse|Response
 	 */
@@ -70,7 +72,8 @@ class UserRegistration {
 		RedirectResponders $redirectResponder,
 		ViewResponders $viewResponder,
 		MailerInterface $mailer,
-		EncodePassword $encoder
+		EncodePassword $encoder,
+		UrlGeneratorInterface $urlGenerator
 	) {
 		$signUpForm = $this->signUpForm( $request );
 
@@ -89,7 +92,8 @@ class UserRegistration {
 			$this->entityManager->persist( $token );
 
 			$this->entityManager->flush();
-			$confirmAccountUrl = 'http://localhost:8000/confirm-account/' . $token->getValue();
+
+			$confirmAccountUrl = $urlGenerator->generate( 'confirm_account', [ 'value' => $token->getValue() ] );
 
 			try {
 				$email = ( new TemplatedEmail() )

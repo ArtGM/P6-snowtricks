@@ -22,6 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -41,10 +42,7 @@ class UserAskResetPassword {
 	 * @var FormFactoryInterface
 	 */
 	private FormFactoryInterface $formFactory;
-	/**
-	 * @var RequestStack
-	 */
-	private RequestStack $requestStack;
+
 	/**
 	 * @var MailerInterface
 	 */
@@ -53,12 +51,10 @@ class UserAskResetPassword {
 	public function __construct(
 		EntityManagerInterface $entityManager,
 		FormFactoryInterface $formFactory,
-		RequestStack $requestStack,
 		MailerInterface $mailer
 	) {
 		$this->entityManager = $entityManager;
 		$this->formFactory   = $formFactory;
-		$this->requestStack  = $requestStack;
 		$this->mailer        = $mailer;
 	}
 
@@ -118,11 +114,15 @@ class UserAskResetPassword {
 
 	/**
 	 * @param TokenHistory $newToken
+	 * @param UrlGeneratorInterface $urlGenerator
 	 *
 	 * @return string
 	 */
-	private function getResetPasswordUrl( TokenHistory $newToken ): string {
-		return 'http://localhost:8000/reset-password/' . $newToken->getValue();
+	private function getResetPasswordUrl(
+		TokenHistory $newToken,
+		UrlGeneratorInterface $urlGenerator
+	): string {
+		return $urlGenerator->generate( 'reset_password', [ 'value' => $newToken->getValue() ] );
 	}
 
 	/**
