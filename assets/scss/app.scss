@@ -87,3 +87,22 @@ fieldset {
     }
 }
 
+.card {
+    position: relative;
+
+    &:hover {
+        .card-actions {
+            opacity: 1;
+        }
+    }
+}
+
+.card-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+

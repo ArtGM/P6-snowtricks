@@ -29,7 +29,7 @@ class TokenHistory {
 	 *
 	 * @ORM\Column (type="datetime")
 	 */
-	private DateTime $created_at;
+	private DateTime $createdAt;
 
 	/**
 	 * @var string
@@ -49,6 +49,45 @@ class TokenHistory {
 	 * Many tokens has one user
 	 * @ORM\ManyToOne (targetEntity="App\Entity\User")
 	 */
-	private $user_id;
+	private User $userId;
+
+	/**
+	 * TokenHistory constructor.
+	 *
+	 * @param string $type
+	 * @param User $userId
+	 */
+	public function __construct( string $type, User $userId ) {
+		$this->createdAt = new DateTime();
+		$this->value     = md5( uniqid() );
+		$this->type      = $type;
+		$this->userId    = $userId;
+	}
+
+	/**
+	 * @param string $type
+	 * @param User $userId
+	 *
+	 * @return TokenHistory
+	 */
+	public static function createToken( string $type, User $userId ): TokenHistory {
+		return new self( $type, $userId );
+	}
+
+	public function getValue(): string {
+		return $this->value;
+	}
+
+	public function getCreatedAt(): DateTime {
+		return $this->createdAt;
+	}
+
+	public function getUserId(): string {
+		return $this->userId->getId();
+	}
+
+	public function getType(): string {
+		return $this->type;
+	}
 
 }

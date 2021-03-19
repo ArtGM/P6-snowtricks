@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use App\Domain\User\Password\UserResetPasswordDTO;
 use App\Domain\User\Profile\UserProfileDTO;
 use App\Domain\User\Registration\UserRegistrationDTO;
 use App\Repository\UserRepository;
@@ -81,6 +82,13 @@ class User implements UserInterface {
 	private DateTime $created_at;
 
 	/**
+	 * @var bool
+	 *
+	 * @ORM\Column (type="boolean")
+	 */
+	private bool $isConfirmed;
+
+	/**
 	 * User constructor.
 	 *
 	 * @param string $name
@@ -89,12 +97,12 @@ class User implements UserInterface {
 	 * @param array|string[] $roles
 	 */
 	public function __construct( string $name, string $email, string $password, array $roles = [ 'ROLE_USER' ] ) {
-		$this->name       = $name;
-		$this->email      = $email;
-		$this->password   = $password;
-		$this->created_at = new DateTime();
-		$this->roles      = $roles;
-
+		$this->name        = $name;
+		$this->email       = $email;
+		$this->password    = $password;
+		$this->created_at  = new DateTime();
+		$this->roles       = $roles;
+		$this->isConfirmed = false;
 	}
 
 	/**
@@ -175,7 +183,37 @@ class User implements UserInterface {
 		return $this->avatarId->getId()->toString();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getAvatarImgPath(): string {
 		return $this->avatarId->getFile();
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function confirmAccount(): User {
+		$this->isConfirmed = true;
+
+		return $this;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isConfirmed(): bool {
+		return $this->isConfirmed;
+	}
+
+	/**
+	 * @param string $newPassword
+	 *
+	 * @return User
+	 */
+	public function updatePassword( string $newPassword ): User {
+		$this->password = $newPassword;
+
+		return $this;
 	}
 }
