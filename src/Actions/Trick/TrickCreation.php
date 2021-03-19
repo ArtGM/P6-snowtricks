@@ -15,6 +15,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -76,6 +77,7 @@ class TrickCreation {
 	 * @param RedirectResponders $redirectResponders
 	 *
 	 * @param FileUploader $fileUploader
+	 * @param FlashBagInterface $flashBag
 	 *
 	 * @return RedirectResponse|Response
 	 */
@@ -83,7 +85,8 @@ class TrickCreation {
 		Request $request,
 		ViewResponders $viewResponders,
 		RedirectResponders $redirectResponders,
-		FileUploader $fileUploader
+		FileUploader $fileUploader,
+		FlashBagInterface $flashBag
 	) {
 		$trickForm = $this->formFactory->create( TrickFormType::class, null, [ 'validation_groups' => [ 'create' ] ] )
 		                               ->handleRequest( $request );
@@ -114,6 +117,8 @@ class TrickCreation {
 
 			$this->entityManager->persist( $newTrick );
 			$this->entityManager->flush();
+
+			$flashBag->add( 'success', $newTrick->getName() . 'Trick Successfully Created !' );
 
 			return $redirectResponders( 'homepage' );
 		}

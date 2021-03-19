@@ -15,6 +15,7 @@ use App\Service\EncodePassword;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -49,7 +50,8 @@ class UserResetPassword {
 		RedirectResponders $redirectResponders,
 		TokenHistoryRepository $tokenHistoryRepository,
 		string $value,
-		EncodePassword $encoder
+		EncodePassword $encoder,
+		FlashBagInterface $flashBag
 	) {
 		/** @var TokenHistory $token */
 		$token = $tokenHistoryRepository->findOneBy( [ 'value' => $value ] );
@@ -77,6 +79,7 @@ class UserResetPassword {
 
 				$this->entityManager->persist( $newUserPassword );
 				$this->entityManager->flush();
+				$flashBag->add( 'success', 'Your password has been successfully reset !' );
 
 				return $redirectResponders( 'homepage' );
 

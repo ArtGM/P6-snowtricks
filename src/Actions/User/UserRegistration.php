@@ -17,6 +17,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -73,7 +74,8 @@ class UserRegistration {
 		ViewResponders $viewResponder,
 		MailerInterface $mailer,
 		EncodePassword $encoder,
-		UrlGeneratorInterface $urlGenerator
+		UrlGeneratorInterface $urlGenerator,
+		FlashBagInterface $flashBag
 	) {
 		$signUpForm = $this->signUpForm( $request );
 
@@ -110,6 +112,7 @@ class UserRegistration {
 			} catch ( TransportExceptionInterface $e ) {
 				print_r( $e );
 			}
+			$flashBag->add( 'warning', 'Account created, please confirm your account before login by clicking on the email\'s link' );
 
 			return $redirectResponder( 'homepage' );
 

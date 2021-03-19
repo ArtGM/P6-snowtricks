@@ -16,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -43,7 +44,8 @@ class TrickSinglePage {
 		CommentRepository $commentRepository,
 		EntityManagerInterface $entityManager,
 		string $slug,
-		TokenStorageInterface $tokenStorage
+		TokenStorageInterface $tokenStorage,
+		FlashBagInterface $flashBag
 	): Response {
 
 		/** @var Trick $singleTrick */
@@ -72,6 +74,7 @@ class TrickSinglePage {
 				$newComment = Comment::createFromDto( $commentDto, $singleTrick, $user );
 				$entityManager->persist( $newComment );
 				$entityManager->flush();
+				$flashBag->add( 'success', 'Your comment was successfully added!' );
 
 				return $redirectResponders( 'trick-single', [ 'slug' => $slug ] );
 			}
