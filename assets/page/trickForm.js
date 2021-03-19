@@ -51,7 +51,7 @@ addImageButton.addEventListener('click', () => {
   column.appendChild(cardLayout)
   trickFormImageField.appendChild(column)
 
-  addRemoveEventToButton(deleteButton)
+
 })
 
 addVideoButton.addEventListener('click', () => {
@@ -77,36 +77,23 @@ addVideoButton.addEventListener('click', () => {
   row.appendChild(deleteVideoButton)
   trickFormVideoField.appendChild(row)
 
-  addRemoveEventToButton(deleteVideoButton)
-
 })
 
-// TODO: Add class on formtype and use event delegation
-if (removeImage !== null || removeVideo !== null) {
-  const mediaElements = removeImage || removeVideo ||
-    removeImage.concat(removeVideo)
-  mediaElements.forEach(target => {
-    addRemoveEventToButton(target)
-  })
-}
-
-// TODO: Use event delegation
-function addRemoveEventToButton (elem) {
-  elem.addEventListener('click', function (e) {
-    let IdToDelete = e.target.getAttribute('data-id')
+document.addEventListener('click', function (e) {
+  let IdToDelete = e.target.getAttribute('data-id')
+  if (IdToDelete) {
     let elementToDelete = document.getElementById(IdToDelete)
-    if (e.target.classList.contains('remove-image')) {
+    if (e.target && e.target.classList.contains('remove-image')) {
       imageCounter--
       trickFormImageField.setAttribute('data-widget-counter', imageCounter)
     }
-    else if (e.target.classList.contains('remove-video')) {
+    if (e.target && e.target.classList.contains('remove-video')) {
       videoCounter--
       trickFormVideoField.setAttribute('data-widget-counter', videoCounter)
     }
-
     elementToDelete.parentNode.removeChild(elementToDelete)
-  })
-}
+  }
+})
 
 // Handle youtube
 

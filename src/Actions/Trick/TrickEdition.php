@@ -67,7 +67,9 @@ class TrickEdition {
 
 		$trickDto = $this->trickDtoFactory->create( $trick );
 
-		$trickEditionForm = $this->formFactory->create( TrickFormType::class, $trickDto, [ 'validation_groups' => [ 'update' ] ] )->handleRequest( $request );
+		$trickEditionForm = $this->formFactory
+			->create( TrickFormType::class, $trickDto, [ 'validation_groups' => [ 'update' ] ] )
+			->handleRequest( $request );
 
 		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
 			$trickEditionHandler->handle( $trickEditionForm, $trick );

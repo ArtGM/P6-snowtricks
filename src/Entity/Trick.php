@@ -107,8 +107,8 @@ class Trick {
 	/**
 	 * @param Media $media
 	 */
-	public function removeMedia($media ) {
-		if ( ! $this->medias->contains( $media ) || !isset($media)  ) {
+	public function removeMedia( $media ) {
+		if ( ! $this->medias->contains( $media ) || ! isset( $media ) ) {
 			return;
 		}
 		$this->medias->removeElement( $media );

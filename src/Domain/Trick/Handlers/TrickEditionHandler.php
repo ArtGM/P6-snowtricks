@@ -42,6 +42,23 @@ class TrickEditionHandler {
 	}
 
 	/**
+	 * @param $array
+	 *
+	 * @return array
+	 */
+	private function removeEmptyObject( $array ) {
+		$newArray = [];
+		foreach ( $array as $item ) {
+			$toArray = (array) $item;
+			if ( array_filter( $toArray ) ) {
+				$newArray[] = $item;
+			}
+		}
+
+		return $newArray;
+	}
+
+	/**
 	 * @param FormInterface $trickEditionForm
 	 * @param Trick $trick
 	 */
@@ -50,7 +67,10 @@ class TrickEditionHandler {
 		/** @var TrickDTO $trickDto */
 		$trickDto = $trickEditionForm->getData();
 
-		$modifiedMedias = $this->replaceMediasFromDto( array_merge( $trickDto->images, $trickDto->video ), $trick );
+		$images = $this->removeEmptyObject( $trickDto->images );
+		$videos = $this->removeEmptyObject( $trickDto->video );
+
+		$modifiedMedias = $this->replaceMediasFromDto( array_merge( $images, $videos ), $trick );
 		$updatedTrick   = $trick->update( $trickDto, $modifiedMedias );
 		$this->entityManager->persist( $updatedTrick );
 		$this->entityManager->flush();
@@ -58,52 +78,37 @@ class TrickEditionHandler {
 	}
 
 	/**
-	 * @param array $dto
+	 * @param array $DTOs
 	 * @param Trick $trick
 	 * TODO: Fix Diff algorythm
 	 *
 	 * @return array
 	 */
-	private function replaceMediasFromDto( array $dto, Trick $trick ): array {
+	private function replaceMediasFromDto( array $DTOs, Trick $trick ): array {
 
-
-		$i                   = 0;
-		$j                   = 0;
 		$medias              = $trick->getMedias()->getValues();
 		$mediasToAddOrUpdate = [];
-		$mediaToDelete       = [];
 
-		while ( $i < count( $dto ) || $j < count( $medias ) ) {
-
-			/** @var ImageDTO|VideoDTO $mediaDTO */
-			$mediaDTO = $dto[ $i ];
-
-			/** @var Media $mediaEntity */
-			$mediaEntity = isset( $medias[ $j ] ) ? $medias[ $j ] : null;
-
-			if ( $this->isNewImage( $mediaDTO ) ) {
-
-				$mediasToAddOrUpdate[] = $this->mediaCreation->generateImage( $mediaDTO );
-
-			} elseif ( $this->isNewVideo( $mediaDTO ) ) {
-
-				$mediasToAddOrUpdate[] = $this->mediaCreation->generateVideo( $mediaDTO );
-
-			} elseif ( $this->mediaAlreadyExist( $mediaDTO, $mediaEntity ) ) {
-
-				$mediasToAddOrUpdate[] = $this->updateMediaEntity( $mediaEntity, $mediaDTO );
-
-				$j ++;
-
-			} else {
-
-				$mediaToDelete[] = $mediaEntity;
-				//$trick->removeMedia( $mediaEntity );
-
-				$j ++;
+		foreach ( $DTOs as $key => $mediaDto ) {
+			if ( empty( $mediaDto->id ) ) {
+				$mediasToAddOrUpdate[] = $this->generateMedia( $mediaDto );
+				unset( $DTOs[ $key ] );
 			}
+		}
 
-			$i ++;
+		$dataTransferObjectIds = array_map( fn( $obj ) => $obj->id, $DTOs );
+		$mediaEntityIds        = array_map( fn( $obj ) => $obj->getId()->toString(), $medias );
+
+		$mediasIdToDelete = array_diff( $mediaEntityIds, $dataTransferObjectIds );
+		$mediaToDelete    = $this->getMediaToDelete( $mediasIdToDelete, $medias );
+
+		foreach ( $mediaToDelete as $key => $media ) {
+			$trick->removeMedia( $media );
+			unset( $medias[ $key ] );
+		}
+
+		foreach ( $medias as $media ) {
+			$mediasToAddOrUpdate[] = $media;
 		}
 
 		return $mediasToAddOrUpdate;
@@ -111,47 +116,54 @@ class TrickEditionHandler {
 	}
 
 	/**
-	 * @param $mediaDTO
+	 * @param $mediaDto
 	 *
-	 * @return bool
+	 * @return Media|null
 	 */
-	private function isNewImage( $mediaDTO ): bool {
-
-
-		return $mediaDTO instanceof ImageDTO && ! $mediaDTO->id;
-	}
-
-	/**
-	 * @param $mediaDTO
-	 *
-	 * @return bool
-	 */
-	private function isNewVideo( $mediaDTO ): bool {
-		return $mediaDTO instanceof VideoDTO && ! $mediaDTO->id;
-	}
-
-	/**
-	 * @param $mediaDTO
-	 * @param $mediaEntity
-	 *
-	 * @return bool
-	 */
-	private function mediaAlreadyExist( $mediaDTO, $mediaEntity ): bool {
-		if (isset($mediaEntity)) {
-			return $mediaDTO->id === (string) $mediaEntity->getId();
+	private function generateMedia( $mediaDto ): ?Media {
+		if ( $this->isImage( $mediaDto ) ) {
+			return $this->mediaCreation->generateImage( $mediaDto );
 		}
-		return false;
+		if ( $this->isVideo( $mediaDto ) ) {
+			return $this->mediaCreation->generateVideo( $mediaDto );
+		}
+
+		return null;
 	}
 
 	/**
-	 * @param $mediaEntity
 	 * @param $mediaDTO
+	 *
+	 * @return bool
+	 */
+	private function isImage( $mediaDTO ): bool {
+		return $mediaDTO instanceof ImageDTO;
+	}
+
+	/**
+	 * @param $mediaDTO
+	 *
+	 * @return bool
+	 */
+	private function isVideo( $mediaDTO ): bool {
+		return $mediaDTO instanceof VideoDTO;
+	}
+
+	/**
+	 * @param Media $mediaEntity
+	 * @param ImageDTO|VideoDTO $mediaDTO
 	 *
 	 * @return mixed
 	 */
-	private function updateMediaEntity( $mediaEntity, $mediaDTO ): Media {
+	private function updateMediaEntity( Media $mediaEntity, $mediaDTO ): Media {
 
-		$name = $mediaEntity->getType() === 'video' ? $mediaDTO->title : $mediaDTO->name;
+		if ( 'video' === $mediaEntity->getType() ) {
+			$name = $mediaDTO->title;
+			$file = $mediaDTO->url;
+		} else {
+			$name = $mediaDTO->name;
+			$file = $mediaDTO->file;
+		}
 
 		if ( isset( $mediaEntity ) && $name !== $mediaEntity->getName() ) {
 			$mediaEntity->updateName( $name );
@@ -161,8 +173,28 @@ class TrickEditionHandler {
 			$mediaEntity->updateDescription( $mediaDTO->description );
 		}
 
+		if ( isset( $file ) && $file !== $mediaEntity->getFile() ) {
+			$mediaEntity->updateFile( $file );
+		}
+
 		return $mediaEntity;
 	}
 
+	/**
+	 * @param array $mediasIdToDelete
+	 * @param array $medias
+	 *
+	 * @return array
+	 */
+	private function getMediaToDelete( array $mediasIdToDelete, array $medias ): array {
+		$mediasTodelete = [];
+		foreach ( $medias as $media ) {
+			if ( array_search( $media->getId()->toString(), $mediasIdToDelete ) !== false ) {
+				$mediasTodelete[] = $media;
+			}
+		}
+
+		return $mediasTodelete;
+	}
 
 }
