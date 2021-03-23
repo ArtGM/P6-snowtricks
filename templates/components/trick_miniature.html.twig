@@ -19,7 +19,25 @@
             <div class="card-actions">
                 <a href="{{ path('trick-edition', { 'slug': trick.getSlug }) }}" type="button"
                    class="btn btn-primary"><i class="bi-pen"></i></a>
-                <a type="button" class="btn btn-danger"><i class="bi-trash"></i></a>
+                <button class="btn btn-danger confirmDeleteModal" id="Modal{{ trick.getSlug }}" type="button"
+                        data-toggle="modal" data-target="#confirmDeleteModal{{ trick.getSlug }}"
+                "><i class="bi-trash"></i></button>
+            </div>
+            <div class="modal fade" id="confirmDeleteModal{{ trick.getSlug }}" tabindex="-1" role="dialog"
+                 aria-labelledby="confirmDeleteModal"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            Are you sure you want to Delete {{ trick.getName }} Trick ?
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" data-dismiss="modal">Close</button>
+                            <a type="button" href="{{ path('delete-trick', {'slug': trick.getSlug }) }}"
+                               class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         {% endif %}
         <div class="card-body">
@@ -27,8 +45,7 @@
             <h5 class="card-title"> {{ trick.getName }}</h5>
             <p class="card-text">{{ trick.getDescription|u.truncate(100, '...', false) }}</p>
 
-            <a href="{{ path('trick-single', { 'slug': trick.getSlug }) }}" class="btn btn-primary">See
-                More</a>
+            <a href="{{ path('trick-single', { 'slug': trick.getSlug }) }}" class="btn btn-primary">See More</a>
         </div>
     </div>
 </div>
