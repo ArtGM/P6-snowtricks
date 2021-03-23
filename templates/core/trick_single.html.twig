@@ -44,15 +44,25 @@
 
             </div>
         </div>
-        <div class="row">
-            <a class="btn btn-primary" role="button"
-               href="{{ path('trick-edition',  { 'slug': singleTrick.getSlug }) }}">
-                Edit
-            </a>
+
+        <div class="jumbotron">
+            <h1 class="display-4">{{ singleTrick.getName }}</h1>
+            <p class="lead">{{ singleTrick.getDescription }}</p>
+            {% if app.user is not null %}
+                <hr class="my-4">
+                <p class="lead">
+                    <a class="btn btn-primary" role="button"
+                       href="{{ path('trick-edition',  { 'slug': singleTrick.getSlug }) }}">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger" role="button"
+                       href="{{ path('delete-trick',  { 'slug': singleTrick.getSlug }) }}">
+                        Delete
+                    </a>
+                </p>
+            {% endif %}
         </div>
-        <div class="row">
-            <p class="col">{{ singleTrick.getDescription }}</p>
-        </div>
+
     </section>
     <hr>
     <section class="container">
