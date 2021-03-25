@@ -9,6 +9,7 @@
 import bsCustomFileInput from 'bs-custom-file-input'
 import Toast from 'bootstrap.native/dist/components/toast-native.esm.js'
 import './scss/app.scss'
+import { deleteModal, getTricks } from './page/homepage'
 
 bsCustomFileInput.init()
 
@@ -21,4 +22,5 @@ if (flashToast) {
 }
 
 
-
+getTricks()
+deleteModal()
