@@ -111,3 +111,18 @@ fieldset {
     transition: opacity 0.2s ease-in;
 }
 
+body {
+    position: relative;
+}
+
+.toast-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+
+    .toast {
+        min-width: 250px;
+    }
+}
+

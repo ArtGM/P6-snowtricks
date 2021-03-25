@@ -15,6 +15,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -55,6 +56,7 @@ class UserShowProfile {
 		RedirectResponders $redirectResponders,
 		UserRepository $userRepository,
 		MediaRepository $mediaRepository,
+		FlashBagInterface $flashBag,
 		string $id ): Response {
 		$token           = $tokenStorage->getToken();
 		$isAuthenticated = $token->isAuthenticated();
@@ -81,11 +83,11 @@ class UserShowProfile {
 				$newAvatar = $mediaRepository->findOneById( $userDto->avatar );
 
 				$updatedUser = $user->update( $userDto, $newAvatar );
-				$this->entityManager->remove( $oldAvatar );
 
 
 				$this->entityManager->persist( $updatedUser );
 				$this->entityManager->flush();
+				$flashBag->add( 'success', 'your profile has been updated' );
 
 				return $redirectResponders( 'homepage' );
 			}

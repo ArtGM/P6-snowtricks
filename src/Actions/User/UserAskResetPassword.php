@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,15 +48,21 @@ class UserAskResetPassword {
 	 * @var MailerInterface
 	 */
 	private MailerInterface $mailer;
+	/**
+	 * @var UrlGeneratorInterface
+	 */
+	private UrlGeneratorInterface $urlGenerator;
 
 	public function __construct(
 		EntityManagerInterface $entityManager,
 		FormFactoryInterface $formFactory,
-		MailerInterface $mailer
+		MailerInterface $mailer,
+		UrlGeneratorInterface $urlGenerator
 	) {
 		$this->entityManager = $entityManager;
 		$this->formFactory   = $formFactory;
 		$this->mailer        = $mailer;
+		$this->urlGenerator  = $urlGenerator;
 	}
 
 
@@ -65,7 +72,8 @@ class UserAskResetPassword {
 		UserRepository $userRepository,
 		RedirectResponders $redirectResponders,
 		TokenStorageInterface $tokenStorage,
-		AuthorizationCheckerInterface $authorizationChecker
+		AuthorizationCheckerInterface $authorizationChecker,
+		FlashBagInterface $flashBag
 	): Response {
 
 		$token           = $tokenStorage->getToken();
@@ -74,6 +82,8 @@ class UserAskResetPassword {
 
 		if ( $isAuthenticated && $isGranted ) {
 			$this->sendEmailTo( $token->getUser() );
+
+			$flashBag->add( 'success', 'An email has been sent to the address you provided to reset your password.' );
 
 			return $redirectResponders( 'homepage' );
 		}
@@ -114,15 +124,13 @@ class UserAskResetPassword {
 
 	/**
 	 * @param TokenHistory $newToken
-	 * @param UrlGeneratorInterface $urlGenerator
 	 *
 	 * @return string
 	 */
 	private function getResetPasswordUrl(
-		TokenHistory $newToken,
-		UrlGeneratorInterface $urlGenerator
+		TokenHistory $newToken
 	): string {
-		return $urlGenerator->generate( 'reset_password', [ 'value' => $newToken->getValue() ] );
+		return $this->urlGenerator->generate( 'reset_password', [ 'value' => $newToken->getValue() ] );
 	}
 
 	/**

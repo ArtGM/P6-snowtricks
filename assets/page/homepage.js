@@ -41,3 +41,4 @@ export {
   getTricks,
   deleteModal,
 }
+

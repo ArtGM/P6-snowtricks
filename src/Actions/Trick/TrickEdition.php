@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -51,6 +52,7 @@ class TrickEdition {
 	 * @param TrickEditionHandler $trickEditionHandler
 	 * @param string $slug
 	 * @param RedirectResponders $redirectResponders
+	 * @param FlashBagInterface $flashBag
 	 *
 	 * @return Response
 	 */
@@ -60,7 +62,8 @@ class TrickEdition {
 		ViewResponders $viewResponders,
 		TrickEditionHandler $trickEditionHandler,
 		string $slug,
-		RedirectResponders $redirectResponders
+		RedirectResponders $redirectResponders,
+		FlashBagInterface $flashBag
 	): Response {
 
 		$trick = $tricksRepository->findOneBySlug( $slug );
@@ -73,6 +76,7 @@ class TrickEdition {
 
 		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
 			$trickEditionHandler->handle( $trickEditionForm, $trick );
+			$flashBag->add( 'success', 'Trick was updated !' );
 
 			return $redirectResponders( 'homepage' );
 		}

@@ -1,7 +1,8 @@
 import 'bootstrap'
+import bsCustomFileInput from 'bs-custom-file-input'
 import * as url from 'url'
 
-// TODO: clean code... Use template to create Element
+bsCustomFileInput.init()
 
 const addImageButton = document.getElementById('addImageButton')
 const addVideoButton = document.getElementById('addVideoButton')
