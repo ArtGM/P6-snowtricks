@@ -11,6 +11,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
+use App\Service\AccessManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -71,16 +72,13 @@ class UserAskResetPassword {
 		ViewResponders $viewResponders,
 		UserRepository $userRepository,
 		RedirectResponders $redirectResponders,
-		TokenStorageInterface $tokenStorage,
-		AuthorizationCheckerInterface $authorizationChecker,
-		FlashBagInterface $flashBag
+		FlashBagInterface $flashBag,
+		AccessManager $accessManager
 	): Response {
 
-		$token           = $tokenStorage->getToken();
-		$isAuthenticated = $token->isAuthenticated();
-		$isGranted       = $authorizationChecker->isGranted( 'ROLE_USER' );
+		$token = $accessManager->getToken();
 
-		if ( $isAuthenticated && $isGranted ) {
+		if ( $accessManager->isGranted() ) {
 			$this->sendEmailTo( $token->getUser() );
 
 			$flashBag->add( 'success', 'An email has been sent to the address you provided to reset your password.' );
