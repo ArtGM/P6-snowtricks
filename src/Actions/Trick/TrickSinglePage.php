@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class TrickSinglePage
@@ -45,7 +46,8 @@ class TrickSinglePage {
 		EntityManagerInterface $entityManager,
 		string $slug,
 		TokenStorageInterface $tokenStorage,
-		FlashBagInterface $flashBag
+		FlashBagInterface $flashBag,
+		AuthorizationCheckerInterface $authorizationChecker
 	): Response {
 
 		/** @var Trick $singleTrick */
@@ -54,16 +56,14 @@ class TrickSinglePage {
 			'trick' => $singleTrick
 		] );
 
-
-		$token           = $tokenStorage->getToken();
-		$isAuthenticated = $token->isAuthenticated();
+		$token = $tokenStorage->getToken();
 
 		$templateVars = [
 			'singleTrick'  => $singleTrick,
 			'commentsList' => $commentsList
 		];
 
-		if ( $isAuthenticated && ! empty( $token->getRoleNames() ) ) {
+		if ( $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
 			$commentForm = $this->formFactory->create( CommentFormType::class )->handleRequest( $request );
 
 			if ( $commentForm->isSubmitted() && $commentForm->isValid() ) {

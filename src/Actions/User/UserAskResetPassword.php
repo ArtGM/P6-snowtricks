@@ -73,13 +73,16 @@ class UserAskResetPassword {
 		UserRepository $userRepository,
 		RedirectResponders $redirectResponders,
 		FlashBagInterface $flashBag,
-		AccessManager $accessManager
+		AuthorizationCheckerInterface $authorizationChecker,
+		TokenStorageInterface $tokenStorage
 	): Response {
 
-		$token = $accessManager->getToken();
 
-		if ( $accessManager->isGranted() ) {
-			$this->sendEmailTo( $token->getUser() );
+		if ( $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
+			/** @var User $user */
+			$user = $tokenStorage->getToken()->getUser();
+
+			$this->sendEmailTo( $user );
 
 			$flashBag->add( 'success', 'An email has been sent to the address you provided to reset your password.' );
 

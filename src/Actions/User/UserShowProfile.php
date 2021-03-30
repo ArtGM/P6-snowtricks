@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 
 /**
@@ -57,44 +59,47 @@ class UserShowProfile {
 		UserRepository $userRepository,
 		MediaRepository $mediaRepository,
 		FlashBagInterface $flashBag,
-		string $id ): Response {
-		$token           = $tokenStorage->getToken();
-		$isAuthenticated = $token->isAuthenticated();
-		if ( $isAuthenticated ) {
-			$user    = $userRepository->find( $id );
-			$userDto = $this->userDtoFactory->create( $user );
+		string $id,
+		AuthorizationCheckerInterface $authorizationChecker
+	): Response {
 
-			$avatarId        = $user->getAvatar();
-			$avatar          = isset( $avatarId ) ? $mediaRepository->findOneById( $avatarId ) : null;
-			$mediaDto        = $avatar !== null ? $this->mediaDtoFactory->createImage( $avatar ) : null;
-			$userProfileForm = $this->formFactory->create( UserProfileFormType::class, $userDto )->handleRequest( $request );
-			$userAvatarForm  = $this->formFactory->create( ImageFormType::class, $mediaDto )->handleRequest( $request );
+		if ( ! $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
+			$flashBag->add( 'warning', 'access is restricted' );
 
-			$templateVars = [
-				'user'            => $user,
-				'avatarName'      => $mediaDto ? $mediaDto->file->getFilename() : null,
-				'userProfileForm' => $userProfileForm->createView(),
-				'userAvatarForm'  => $userAvatarForm->createView()
-			];
-
-			if ( $userProfileForm->isSubmitted() && $userProfileForm->isValid() ) {
-				$userDto   = $userProfileForm->getData();
-				$oldAvatar = $mediaRepository->findOneBy( [ 'id' => $user->getAvatar() ] );
-				$newAvatar = $mediaRepository->findOneById( $userDto->avatar );
-
-				$updatedUser = $user->update( $userDto, $newAvatar );
-
-
-				$this->entityManager->persist( $updatedUser );
-				$this->entityManager->flush();
-				$flashBag->add( 'success', 'your profile has been updated' );
-
-				return $redirectResponders( 'homepage' );
-			}
-
-			return $viewResponders( 'core/user_profile.html.twig', $templateVars );
+			return $redirectResponders( 'homepage' );
 		}
 
-		return $redirectResponders( 'user_login' );
+		$user    = $userRepository->find( $id );
+		$userDto = $this->userDtoFactory->create( $user );
+
+		$avatarId        = $user->getAvatar();
+		$avatar          = isset( $avatarId ) ? $mediaRepository->findOneById( $avatarId ) : null;
+		$mediaDto        = $avatar !== null ? $this->mediaDtoFactory->createImage( $avatar ) : null;
+		$userProfileForm = $this->formFactory->create( UserProfileFormType::class, $userDto )->handleRequest( $request );
+		$userAvatarForm  = $this->formFactory->create( ImageFormType::class, $mediaDto )->handleRequest( $request );
+
+		$templateVars = [
+			'user'            => $user,
+			'avatarName'      => $mediaDto ? $mediaDto->file->getFilename() : null,
+			'userProfileForm' => $userProfileForm->createView(),
+			'userAvatarForm'  => $userAvatarForm->createView()
+		];
+
+		if ( $userProfileForm->isSubmitted() && $userProfileForm->isValid() ) {
+			$userDto   = $userProfileForm->getData();
+			$oldAvatar = $mediaRepository->findOneBy( [ 'id' => $user->getAvatar() ] );
+			$newAvatar = $mediaRepository->findOneById( $userDto->avatar );
+
+			$updatedUser = $user->update( $userDto, $newAvatar );
+
+
+			$this->entityManager->persist( $updatedUser );
+			$this->entityManager->flush();
+			$flashBag->add( 'success', 'your profile has been updated' );
+
+			return $redirectResponders( 'homepage' );
+		}
+
+		return $viewResponders( 'core/user_profile.html.twig', $templateVars );
 	}
 }

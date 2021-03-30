@@ -59,6 +59,7 @@ class UserResetPassword {
 		if ( ! $token instanceof TokenHistory ) {
 			return $redirectResponders( 'homepage' );
 		}
+
 		$tokenDate   = $token->getCreatedAt();
 		$currentDate = new \DateTime( 'now' );
 		$interval    = $tokenDate->diff( $currentDate );

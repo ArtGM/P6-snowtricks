@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -81,6 +82,7 @@ class TrickCreation {
 	 * @param FileUploader $fileUploader
 	 * @param FlashBagInterface $flashBag
 	 * @param TokenStorageInterface $tokenStorage
+	 * @param AuthorizationCheckerInterface $authorizationChecker
 	 *
 	 * @return RedirectResponse|Response
 	 */
@@ -90,8 +92,16 @@ class TrickCreation {
 		RedirectResponders $redirectResponders,
 		FileUploader $fileUploader,
 		FlashBagInterface $flashBag,
-		TokenStorageInterface $tokenStorage
+		TokenStorageInterface $tokenStorage,
+		AuthorizationCheckerInterface $authorizationChecker
+
 	) {
+
+		if ( $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
+			$flashBag->add( 'warning', 'please sign before add a new Trick' );
+
+			return $redirectResponders( 'user_login' );
+		}
 
 
 		$trickForm = $this->getForm( $request );

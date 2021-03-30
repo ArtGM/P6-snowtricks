@@ -10,6 +10,7 @@ use App\Entity\Media;
 use App\Entity\User;
 use App\Repository\MediaRepository;
 use App\Responders\JsonResponders;
+use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
@@ -18,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class NewUserAvatar
@@ -48,14 +50,18 @@ class NewUserAvatar {
 		FormFactoryInterface $formFactory,
 		MediaRepository $mediaRepository,
 		ViewResponders $viewResponders,
-		CacheManager $imagineCacheManager
-
+		CacheManager $imagineCacheManager,
+		RedirectResponders $redirectResponders
 	): Response {
-		$avatarForm = $formFactory->create(ImageFormType::class, null, ['validation_groups' => ['avatar']])->handleRequest($request);
 
-		$imageDto = $avatarForm->getData();
+		if ( ! $request->isXmlHttpRequest() ) {
+			return $redirectResponders( 'homepage' );
+		}
 
-		if ($avatarForm->isSubmitted() && $avatarForm->isValid()) {
+		$avatarForm = $formFactory->create( ImageFormType::class, null, [ 'validation_groups' => [ 'avatar' ] ] )->handleRequest( $request );
+		$imageDto   = $avatarForm->getData();
+
+		if ( $avatarForm->isSubmitted() && $avatarForm->isValid() ) {
 
 			$newImage = $mediaHandler->generateImage( $imageDto );
 
