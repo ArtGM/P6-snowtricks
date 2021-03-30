@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
@@ -66,12 +67,13 @@ class TrickEdition {
 		string $slug,
 		RedirectResponders $redirectResponders,
 		FlashBagInterface $flashBag,
-		AuthorizationChecker $authorizationChecker
+		AuthorizationCheckerInterface $authorizationChecker
 	): Response {
 
 		if ( ! $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
 			$flashBag->add( 'warning', 'you can\'t edit tricks' );
-			$redirectResponders( 'homepage' );
+
+			return $redirectResponders( 'homepage' );
 		}
 		$trick = $tricksRepository->findOneBySlug( $slug );
 

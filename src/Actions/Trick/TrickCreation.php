@@ -97,7 +97,7 @@ class TrickCreation {
 
 	) {
 
-		if ( $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
+		if ( ! $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
 			$flashBag->add( 'warning', 'please sign before add a new Trick' );
 
 			return $redirectResponders( 'user_login' );

@@ -42,7 +42,7 @@ class UserConfirmAccount {
 	): Response {
 
 		if ( ! $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
-			$redirectResponders( 'homepage' );
+			return $redirectResponders( 'homepage' );
 		}
 
 		/** @var TokenHistory $token */
