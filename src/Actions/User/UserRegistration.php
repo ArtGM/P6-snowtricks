@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -65,6 +66,8 @@ class UserRegistration {
 	 * @param MailerInterface $mailer
 	 * @param EncodePassword $encoder
 	 * @param UrlGeneratorInterface $urlGenerator
+	 * @param FlashBagInterface $flashBag
+	 * @param AuthorizationCheckerInterface $authorizationChecker
 	 *
 	 * @return RedirectResponse|Response
 	 */
@@ -75,8 +78,13 @@ class UserRegistration {
 		MailerInterface $mailer,
 		EncodePassword $encoder,
 		UrlGeneratorInterface $urlGenerator,
-		FlashBagInterface $flashBag
+		FlashBagInterface $flashBag,
+		AuthorizationCheckerInterface $authorizationChecker
 	) {
+		if ( $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
+			return $redirectResponder( 'homepage' );
+		}
+
 		$signUpForm = $this->signUpForm( $request );
 
 		if ( $signUpForm->isSubmitted() && $signUpForm->isValid() ) {

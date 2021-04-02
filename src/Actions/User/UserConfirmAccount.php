@@ -13,6 +13,7 @@ use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class UserConfirmAccount
@@ -36,13 +37,21 @@ class UserConfirmAccount {
 		string $value,
 		TokenHistoryRepository $tokenHistoryRepository,
 		UserRepository $userRepository,
-		RedirectResponders $redirectResponders
+		RedirectResponders $redirectResponders,
+		AuthorizationCheckerInterface $authorizationChecker
 	): Response {
+
+		if ( ! $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
+			return $redirectResponders( 'homepage' );
+		}
+
 		/** @var TokenHistory $token */
 		$token = $tokenHistoryRepository->findOneBy( [ 'value' => $value ] );
+
 		if ( ! $token instanceof TokenHistory ) {
 			return $redirectResponders( 'homepage' );
 		}
+
 		$tokenDate   = $token->getCreatedAt();
 		$currentDate = new \DateTime( 'now' );
 		$interval    = $tokenDate->diff( $currentDate );

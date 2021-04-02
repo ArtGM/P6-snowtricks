@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class TrickDelete
@@ -23,6 +24,7 @@ class TrickDelete {
 	 * @var EntityManagerInterface
 	 */
 	private EntityManagerInterface $entityManager;
+
 	/**
 	 * @var FlashBagInterface
 	 */
@@ -34,7 +36,26 @@ class TrickDelete {
 	}
 
 
-	public function __invoke( TricksRepository $tricksRepository, RedirectResponders $redirectResponders, string $slug ): RedirectResponse {
+	/**
+	 * @param TricksRepository $tricksRepository
+	 * @param RedirectResponders $redirectResponders
+	 * @param AuthorizationCheckerInterface $authorizationChecker
+	 * @param string $slug
+	 *
+	 * @return RedirectResponse
+	 */
+	public function __invoke(
+		TricksRepository $tricksRepository,
+		RedirectResponders $redirectResponders,
+		AuthorizationCheckerInterface $authorizationChecker,
+		string $slug
+	): RedirectResponse {
+
+		if ( ! $authorizationChecker->isGranted( ( 'ROLE_USER' ) ) ) {
+			$this->flashBag->add( 'warning', 'you don\'t have right to delete tricks' );
+
+			return $redirectResponders( 'homepage' );
+		}
 		/** @var Trick $trickToDelete */
 		$trickToDelete = $tricksRepository->findOneBy( [ 'slug' => $slug ] );
 		$medias        = $trickToDelete->getMedias();
