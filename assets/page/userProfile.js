@@ -12,41 +12,41 @@ const modalContent = document.querySelector('.modal-content')
 const inputUserAvatarId = document.getElementById('user_profile_form_avatar')
 
 imgAvatar.addEventListener('click', function (e) {
-    uploadAvatarModal.show()
+  uploadAvatarModal.show()
 })
 
 avatarForm.addEventListener('submit', function (e) {
-    e.preventDefault()
+  e.preventDefault()
 
-    const formData = new FormData(avatarForm)
+  const formData = new FormData(avatarForm)
 
-    fetch(handleUrl, {
-        method: 'post',
-        body: formData,
-    }).then(response => {
-        return response.text()
-    }).then(response => {
-        if (isJson(response)) {
-            const data = JSON.parse(response)
-            uploadAvatarModal.hide()
-            imgAvatar.setAttribute('src', data.newAvatar)
-            inputUserAvatarId.value = data.newAvatarId
-            imgAvatar.insertAdjacentHTML('beforebegin',
-              '<small class="alert alert-warning">Save your change !</small>')
-        }
-        else {
-            modalContent.innerHTML = response
-        }
-        //else
-    })
+  fetch(handleUrl, {
+    method: 'post',
+    body: formData,
+  }).then(response => {
+    return response.text()
+  }).then(response => {
+    if (isJson(response)) {
+      const data = JSON.parse(response)
+      uploadAvatarModal.hide()
+      imgAvatar.setAttribute('src', data.newAvatar)
+      inputUserAvatarId.value = data.newAvatarId
+      imgAvatar.insertAdjacentHTML('beforebegin',
+        '<small class="alert alert-warning">Save your change !</small>')
+    }
+    else {
+      modalContent.innerHTML = response
+    }
+    //else
+  })
 })
 
 function isJson (str) {
-    try {
-        JSON.parse(str)
-    }
-    catch (e) {
-        return false
-    }
-    return true
+  try {
+    JSON.parse(str)
+  }
+  catch (e) {
+    return false
+  }
+  return true
 }

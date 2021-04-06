@@ -24,8 +24,8 @@ class UserDtoFactory {
 	 * @param MediaDtoFactory $mediaToDto
 	 * @param MediaRepository $mediaRepository
 	 */
-	public function __construct( MediaDtoFactory $mediaToDto, MediaRepository $mediaRepository) {
-		$this->mediaToDto = $mediaToDto;
+	public function __construct( MediaDtoFactory $mediaToDto, MediaRepository $mediaRepository ) {
+		$this->mediaToDto      = $mediaToDto;
 		$this->mediaRepository = $mediaRepository;
 
 	}
@@ -37,14 +37,14 @@ class UserDtoFactory {
 	 */
 	public function create( User $user ): UserProfileDTO {
 		$userProfileDto = new UserProfileDTO();
-		$avatarId = $user->getAvatar();
+		$avatarId       = $user->getAvatar();
 
-		if (isset($avatarId)) {
+		if ( isset( $avatarId ) ) {
 			$userProfileDto->avatar = $avatarId;
 		}
 
-		$userProfileDto->username        = $user->getUsername();
-		$userProfileDto->email        = $user->getEmail();
+		$userProfileDto->username = $user->getUsername();
+		$userProfileDto->email    = $user->getEmail();
 
 		return $userProfileDto;
 	}

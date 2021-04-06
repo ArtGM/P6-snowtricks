@@ -4,7 +4,6 @@
 namespace App\Domain\User\Profile;
 
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,7 +21,7 @@ class UserProfileFormType extends AbstractType {
 			->add( 'email',
 				EmailType::class
 			)
-			->add('avatar',
+			->add( 'avatar',
 				TextType::class
 			);
 	}

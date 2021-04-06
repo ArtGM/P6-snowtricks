@@ -1,4 +1,5 @@
 import Modal from 'bootstrap.native/dist/components/modal-native.esm.js'
+
 const getTricks = () => {
   const loadMoreButton = document.getElementById('loadMoreTricks')
   const homepageTricksList = document.getElementById('homeTricksList')

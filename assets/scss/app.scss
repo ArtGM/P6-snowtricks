@@ -63,18 +63,18 @@ fieldset {
     cursor: pointer;
     position: relative;
 
-        &::before {
-            z-index: 1;
-            content: '+';
-            font-size: 50px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: rgba(100, 100, 100, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    &::before {
+        z-index: 1;
+        content: '+';
+        font-size: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(100, 100, 100, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
 }
 

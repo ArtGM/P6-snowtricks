@@ -34,12 +34,12 @@ class NewUserAvatar {
 	 */
 	private EntityManagerInterface $entityManager;
 
-	/** @var string  */
+	/** @var string */
 	private string $uploadDir;
 
-	public function __construct(EntityManagerInterface $entityManager, string $uploadDir) {
+	public function __construct( EntityManagerInterface $entityManager, string $uploadDir ) {
 		$this->entityManager = $entityManager;
-		$this->uploadDir = $uploadDir;
+		$this->uploadDir     = $uploadDir;
 	}
 
 	public function __invoke(
@@ -74,14 +74,14 @@ class NewUserAvatar {
 		}
 
 		$user = [
-			'username' => $imageDto->name,
+			'username'    => $imageDto->name,
 			'description' => $imageDto->description
 		];
 
-		return $viewResponders('components/avatar_form.html.twig', [
+		return $viewResponders( 'components/avatar_form.html.twig', [
 			'userAvatarForm' => $avatarForm->createView(),
-			'user' => $user
-		]);
+			'user'           => $user
+		] );
 
 	}
 }

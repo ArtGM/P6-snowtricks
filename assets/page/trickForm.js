@@ -52,7 +52,6 @@ addImageButton.addEventListener('click', () => {
   column.appendChild(cardLayout)
   trickFormImageField.appendChild(column)
 
-
 })
 
 addVideoButton.addEventListener('click', () => {

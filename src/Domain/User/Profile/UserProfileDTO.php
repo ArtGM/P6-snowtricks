@@ -4,7 +4,6 @@
 namespace App\Domain\User\Profile;
 
 
-
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UserProfileDTO {

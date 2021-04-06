@@ -16,11 +16,11 @@ class ViewResponders {
 	 *
 	 * @param Environment $templating
 	 */
-	public function __construct(Environment $templating) {
+	public function __construct( Environment $templating ) {
 		$this->templating = $templating;
 	}
 
-	public function __invoke(string $template, array $paramsTemplate = []): Response {
-		return new Response($this->templating->render($template, $paramsTemplate));
+	public function __invoke( string $template, array $paramsTemplate = [] ): Response {
+		return new Response( $this->templating->render( $template, $paramsTemplate ) );
 	}
 }

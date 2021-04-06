@@ -46,7 +46,6 @@ class HomePageLoadMore {
 	 * @param Request $request
 	 * @param JsonResponders $jsonResponders
 	 * @param RedirectResponders $redirectResponders
-	 * @param EntityManagerInterface $entityManager
 	 * @param int $page
 	 *
 	 * @return Response
