@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Mailer\Exception\TransportException;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -110,7 +111,7 @@ class UserAskResetPassword {
 			$email = $this->getTemplatedEmail( $user, $resetPasswordUrl );
 			$this->mailer->send( $email );
 		} catch ( TransportExceptionInterface $e ) {
-			print_r( $e );
+			throw new TransportException();
 		}
 	}
 

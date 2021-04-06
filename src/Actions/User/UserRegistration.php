@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Mailer\Exception\TransportException;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -118,7 +119,7 @@ class UserRegistration {
 
 				$mailer->send( $email );
 			} catch ( TransportExceptionInterface $e ) {
-				print_r( $e );
+				throw new TransportException();
 			}
 			$flashBag->add( 'warning', 'Account created, please confirm your account before login by clicking on the email\'s link' );
 
