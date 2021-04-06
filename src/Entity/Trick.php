@@ -2,12 +2,10 @@
 
 namespace App\Entity;
 
-use App\Domain\Trick\Form\TrickDTO;
+use App\Domain\Trick\TrickDTO;
 use App\Repository\TricksRepository;
 use DateTime;
-use Symfony\Component\String\AbstractUnicodeString;
 use Symfony\Component\String\Slugger\AsciiSlugger;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
