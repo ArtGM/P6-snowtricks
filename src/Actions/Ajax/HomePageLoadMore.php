@@ -28,8 +28,18 @@ class HomePageLoadMore {
 	 */
 	private Environment $templating;
 
-	public function __construct( Environment $templating ) {
-		$this->templating = $templating;
+	/** @var EntityManagerInterface */
+	private EntityManagerInterface $entityManager;
+
+	/**
+	 * HomePageLoadMore constructor.
+	 *
+	 * @param Environment $templating
+	 * @param EntityManagerInterface $entityManager
+	 */
+	public function __construct( Environment $templating, EntityManagerInterface $entityManager ) {
+		$this->templating    = $templating;
+		$this->entityManager = $entityManager;
 	}
 
 	/**
@@ -48,13 +58,12 @@ class HomePageLoadMore {
 		Request $request,
 		JsonResponders $jsonResponders,
 		RedirectResponders $redirectResponders,
-		EntityManagerInterface $entityManager,
 		int $page = 1
 	): Response {
 
 
 		$offset           = $page * 4;
-		$tricksRepository = $entityManager->getRepository( Trick::class );
+		$tricksRepository = $this->entityManager->getRepository( Trick::class );
 		$getOtherTricks   = $tricksRepository->findBy( [], [], 4, $offset );
 		$html             = '';
 

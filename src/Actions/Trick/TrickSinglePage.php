@@ -32,18 +32,41 @@ class TrickSinglePage {
 	 * @var FormFactoryInterface
 	 */
 	private FormFactoryInterface $formFactory;
+	/**
+	 * @var EntityManagerInterface
+	 */
+	private EntityManagerInterface $entityManager;
 
-	public function __construct( FormFactoryInterface $formFactory ) {
-		$this->formFactory = $formFactory;
+	/**
+	 * TrickSinglePage constructor.
+	 *
+	 * @param FormFactoryInterface $formFactory
+	 * @param EntityManagerInterface $entityManager
+	 */
+	public function __construct( FormFactoryInterface $formFactory, EntityManagerInterface $entityManager ) {
+		$this->formFactory   = $formFactory;
+		$this->entityManager = $entityManager;
 	}
 
+	/**
+	 * @param Request $request
+	 * @param ViewResponders $viewResponders
+	 * @param RedirectResponders $redirectResponders
+	 * @param TricksRepository $tricksRepository
+	 * @param CommentRepository $commentRepository
+	 * @param string $slug
+	 * @param TokenStorageInterface $tokenStorage
+	 * @param FlashBagInterface $flashBag
+	 * @param AuthorizationCheckerInterface $authorizationChecker
+	 *
+	 * @return Response
+	 */
 	public function __invoke(
 		Request $request,
 		ViewResponders $viewResponders,
 		RedirectResponders $redirectResponders,
 		TricksRepository $tricksRepository,
 		CommentRepository $commentRepository,
-		EntityManagerInterface $entityManager,
 		string $slug,
 		TokenStorageInterface $tokenStorage,
 		FlashBagInterface $flashBag,
@@ -51,7 +74,7 @@ class TrickSinglePage {
 	): Response {
 
 		/** @var Trick $singleTrick */
-		$singleTrick  = $tricksRepository->findOneBySlug( $slug );
+		$singleTrick  = $tricksRepository->findOneBy( [ 'slug' => $slug ] );
 		$commentsList = $commentRepository->findBy( [
 			'trick' => $singleTrick
 		] );
@@ -72,8 +95,8 @@ class TrickSinglePage {
 				$commentDto = $commentForm->getData();
 
 				$newComment = Comment::createFromDto( $commentDto, $singleTrick, $user );
-				$entityManager->persist( $newComment );
-				$entityManager->flush();
+				$this->entityManager->persist( $newComment );
+				$this->entityManager->flush();
 				$flashBag->add( 'success', 'Your comment was successfully added!' );
 
 				return $redirectResponders( 'trick-single', [ 'slug' => $slug ] );

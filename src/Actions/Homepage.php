@@ -19,17 +19,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class Homepage {
 
 	/**
+	 * @var EntityManagerInterface
+	 */
+	private EntityManagerInterface $entityManager;
+
+	public function __construct( EntityManagerInterface $entityManager ) {
+		$this->entityManager = $entityManager;
+	}
+
+	/**
 	 * @param Request $request
 	 * @param ViewResponders $viewResponders
 	 *
-	 * @param EntityManagerInterface $entityManager
-	 *
 	 * @return Response
 	 */
-	public function __invoke( Request $request, ViewResponders $viewResponders, EntityManagerInterface $entityManager ): Response {
+	public function __invoke( Request $request, ViewResponders $viewResponders ): Response {
 
-		$trickRepository = $entityManager->getRepository( Trick::class );
+		$trickRepository = $this->entityManager->getRepository( Trick::class );
 		$allTricks       = $trickRepository->findBy( [], [], 4 );
+
 		return $viewResponders( 'core/index.html.twig', [
 			'allTricks'   => $allTricks,
 			'currentPage' => 1
