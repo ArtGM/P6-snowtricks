@@ -80,7 +80,6 @@ class TrickEditionHandler {
 	/**
 	 * @param array $DTOs
 	 * @param Trick $trick
-	 * TODO: Fix Diff algorythm
 	 *
 	 * @return array
 	 */
@@ -187,14 +186,14 @@ class TrickEditionHandler {
 	 * @return array
 	 */
 	private function getMediaToDelete( array $mediasIdToDelete, array $medias ): array {
-		$mediasTodelete = [];
+		$mediasToBeDeleted = [];
 		foreach ( $medias as $media ) {
 			if ( array_search( $media->getId()->toString(), $mediasIdToDelete ) !== false ) {
-				$mediasTodelete[] = $media;
+				$mediasToBeDeleted[] = $media;
 			}
 		}
 
-		return $mediasTodelete;
+		return $mediasToBeDeleted;
 	}
 
 }

@@ -164,12 +164,18 @@ class User implements UserInterface {
 		return $this->roles;
 	}
 
+	/**
+	 * @return string|null
+	 */
 	public function getSalt(): ?string {
 		return null;
 	}
 
+	/**
+	 * @return null
+	 */
 	public function eraseCredentials() {
-		// TODO: Implement eraseCredentials() method.
+		return null;
 	}
 
 	/**
