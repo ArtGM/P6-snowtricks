@@ -186,4 +186,14 @@ class Trick {
 	public function getUpdatedAt(): DateTime {
 		return $this->updated_at;
 	}
+
+	public function getFirstImage() {
+		$medias = $this->getMedias()->toArray();
+
+		foreach ( $medias as $media ) {
+			if ( preg_match( '/(image)/', $media->getType() ) ) {
+				return $media;
+			}
+		}
+	}
 }

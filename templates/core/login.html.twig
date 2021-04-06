@@ -1,10 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <header class="masthead masthead--minimal" style="background-image: url(/images/shifty.jpg)">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
 {% block body %}
     <div class="row my-3 justify-content-center">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+
 
         <form method="post" action="{{ path('user_login') }}" class="col-6">
             <div class="form-group">
@@ -22,6 +35,9 @@
 
             </div>
             <input class="btn btn-primary my-3" type="submit" value="login">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
         </form>
     </div>
     <p class="text-center">

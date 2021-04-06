@@ -1,7 +1,22 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <header class="masthead masthead--minimal" style="background-image: url(/images/shifty.jpg)">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h3 class="text-center">Update {{ trickName }} Trick </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
 {% block body %}
-    <h1 class="text-center">Edit {{ trickName }} Trick </h1>
+
     <div class="row justify-content-center">
 
         {{ form_start(editTrickForm, {
@@ -21,7 +36,7 @@
                  data-widget-tags="{{ '<div class="card"></div>'|e }}"
                  data-widget-counter="{{ editTrickForm.images|length }}">
                 {% for imageField in editTrickForm.images %}
-                    <div class="col-4" id="col-id-{{ loop.index }}">
+                    <div class="col-12" id="col-id-{{ loop.index }}">
                         <div class="card h-100 justify-content-between">
                             {{ form_errors(imageField) }}
                             <div class="card-body">

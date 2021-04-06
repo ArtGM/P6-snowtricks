@@ -11,12 +11,15 @@
 </head>
 <body>
 
-{% block header %}
+{% block nav %}
     {% include 'components/flash_messages.html.twig' %}
-    {% include 'components/header.html.twig' %}
+    {% include 'components/navigation.html.twig' %}
 {% endblock %}
 
-<main class="content" role="content">
+{% block header %}
+{% endblock %}
+
+<main class="container" role="content">
     {% block body %}
     {% endblock %}
 </main>

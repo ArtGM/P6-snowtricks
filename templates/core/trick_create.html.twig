@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <header class="masthead masthead--minimal" style="background-image: url(/images/shifty.jpg)">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h3>Create new Trick</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
 {% block body %}
-    <h1 class="text-center">Create Trick</h1>
     <div class="row justify-content-center">
         {{ form_start(trickForm, {
             'attr': {

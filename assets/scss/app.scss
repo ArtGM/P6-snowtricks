@@ -1,5 +1,14 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap-icons/font/bootstrap-icons";
+@import "variables";
+@import "mixins";
+@import "global";
+@import "navbar";
+@import "masthead";
+@import "post";
+@import "contact";
+@import "footer";
+@import "bootstrap-overrides";
 
 .footer {
     margin-top: 70px;
@@ -92,12 +101,28 @@ fieldset {
     }
 }
 
-.card {
+.card__trick-miniature {
     position: relative;
 
     &:hover {
         .card-actions {
             opacity: 1;
+        }
+    }
+
+    .title__trick-miniature {
+        min-height: 50px;
+    }
+
+    @media screen and (min-width: 992px) {
+
+        .card-img-top {
+            position: absolute;
+        }
+        .card-body {
+            z-index: 1;
+            margin-top: 150px;
+            background-color: $white;
         }
     }
 }
@@ -119,10 +144,22 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 10;
+    z-index: 1040;
 
     .toast {
         min-width: 250px;
+
+        .toast-header {
+            background-color: transparent;
+        }
+
+        .toast-header, .toast-body {
+            color: $light;
+        }
+
+        &.success {
+            background-color: $success;
+        }
     }
 }
 

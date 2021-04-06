@@ -1,5 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <header class="masthead masthead--minimal"
+            style="background-image: url({{ asset('uploads/' ~ singleTrick.getFirstImage.file ) }}) center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>{{ singleTrick.getName }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
 {% block body %}
     <section class="container">
         <div class="row">
@@ -8,7 +24,8 @@
                 {% for media in singleTrick.getMedias %}
                     {% if media.type != 'video' %}
                         <figure>
-                            <img class="img-fluid" src="/uploads/{{ media.file }}" alt="{{ media.description }}">
+                            <img class="img-fluid" src="{{ asset('uploads/' ~ media.file) }}"
+                                 alt="{{ media.description }}">
                             <figcaption>{{ media.name }}</figcaption>
                         </figure>
                     {% else %}
@@ -46,7 +63,6 @@
         </div>
 
         <div class="jumbotron">
-            <h1 class="display-4">{{ singleTrick.getName }}</h1>
             <p class="lead">{{ singleTrick.getDescription }}</p>
             {% if app.user is not null %}
                 <hr class="my-4">

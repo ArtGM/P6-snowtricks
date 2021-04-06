@@ -52,13 +52,12 @@ class HomePageLoadMore {
 		int $page = 1
 	): Response {
 
-		if ( ! $request->isXmlHttpRequest() ) {
-			return $redirectResponders( 'homepage' );
-		}
+
 		$offset           = $page * 4;
 		$tricksRepository = $entityManager->getRepository( Trick::class );
 		$getOtherTricks   = $tricksRepository->findBy( [], [], 4, $offset );
 		$html             = '';
+
 		foreach ( $getOtherTricks as $trickData ) {
 			$html .= $this->templating->render( 'components/trick_miniature.html.twig', [
 				'trick' => $trickData
@@ -66,6 +65,7 @@ class HomePageLoadMore {
 		}
 		$remainingTricks = count( $getOtherTricks );
 		$message         = $remainingTricks < 4 ? 'That\'s all folks !' : '';
+
 
 		return $jsonResponders( [
 			'html'    => $html,

@@ -54,9 +54,6 @@ class NewUserAvatar {
 		RedirectResponders $redirectResponders
 	): Response {
 
-		if ( ! $request->isXmlHttpRequest() ) {
-			return $redirectResponders( 'homepage' );
-		}
 
 		$avatarForm = $formFactory->create( ImageFormType::class, null, [ 'validation_groups' => [ 'avatar' ] ] )->handleRequest( $request );
 		$imageDto   = $avatarForm->getData();

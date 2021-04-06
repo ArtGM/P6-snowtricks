@@ -1,5 +1,5 @@
-<div class="col-3">
-    <div class="card m-2">
+<div class="col-lg-3 col-sm-6 col-12">
+    <div class="card card__trick-miniature m-2">
         {% set medias = trick.getMedias %}
 
         {% if medias.getValues %}
@@ -43,8 +43,7 @@
         {% endif %}
         <div class="card-body">
 
-            <h5 class="card-title"> {{ trick.getName }}</h5>
-            <p class="card-text">{{ trick.getDescription|u.truncate(100, '...', false) }}</p>
+            <h5 class="card-title title__trick-miniature"> {{ trick.getName }}</h5>
 
             <a href="{{ path('trick-single', { 'slug': trick.getSlug }) }}" class="btn btn-primary">See More</a>
         </div>

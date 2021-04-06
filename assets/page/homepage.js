@@ -10,7 +10,9 @@ const getTricks = () => {
       homepageTricksList.classList.add('loading')
 
       const response = await fetch(url)
+
       const data = await response.json()
+      console.log(data)
       const trickTemplate = await data.html
       const endMessage = await data.message
 
