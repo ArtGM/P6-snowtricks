@@ -4,7 +4,7 @@
 namespace App\Actions\Trick;
 
 use App\Domain\Factory\TrickDtoFactory;
-use App\Domain\Trick\Form\Handlers\TrickEditionHandler;
+use App\Domain\Trick\Handlers\TrickEditionHandler;
 use App\Domain\Trick\Form\TrickFormType;
 use App\Repository\TricksRepository;
 use App\Responders\RedirectResponders;

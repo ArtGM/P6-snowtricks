@@ -1,19 +1,18 @@
 <?php
 
 
-namespace App\Domain\Trick\Form\Handlers;
+namespace App\Domain\Trick\Handlers;
 
 
 use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Media\ImageDTO;
 use App\Domain\Media\VideoDTO;
-use App\Domain\Trick\Form\TrickDTO;
+use App\Domain\Trick\TrickDTO;
 use App\Entity\Media;
 use App\Entity\Trick;
 use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
-use ReflectionProperty;
 
 class TrickEditionHandler {
 
