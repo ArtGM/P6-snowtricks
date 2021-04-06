@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Domain\Trick\Handlers;
+namespace App\Domain\Trick\Form\Handlers;
 
 
 use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Media\ImageDTO;
 use App\Domain\Media\VideoDTO;
-use App\Domain\Trick\TrickDTO;
+use App\Domain\Trick\Form\TrickDTO;
 use App\Entity\Media;
 use App\Entity\Trick;
 use App\Service\FileUploader;
@@ -46,7 +46,7 @@ class TrickEditionHandler {
 	 *
 	 * @return array
 	 */
-	private function removeEmptyObject( $array ) {
+	private function removeEmptyObject( $array ): array {
 		$newArray = [];
 		foreach ( $array as $item ) {
 			$toArray = (array) $item;

@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Domain\Trick\TrickDTO;
+use App\Domain\Trick\Form\TrickDTO;
 use App\Repository\TricksRepository;
 use DateTime;
 use Symfony\Component\String\AbstractUnicodeString;

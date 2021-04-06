@@ -4,7 +4,7 @@
 namespace App\Domain\Trick;
 
 
-use App\Domain\TrickGroup\TrickGroupDTO;
+use App\Domain\TrickGroup\Form\TrickGroupDTO;
 use App\Entity\Trick;
 use App\Entity\TrickGroup;
 use App\Validator\Constraints\UniqueEntityDto;

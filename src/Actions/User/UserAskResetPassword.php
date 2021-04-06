@@ -97,9 +97,9 @@ class UserAskResetPassword {
 	}
 
 	/**
-	 * @param $user
+	 * @param User $user
 	 */
-	private function sendEmailTo( $user ) {
+	private function sendEmailTo( User $user ) {
 
 		$newToken = $this->createToken( $user );
 		$this->entityManager->persist( $newToken );
@@ -136,12 +136,12 @@ class UserAskResetPassword {
 	}
 
 	/**
-	 * @param $user
+	 * @param User $user
 	 * @param string $resetPasswordUrl
 	 *
 	 * @return object|TemplatedEmail
 	 */
-	private function getTemplatedEmail( $user, string $resetPasswordUrl ) {
+	private function getTemplatedEmail( User $user, string $resetPasswordUrl ) {
 		return ( new TemplatedEmail() )
 			->to( $user->getEmail() )
 			->subject( 'Reset your password on Snowtrick' )

@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Domain\TrickGroup;
+namespace App\Domain\TrickGroup\Form;
 
 
+use App\Domain\TrickGroup\TrickGroupDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

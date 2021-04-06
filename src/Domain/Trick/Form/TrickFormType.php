@@ -1,11 +1,12 @@
 <?php
 
 
-namespace App\Domain\Trick;
+namespace App\Domain\Trick\Form;
 
 
 use App\Domain\Media\ImageFormType;
 use App\Domain\Media\VideoFormType;
+use App\Domain\Trick\TrickDTO;
 use App\Entity\TrickGroup;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -60,7 +61,7 @@ class TrickFormType extends AbstractType {
 				EntityType::class,
 				[
 					'class'        => TrickGroup::class,
-					'choice_label' => function ( $trickGroup ) {
+					'choice_label' => function ( TrickGroup $trickGroup ) {
 						return $trickGroup->getName();
 					}
 				]

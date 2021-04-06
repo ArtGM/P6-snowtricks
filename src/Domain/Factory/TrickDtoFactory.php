@@ -3,7 +3,7 @@
 namespace App\Domain\Factory;
 
 
-use App\Domain\Trick\TrickDTO;
+use App\Domain\Trick\Form\TrickDTO;
 use App\Entity\Trick;
 
 /**

@@ -4,8 +4,8 @@
 namespace App\Actions\Trick;
 
 use App\Domain\Media\Handlers\MediaHandler;
-use App\Domain\Trick\TrickDTO;
-use App\Domain\Trick\TrickFormType;
+use App\Domain\Trick\Form\TrickDTO;
+use App\Domain\Trick\Form\TrickFormType;
 use App\Entity\Trick;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
