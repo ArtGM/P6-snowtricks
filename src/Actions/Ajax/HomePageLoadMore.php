@@ -60,6 +60,9 @@ class HomePageLoadMore {
 		int $page = 1
 	): Response {
 
+		if ( (bool) ! $request->headers->get( "snow-request" ) ) {
+			return new Response( 'Forbidden Access', Response::HTTP_FORBIDDEN );
+		}
 
 		$offset           = $page * 4;
 		$tricksRepository = $this->entityManager->getRepository( Trick::class );

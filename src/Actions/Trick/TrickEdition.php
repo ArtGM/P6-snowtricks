@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 /**
@@ -55,7 +54,7 @@ class TrickEdition {
 	 * @param string $slug
 	 * @param RedirectResponders $redirectResponders
 	 * @param FlashBagInterface $flashBag
-	 * @param AuthorizationChecker $authorizationChecker
+	 * @param AuthorizationCheckerInterface $authorizationChecker
 	 *
 	 * @return Response
 	 */
@@ -75,7 +74,7 @@ class TrickEdition {
 
 			return $redirectResponders( 'homepage' );
 		}
-		$trick = $tricksRepository->findOneBySlug( $slug );
+		$trick = $tricksRepository->findOneBy( [ 'slug' => $slug ] );
 
 		$trickDto = $this->trickDtoFactory->create( $trick );
 

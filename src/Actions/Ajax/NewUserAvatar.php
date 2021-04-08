@@ -54,6 +54,10 @@ class NewUserAvatar {
 		RedirectResponders $redirectResponders
 	): Response {
 
+		if ( (bool) ! $request->headers->get( "snow-request" ) ) {
+			return new Response( 'Forbidden Access', Response::HTTP_FORBIDDEN );
+		}
+
 
 		$avatarForm = $formFactory->create( ImageFormType::class, null, [ 'validation_groups' => [ 'avatar' ] ] )->handleRequest( $request );
 		$imageDto   = $avatarForm->getData();

@@ -19,10 +19,13 @@ avatarForm.addEventListener('submit', function (e) {
   e.preventDefault()
 
   const formData = new FormData(avatarForm)
+  const headers = new Headers()
+  headers.append('snow-request', 'true')
 
   fetch(handleUrl, {
     method: 'post',
     body: formData,
+    headers: headers,
   }).then(response => {
     return response.text()
   }).then(response => {

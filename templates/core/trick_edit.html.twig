@@ -21,7 +21,7 @@
 
         {{ form_start(editTrickForm, {
             'attr': {
-                'class': 'col-lg-6'
+                'class': 'col-12'
             }
         }) }}
 
@@ -36,7 +36,7 @@
                  data-widget-tags="{{ '<div class="card"></div>'|e }}"
                  data-widget-counter="{{ editTrickForm.images|length }}">
                 {% for imageField in editTrickForm.images %}
-                    <div class="col-12" id="col-id-{{ loop.index }}">
+                    <div class="col-4" id="col-id-{{ loop.index }}">
                         <div class="card h-100 justify-content-between">
                             {{ form_errors(imageField) }}
                             <div class="card-body">

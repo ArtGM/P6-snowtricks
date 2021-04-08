@@ -1,6 +1,5 @@
 import 'bootstrap'
 import bsCustomFileInput from 'bs-custom-file-input'
-import * as url from 'url'
 
 bsCustomFileInput.init()
 
@@ -20,11 +19,6 @@ let videoCounter = trickFormVideoField.getAttribute('data-widget-counter') ||
 const getImagePrototype = trickFormImageField.getAttribute('data-prototype')
 const getVideoPrototype = trickFormVideoField.getAttribute('data-prototype')
 
-const removeImageElements = document.querySelectorAll('.remove-image')
-const removeImage = Array.from(removeImageElements)
-
-const removeVideoElements = document.querySelectorAll('.remove-video')
-const removeVideo = Array.from(removeVideoElements)
 
 addImageButton.addEventListener('click', () => {
   const newImageWidget = getImagePrototype.replace(/__name__/g, imageCounter)
@@ -33,20 +27,21 @@ addImageButton.addEventListener('click', () => {
   const colId = 'col-id-' + imageCounter
 
   const column = document.createElement('div')
-  const cardLayout = document.createElement('div')
-  const deleteButton = document.createElement('button')
-
-  deleteButton.classList.add('btn')
-  deleteButton.classList.add('btn-danger')
-  deleteButton.classList.add('remove-image')
-  deleteButton.append('delete')
-  deleteButton.setAttribute('data-id', colId)
-  deleteButton.setAttribute('type', 'button')
-  column.classList.add('col-4')
+  column.classList.add('col-4', 'my-2')
   column.setAttribute('id', colId)
+
+  const cardLayout = document.createElement('div')
   cardLayout.classList.add('card')
   cardLayout.classList.add('p-3')
   cardLayout.innerHTML = newImageWidget
+
+  const deleteButton = document.createElement('button')
+  const deleteButtonClassList = ['btn', 'btn-danger', 'remove-image']
+  deleteButton.classList.add(...deleteButtonClassList)
+
+  deleteButton.append('delete')
+  deleteButton.setAttribute('data-id', colId)
+  deleteButton.setAttribute('type', 'button')
 
   cardLayout.appendChild(deleteButton)
   column.appendChild(cardLayout)
@@ -63,10 +58,10 @@ addVideoButton.addEventListener('click', () => {
   const row = document.createElement('li')
 
   const deleteVideoButton = document.createElement('button')
+  const deleteButtonClassList = ['btn', 'btn-danger', 'remove-video']
 
-  deleteVideoButton.classList.add('btn')
-  deleteVideoButton.classList.add('btn-danger')
-  deleteVideoButton.classList.add('remove-video')
+  deleteVideoButton.classList.add(...deleteButtonClassList)
+
   deleteVideoButton.append('X')
   deleteVideoButton.setAttribute('data-id', fieldId)
   deleteVideoButton.setAttribute('type', 'button')

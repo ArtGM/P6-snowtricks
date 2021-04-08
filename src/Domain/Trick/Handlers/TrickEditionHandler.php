@@ -70,6 +70,7 @@ class TrickEditionHandler {
 		$videos = $this->removeEmptyObject( $trickDto->video );
 
 		$modifiedMedias = $this->replaceMediasFromDto( array_merge( $images, $videos ), $trick );
+
 		$updatedTrick   = $trick->update( $trickDto, $modifiedMedias );
 		$this->entityManager->persist( $updatedTrick );
 		$this->entityManager->flush();
@@ -85,6 +86,7 @@ class TrickEditionHandler {
 	private function replaceMediasFromDto( array $DTOs, Trick $trick ): array {
 
 		$medias              = $trick->getMedias()->getValues();
+
 		$mediasToAddOrUpdate = [];
 
 		foreach ( $DTOs as $key => $mediaDto ) {
@@ -105,8 +107,12 @@ class TrickEditionHandler {
 			unset( $medias[ $key ] );
 		}
 
-		foreach ( $medias as $media ) {
-			$mediasToAddOrUpdate[] = $media;
+		foreach ( $DTOs as $mediaDto ) {
+			foreach ( $medias as $media ) {
+				if ( $media->getId()->toString() === $mediaDto->id ) {
+					$mediasToAddOrUpdate[] = $this->generateMedia( $mediaDto );
+				}
+			}
 		}
 
 		return $mediasToAddOrUpdate;
@@ -145,37 +151,6 @@ class TrickEditionHandler {
 	 */
 	private function isVideo( $mediaDTO ): bool {
 		return $mediaDTO instanceof VideoDTO;
-	}
-
-	/**
-	 * @param Media $mediaEntity
-	 * @param ImageDTO|VideoDTO $mediaDTO
-	 *
-	 * @return mixed
-	 */
-	private function updateMediaEntity( Media $mediaEntity, $mediaDTO ): Media {
-
-		if ( 'video' === $mediaEntity->getType() ) {
-			$name = $mediaDTO->title;
-			$file = $mediaDTO->url;
-		} else {
-			$name = $mediaDTO->name;
-			$file = $mediaDTO->file;
-		}
-
-		if ( isset( $mediaEntity ) && $name !== $mediaEntity->getName() ) {
-			$mediaEntity->updateName( $name );
-		}
-
-		if ( $mediaDTO->description !== $mediaEntity->getDescription() ) {
-			$mediaEntity->updateDescription( $mediaDTO->description );
-		}
-
-		if ( isset( $file ) && $file !== $mediaEntity->getFile() ) {
-			$mediaEntity->updateFile( $file );
-		}
-
-		return $mediaEntity;
 	}
 
 	/**

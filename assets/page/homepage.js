@@ -8,9 +8,15 @@ const getTricks = () => {
     loadMoreButton.addEventListener('click', async (event) => {
       const element = event.target
       const url = `${element.dataset.url}/${element.dataset.page}`
+      const headers = new Headers()
+      headers.append('snow-request', 'true')
+      const fetchOptions = {
+        method: 'GET',
+        headers: headers,
+      }
       homepageTricksList.classList.add('loading')
 
-      const response = await fetch(url)
+      const response = await fetch(url, fetchOptions)
 
       const data = await response.json()
       console.log(data)
