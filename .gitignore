@@ -16,15 +16,13 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
-.idea/
-.idea/workspace.xml
+
 /public/images/
 /public/uploads/
 
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
-/public/uploads/
 
 ###> symfony/phpunit-bridge ###
 .phpunit
