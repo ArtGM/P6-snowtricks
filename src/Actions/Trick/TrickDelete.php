@@ -5,6 +5,7 @@ namespace App\Actions\Trick;
 
 
 use App\Entity\Trick;
+use App\Repository\CommentRepository;
 use App\Repository\TricksRepository;
 use App\Responders\RedirectResponders;
 use Doctrine\ORM\EntityManagerInterface;
@@ -46,6 +47,7 @@ class TrickDelete {
 	 */
 	public function __invoke(
 		TricksRepository $tricksRepository,
+		CommentRepository $commentRepository,
 		RedirectResponders $redirectResponders,
 		AuthorizationCheckerInterface $authorizationChecker,
 		string $slug
@@ -58,8 +60,12 @@ class TrickDelete {
 		}
 		/** @var Trick $trickToDelete */
 		$trickToDelete = $tricksRepository->findOneBy( [ 'slug' => $slug ] );
+		$comments      = $commentRepository->findBy( [ 'trick' => $trickToDelete ] );
 		$medias        = $trickToDelete->getMedias();
 
+		foreach ( $comments as $comment ) {
+			$this->entityManager->remove( $comment );
+		}
 		foreach ( $medias as $media ) {
 			$trickToDelete->removeMedia( $media );
 		}
