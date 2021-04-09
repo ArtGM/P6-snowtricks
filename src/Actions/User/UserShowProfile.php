@@ -5,8 +5,8 @@ namespace App\Actions\User;
 
 use App\Domain\Factory\MediaDtoFactory;
 use App\Domain\Factory\UserDtoFactory;
-use App\Domain\Media\ImageFormType;
-use App\Domain\User\Profile\UserProfileFormType;
+use App\Domain\Media\Form\ImageFormType;
+use App\Domain\User\Profile\Form\UserProfileFormType;
 use App\Repository\MediaRepository;
 use App\Repository\UserRepository;
 use App\Responders\RedirectResponders;
@@ -18,7 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 
@@ -73,7 +72,7 @@ class UserShowProfile {
 		$userDto = $this->userDtoFactory->create( $user );
 
 		$avatarId        = $user->getAvatar();
-		$avatar          = isset( $avatarId ) ? $mediaRepository->findOneById( $avatarId ) : null;
+		$avatar          = isset( $avatarId ) ? $mediaRepository->findOneBy( [ 'id' => $avatarId ] ) : null;
 		$mediaDto        = $avatar !== null ? $this->mediaDtoFactory->createImage( $avatar ) : null;
 		$userProfileForm = $this->formFactory->create( UserProfileFormType::class, $userDto )->handleRequest( $request );
 		$userAvatarForm  = $this->formFactory->create( ImageFormType::class, $mediaDto )->handleRequest( $request );
@@ -86,9 +85,9 @@ class UserShowProfile {
 		];
 
 		if ( $userProfileForm->isSubmitted() && $userProfileForm->isValid() ) {
-			$userDto   = $userProfileForm->getData();
-			$oldAvatar = $mediaRepository->findOneBy( [ 'id' => $user->getAvatar() ] );
-			$newAvatar = $mediaRepository->findOneById( $userDto->avatar );
+			$userDto = $userProfileForm->getData();
+
+			$newAvatar = $mediaRepository->findOneBy( [ 'id' => $userDto->avatar ] );
 
 			$updatedUser = $user->update( $userDto, $newAvatar );
 

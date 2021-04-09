@@ -5,7 +5,7 @@ namespace App\Actions\User;
 
 
 use App\Domain\User\Registration\UserRegistrationDTO;
-use App\Domain\User\Registration\UserRegistrationFormType;
+use App\Domain\User\Registration\Form\UserRegistrationFormType;
 use App\Entity\TokenHistory;
 use App\Entity\User;
 use App\Responders\RedirectResponders;

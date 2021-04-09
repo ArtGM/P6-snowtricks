@@ -10,6 +10,7 @@ use App\Repository\TokenHistoryRepository;
 use App\Repository\UserRepository;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,7 +54,7 @@ class UserConfirmAccount {
 		}
 
 		$tokenDate   = $token->getCreatedAt();
-		$currentDate = new \DateTime( 'now' );
+		$currentDate = new DateTime( 'now' );
 		$interval    = $tokenDate->diff( $currentDate );
 		/** @var User $user */
 		$user = $userRepository->findOneBy( [ 'id' => $token->getUserId() ] );

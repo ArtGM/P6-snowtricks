@@ -105,7 +105,7 @@ class Trick {
 	/**
 	 * @param Media $media
 	 */
-	public function removeMedia( $media ) {
+	public function removeMedia( Media $media ) {
 		if ( ! $this->medias->contains( $media ) || ! isset( $media ) ) {
 			return;
 		}
@@ -185,6 +185,9 @@ class Trick {
 		return $this->updated_at;
 	}
 
+	/**
+	 * @return mixed|null
+	 */
 	public function getFirstImage() {
 		$medias = $this->getMedias()->toArray();
 
@@ -193,5 +196,7 @@ class Trick {
 				return $media;
 			}
 		}
+
+		return null;
 	}
 }

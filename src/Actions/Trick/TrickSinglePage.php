@@ -3,7 +3,7 @@
 
 namespace App\Actions\Trick;
 
-use App\Domain\Comment\CommentFormType;
+use App\Domain\Comment\Form\CommentFormType;
 use App\Entity\Comment;
 use App\Entity\Trick;
 use App\Entity\User;
@@ -12,7 +12,6 @@ use App\Repository\TricksRepository;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

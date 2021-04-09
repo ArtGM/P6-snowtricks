@@ -4,8 +4,6 @@
 namespace App\Domain\TrickGroup;
 
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 class TrickGroupDTO {
 
 	/**

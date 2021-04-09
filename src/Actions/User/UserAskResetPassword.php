@@ -5,20 +5,19 @@ namespace App\Actions\User;
 
 
 use App\Domain\User\Password\UserAskPasswordDTO;
-use App\Domain\User\Password\UserAskPasswordFormType;
+use App\Domain\User\Password\Form\UserAskPasswordFormType;
 use App\Entity\TokenHistory;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Responders\RedirectResponders;
 use App\Responders\ViewResponders;
-use App\Service\AccessManager;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Mailer\Exception\TransportException;
@@ -26,7 +25,6 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
@@ -149,7 +147,7 @@ class UserAskResetPassword {
 			->context( [
 				'resetPasswordUrl' => $resetPasswordUrl,
 				'username'         => $user->getUsername(),
-				'expiration_date'  => new \DateTime( '+1 day' )
+				'expiration_date'  => new DateTime( '+1 day' )
 			] );
 	}
 

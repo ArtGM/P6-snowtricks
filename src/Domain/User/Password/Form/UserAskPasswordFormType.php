@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Domain\User\Password;
+namespace App\Domain\User\Password\Form;
 
 
+use App\Domain\User\Password\UserAskPasswordDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;

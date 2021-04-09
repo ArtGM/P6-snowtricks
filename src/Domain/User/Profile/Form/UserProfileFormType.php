@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Domain\User\Profile;
+namespace App\Domain\User\Profile\Form;
 
 
+use App\Domain\User\Profile\UserProfileDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

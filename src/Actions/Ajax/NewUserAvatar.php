@@ -5,9 +5,8 @@ namespace App\Actions\Ajax;
 
 
 use App\Domain\Media\Handlers\MediaHandler;
-use App\Domain\Media\ImageFormType;
+use App\Domain\Media\Form\ImageFormType;
 use App\Entity\Media;
-use App\Entity\User;
 use App\Repository\MediaRepository;
 use App\Responders\JsonResponders;
 use App\Responders\RedirectResponders;
@@ -18,8 +17,6 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class NewUserAvatar
@@ -67,7 +64,7 @@ class NewUserAvatar {
 			$newImage = $mediaHandler->generateImage( $imageDto );
 
 			/** @var Media $imagePath */
-			$image     = $mediaRepository->findOneById( [ $newImage->getId() ] );
+			$image     = $mediaRepository->findOneBy( [ 'id' => $newImage->getId() ] );
 			$imagePath = $imagineCacheManager->getBrowserPath( '/uploads/' . $image->getFile(), 'avatar' );
 
 			return $jsonResponders( [

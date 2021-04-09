@@ -4,13 +4,8 @@
 namespace App\Domain\Trick;
 
 
-use App\Domain\TrickGroup\Form\TrickGroupDTO;
-use App\Entity\Trick;
 use App\Entity\TrickGroup;
 use App\Validator\Constraints\UniqueEntityDto;
-use Doctrine\Common\Collections\ArrayCollection;
-use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 

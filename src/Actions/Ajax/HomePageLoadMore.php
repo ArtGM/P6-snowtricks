@@ -6,7 +6,6 @@ namespace App\Actions\Ajax;
 use App\Entity\Trick;
 use App\Responders\JsonResponders;
 use App\Responders\RedirectResponders;
-use App\Responders\ViewResponders;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

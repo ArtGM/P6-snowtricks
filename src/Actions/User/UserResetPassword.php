@@ -4,7 +4,7 @@
 namespace App\Actions\User;
 
 use App\Domain\User\Password\UserResetPasswordDTO;
-use App\Domain\User\Password\UserResetPasswordFormType;
+use App\Domain\User\Password\Form\UserResetPasswordFormType;
 use App\Entity\TokenHistory;
 use App\Entity\User;
 use App\Repository\TokenHistoryRepository;

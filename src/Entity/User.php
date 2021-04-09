@@ -3,7 +3,6 @@
 
 namespace App\Entity;
 
-use App\Domain\User\Password\UserResetPasswordDTO;
 use App\Domain\User\Profile\UserProfileDTO;
 use App\Domain\User\Registration\UserRegistrationDTO;
 use App\Repository\UserRepository;

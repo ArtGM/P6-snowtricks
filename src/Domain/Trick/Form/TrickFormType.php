@@ -4,8 +4,8 @@
 namespace App\Domain\Trick\Form;
 
 
-use App\Domain\Media\ImageFormType;
-use App\Domain\Media\VideoFormType;
+use App\Domain\Media\Form\ImageFormType;
+use App\Domain\Media\Form\VideoFormType;
 use App\Domain\Trick\TrickDTO;
 use App\Entity\TrickGroup;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

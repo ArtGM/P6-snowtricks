@@ -8,10 +8,8 @@ use App\Repository\CommentRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\Persistence\ObjectRepository;
 use Ramsey\Uuid\UuidInterface;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table (name="st_comment")
