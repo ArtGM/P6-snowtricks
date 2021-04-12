@@ -41,6 +41,27 @@ class TrickEditionHandler {
 	}
 
 	/**
+	 * @param FormInterface $trickEditionForm
+	 * @param Trick $trick
+	 */
+	public function manageTrickEdition( FormInterface $trickEditionForm, Trick $trick ) {
+
+		/** @var TrickDTO $trickDto */
+		$trickDto = $trickEditionForm->getData();
+
+		$images = $this->removeEmptyObject( $trickDto->images );
+		$videos = $this->removeEmptyObject( $trickDto->video );
+
+		$modifiedMedias = $this->replaceMediasFromDto( array_merge( $images, $videos ), $trick );
+
+		$updatedTrick = $trick->update( $trickDto, $modifiedMedias );
+
+		$this->entityManager->persist( $updatedTrick );
+		$this->entityManager->flush();
+
+	}
+
+	/**
 	 * @param $array
 	 *
 	 * @return array
@@ -58,26 +79,6 @@ class TrickEditionHandler {
 	}
 
 	/**
-	 * @param FormInterface $trickEditionForm
-	 * @param Trick $trick
-	 */
-	public function handle( FormInterface $trickEditionForm, Trick $trick ) {
-
-		/** @var TrickDTO $trickDto */
-		$trickDto = $trickEditionForm->getData();
-
-		$images = $this->removeEmptyObject( $trickDto->images );
-		$videos = $this->removeEmptyObject( $trickDto->video );
-
-		$modifiedMedias = $this->replaceMediasFromDto( array_merge( $images, $videos ), $trick );
-
-		$updatedTrick   = $trick->update( $trickDto, $modifiedMedias );
-		$this->entityManager->persist( $updatedTrick );
-		$this->entityManager->flush();
-
-	}
-
-	/**
 	 * @param array $DTOs
 	 * @param Trick $trick
 	 *
@@ -85,37 +86,15 @@ class TrickEditionHandler {
 	 */
 	private function replaceMediasFromDto( array $DTOs, Trick $trick ): array {
 
-		$medias              = $trick->getMedias()->getValues();
+		$medias = $trick->getMedias()->getValues();
 
-		$mediasToAddOrUpdate = [];
+		$newMedias = $this->addNewMedia( $DTOs );
 
-		foreach ( $DTOs as $key => $mediaDto ) {
-			if ( empty( $mediaDto->id ) ) {
-				$mediasToAddOrUpdate[] = $this->generateMedia( $mediaDto );
-				unset( $DTOs[ $key ] );
-			}
-		}
+		$medias = $this->deleteMedias( $DTOs, $medias, $trick );
 
-		$dataTransferObjectIds = array_map( fn( $obj ) => $obj->id, $DTOs );
-		$mediaEntityIds        = array_map( fn( $obj ) => $obj->getId()->toString(), $medias );
+		$updatedMedias = $this->updateMediaIfModified( $DTOs, $medias );
 
-		$mediasIdToDelete = array_diff( $mediaEntityIds, $dataTransferObjectIds );
-		$mediaToDelete    = $this->getMediaToDelete( $mediasIdToDelete, $medias );
-
-		foreach ( $mediaToDelete as $key => $media ) {
-			$trick->removeMedia( $media );
-			unset( $medias[ $key ] );
-		}
-
-		foreach ( $DTOs as $mediaDto ) {
-			foreach ( $medias as $media ) {
-				if ( $media->getId()->toString() === $mediaDto->id ) {
-					$mediasToAddOrUpdate[] = $this->generateMedia( $mediaDto );
-				}
-			}
-		}
-
-		return $mediasToAddOrUpdate;
+		return array_merge( $medias, $updatedMedias, $newMedias );
 
 	}
 
@@ -168,6 +147,74 @@ class TrickEditionHandler {
 		}
 
 		return $mediasToBeDeleted;
+	}
+
+	/**
+	 * @param array $DTOs
+	 *
+	 * @return array
+	 */
+	private function addNewMedia( array $DTOs ): array {
+		$newMedias = [];
+
+		foreach ( $DTOs as $key => $mediaDto ) {
+			if ( empty( $mediaDto->id ) ) {
+				$newMedias[] = $this->generateMedia( $mediaDto );
+				unset( $DTOs[ $key ] );
+			}
+		}
+
+		return $newMedias;
+	}
+
+	/**
+	 * @param array $DTOs
+	 * @param array $medias
+	 * @param Trick $trick
+	 *
+	 * @return array
+	 */
+	private function deleteMedias( array $DTOs, array $medias, Trick $trick ): array {
+		$dataTransferObjectIds = array_map( fn( $obj ) => $obj->id, $DTOs );
+		$mediaEntityIds        = array_map( fn( $obj ) => $obj->getId()->toString(), $medias );
+
+		$mediasIdToDelete = array_diff( $mediaEntityIds, $dataTransferObjectIds );
+		$mediaToDelete    = $this->getMediaToDelete( $mediasIdToDelete, $medias );
+
+		foreach ( $mediaToDelete as $key => $media ) {
+			$medias = $trick->removeMedia( $media );
+		}
+
+		return $medias;
+	}
+
+	/**
+	 * @param array $DTOs
+	 * @param array $medias
+	 *
+	 * @return array
+	 */
+	private function updateMediaIfModified( array $DTOs, array $medias ): array {
+		$updatedMedias = [];
+		foreach ( $DTOs as $mediaDto ) {
+
+			$name = $this->isVideo( $mediaDto ) ? $mediaDto->title : $mediaDto->name;
+
+			foreach ( $medias as $media ) {
+				if ( $media->getId()->toString() === $mediaDto->id ) {
+					if ( ! empty( $mediaDto->file ) ) {
+						$updatedMedias[] = $this->generateMedia( $mediaDto );
+					}
+
+					if ( $media->getName() !== $name || $media->getDescription() !== $mediaDto->description ) {
+						$media->updateName( $mediaDto->name );
+						$media->updateDescription( $mediaDto->description );
+					}
+				}
+			}
+		}
+
+		return $updatedMedias;
 	}
 
 }

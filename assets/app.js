@@ -17,7 +17,8 @@ bsCustomFileInput.init()
 const flashToast = document.getElementById('homeToast')
 if (flashToast) {
   const flashInit = new Toast(flashToast, {
-    autohide: false,
+    autohide: true,
+    delay: 5000,
   })
   flashInit.show()
 }

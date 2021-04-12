@@ -104,12 +104,16 @@ class Trick {
 
 	/**
 	 * @param Media $media
+	 *
+	 * @return array
 	 */
-	public function removeMedia( Media $media ) {
+	public function removeMedia( Media $media ): array {
 		if ( ! $this->medias->contains( $media ) || ! isset( $media ) ) {
-			return;
+			return $this->getMedias()->getValues();
 		}
 		$this->medias->removeElement( $media );
+
+		return $this->getMedias()->getValues();
 	}
 
 
@@ -120,6 +124,7 @@ class Trick {
 	 * @return $this
 	 */
 	public function update( TrickDTO $trickDTO, array $mediaEntity ): Trick {
+
 		$this->name         = (string) $trickDTO->name;
 		$this->description  = (string) $trickDTO->description;
 		$this->tricks_group = $trickDTO->trickGroup;
@@ -196,7 +201,5 @@ class Trick {
 				return $media;
 			}
 		}
-
-		return null;
 	}
 }

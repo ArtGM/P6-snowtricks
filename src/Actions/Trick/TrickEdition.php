@@ -82,7 +82,7 @@ class TrickEdition {
 			->handleRequest( $request );
 
 		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
-			$trickEditionHandler->handle( $trickEditionForm, $trick );
+			$trickEditionHandler->manageTrickEdition( $trickEditionForm, $trick );
 			$flashBag->add( 'success', 'Trick was updated !' );
 
 			return $redirectResponders( 'homepage' );
