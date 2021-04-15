@@ -130,7 +130,7 @@ class UserAskResetPassword {
 	private function getResetPasswordUrl(
 		TokenHistory $newToken
 	): string {
-		return $this->urlGenerator->generate( 'reset_password', [ 'value' => $newToken->getValue() ] );
+		return $this->urlGenerator->generate( 'reset_password', [ 'value' => $newToken->getValue() ], UrlGeneratorInterface::ABSOLUTE_URL );
 	}
 
 	/**

@@ -104,7 +104,7 @@ class UserRegistration {
 
 			$this->entityManager->flush();
 
-			$confirmAccountUrl = $urlGenerator->generate( 'confirm_account', [ 'value' => $token->getValue() ] );
+			$confirmAccountUrl = $urlGenerator->generate( 'confirm_account', [ 'value' => $token->getValue() ], UrlGeneratorInterface::ABSOLUTE_URL );
 
 			try {
 				$email = ( new TemplatedEmail() )

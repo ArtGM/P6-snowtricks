@@ -13,6 +13,7 @@ use App\Responders\ViewResponders;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
@@ -39,12 +40,10 @@ class UserConfirmAccount {
 		TokenHistoryRepository $tokenHistoryRepository,
 		UserRepository $userRepository,
 		RedirectResponders $redirectResponders,
-		AuthorizationCheckerInterface $authorizationChecker
+		AuthorizationCheckerInterface $authorizationChecker,
+		FlashBagInterface $flashBag
 	): Response {
 
-		if ( ! $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
-			return $redirectResponders( 'homepage' );
-		}
 
 		/** @var TokenHistory $token */
 		$token = $tokenHistoryRepository->findOneBy( [ 'value' => $value ] );
@@ -64,6 +63,7 @@ class UserConfirmAccount {
 			$user->confirmAccount();
 			$this->entityManager->persist( $user );
 			$this->entityManager->flush();
+			$flashBag->add( 'success', 'your account is confirmed, please log in !' );
 		}
 
 		return $viewResponders( 'core/account_confirmed.html.twig', [

@@ -12,6 +12,7 @@ use App\Entity\Media;
 use App\Entity\Trick;
 use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Form\FormInterface;
 
 class TrickEditionHandler {
@@ -182,11 +183,17 @@ class TrickEditionHandler {
 		$mediaToDelete    = $this->getMediaToDelete( $mediasIdToDelete, $medias );
 
 		foreach ( $mediaToDelete as $key => $media ) {
+
+			if ( $media->getType() !== 'video' ) {
+				$this->fileUploader->deleteFile( $media->getName() );
+			}
+
 			$medias = $trick->removeMedia( $media );
 		}
 
 		return $medias;
 	}
+
 
 	/**
 	 * @param array $DTOs
