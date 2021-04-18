@@ -1,0 +1,33 @@
+@startuml
+actor User
+entity App
+database Database
+
+User --> App: "submit trick form"
+activate App
+App --> App: "Form validation"
+  group Form is invalid
+  App --x User: "Form is invalid" 
+  end
+  group Form is Valid
+  group Add new trick
+  App --> Database: "Insert new trick"
+  App --> App: "Redirect Homepage"
+  App --> User: "Trick Created"
+  end
+  group Update Existing trick
+  App --> App: "Fields to update"
+  App --> Database: "Update Trick"
+  App --> App: "Redirect Homepage"
+  App --> User: "Trick updated"
+  end
+  end
+  group Delete trick
+  User --> App: "Click on Delete Button"
+  App --> Database: "Delete"
+  App --> App: "Redirect Homepage"
+  App --> User: "Trick Deleted"
+  deactivate App
+  end
+
+@enduml

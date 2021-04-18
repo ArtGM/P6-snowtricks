@@ -1,0 +1,35 @@
+@startuml
+actor User
+entity App
+entity Mail
+database Database
+
+User --> App: "submit signup form"
+activate App
+App --> App: "Form validation"
+  group Form is invalid
+  App --x User: "Form is invalid" 
+  end
+  group Form is Valid
+  App --> Database: "Create New User"
+  App --> User: "Account Created"
+  App --> Mail: "Add credentials to Mail"
+  activate Mail
+deactivate App
+  Mail --> User: "Send Confirm Email"
+  deactivate Mail
+  end
+  group confirm Account
+  User -> App: "Confirm account Link on Email"
+  activate App
+  App --> App: "Check Token"
+    group token is invalid
+      App --x User: "Token is invalid"
+    end
+    group token is valid
+      App --> User: "Your account is confirmed"
+      deactivate App
+    end
+  end
+
+@enduml

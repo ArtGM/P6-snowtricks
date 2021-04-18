@@ -1,0 +1,17 @@
+@startuml
+actor User
+entity App
+database Database
+
+User --> App: "Click on Load More"
+activate App
+App --> App: "Ajax Call"
+App --> Database: "next Tricks ?"
+Database --> App: "Next Tricks"
+App -> User: "Show Next Tricks"
+opt end of List
+  Database --> App: "No Tricks"
+  App --> User: "No Remaining Tricks"
+end
+
+@enduml

@@ -8,14 +8,13 @@ Class Trick {
 -description: text
 -tricks_group: integer
 -medias
--contributors
 }
-Class Tricks_group {
+Class TricksGroup {
   -id: integer
   -name: string
   -description: text
 }
-Class TrickGroup {
+Class Media {
   -id: integer
   -name: string
   -description: text
@@ -37,13 +36,22 @@ Class Comment {
   -trick
   -user
 }
+Class TokenHistory {
+  -id: integer
+  -createdAt: datetime
+  -value: string
+  -type: string
+  -user: User
+}
 
-TrickGroup  "one" --o  "one" User
-Trick  "one" --*  "one" Tricks_group
+
+Media "one" --o  "one" User
 Trick  "one" *--  "many" User
+Trick "many" -- "one" TricksGroup
 User  "one" *--  "many" Comment
-TrickGroup  "one" --o "one" Trick
+Media  "one" -o "many" Trick
 Comment "one" --* "one" Trick
+User "one" --* "many" TokenHistory
 
 
 

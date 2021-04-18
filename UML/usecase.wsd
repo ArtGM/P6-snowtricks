@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+:Utilisateur enregistré: as U
+:Visiteur: as V
+
+rectangle Application {
+  usecase "Consulter la page d'accueil (liste des tricks)" as Home
+  usecase "Consulter les details d'un trick" as Single
+  usecase "Créer un compte utilisateur" as Signup
+  usecase "Se connecter" as Login
+  usecase "Demander un nouveau mot de passe" as Reset
+  usecase "Ajouter un trick" as AddNew
+  usecase "Modifier un trick" as Update
+  usecase "Supprimer un Trick" as Delete
+  usecase "Ajouter un commentaire" as Comment
+  usecase "Modifier son profil utilisateur" as UpdateProfile
+  usecase "se deconnecter" as Logout
+}
+
+V <|- U
+V --> Home
+V --> Single
+V --> Signup
+U --> Login
+U --> Reset
+U --> AddNew
+U --> Update
+U --> Delete
+U --> Comment
+U --> UpdateProfile
+U --> Logout
+
+
+@enduml

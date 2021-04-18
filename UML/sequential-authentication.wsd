@@ -1,0 +1,28 @@
+@startuml
+actor User
+entity App
+database Database
+
+User --> App: "submit login form"
+activate App
+App --> App: "Form validation"
+  group Form is invalid
+  App --x User: "Form is invalid" 
+  end
+  group Form is Valid
+  App --> Database: "User Is registered ?"
+  activate Database
+  group User don't Exist or Invalid credentials
+  Database --> App: "User not Found"
+  App --X User: "Invalid credentials"
+  end
+  group User Exist
+  Database --> App: "User Authenticated"
+  deactivate Database
+  App --> App: "Redirect Homepage"
+  App --> User: "Hi User!"
+  deactivate App
+  end
+  end
+
+@enduml
