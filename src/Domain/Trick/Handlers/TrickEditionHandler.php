@@ -6,6 +6,7 @@ namespace App\Domain\Trick\Handlers;
 
 use App\Domain\Media\Handlers\MediaHandler;
 use App\Domain\Media\ImageDTO;
+use App\Domain\Media\Interfaces\MediaDTOInterface;
 use App\Domain\Media\VideoDTO;
 use App\Domain\Trick\TrickDTO;
 use App\Entity\Media;
@@ -176,8 +177,8 @@ class TrickEditionHandler {
 	 * @return array
 	 */
 	private function deleteMedias( array $DTOs, array $medias, Trick $trick ): array {
-		$dataTransferObjectIds = array_map( fn( $obj ) => $obj->id, $DTOs );
-		$mediaEntityIds        = array_map( fn( $obj ) => $obj->getId()->toString(), $medias );
+		$dataTransferObjectIds = array_map( fn( MediaDTOInterface $obj ) => $obj->id, $DTOs );
+		$mediaEntityIds        = array_map( fn( Media $obj ) => $obj->getId()->toString(), $medias );
 
 		$mediasIdToDelete = array_diff( $mediaEntityIds, $dataTransferObjectIds );
 		$mediaToDelete    = $this->getMediaToDelete( $mediasIdToDelete, $medias );
