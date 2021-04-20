@@ -1,0 +1,24 @@
+@startuml
+actor User
+entity App
+database Database
+
+User --> App: "is logged in?"
+activate App
+  group Not Logged in
+  App --x User: "Please Login to write Comment" 
+  end
+  group User is Logged in 
+  User --> App: "Write Comment"
+  App --> App: "Form Validation"
+  opt Valid Form 
+  App --> Database: "New Comment on Trick"
+  App --> App: "Redirect Homepage"
+  App --> User: "Comment successfully Added"
+  end
+  opt Invalid Form
+   App --X User: "Form is invalid"
+   end
+  end
+
+@enduml
