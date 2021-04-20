@@ -4,10 +4,11 @@
 namespace App\Domain\Media;
 
 
+use App\Domain\Media\Interfaces\MediaDTOInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class ImageDTO {
+class ImageDTO implements MediaDTOInterface {
 
 	/**
 	 * @var string|null

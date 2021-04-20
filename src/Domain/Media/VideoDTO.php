@@ -3,9 +3,10 @@
 
 namespace App\Domain\Media;
 
+use App\Domain\Media\Interfaces\MediaDTOInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class VideoDTO {
+class VideoDTO implements MediaDTOInterface {
 
 	/**
 	 * @var string|null
