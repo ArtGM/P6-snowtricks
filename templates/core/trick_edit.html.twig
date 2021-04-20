@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-    <header class="masthead masthead--minimal" style="background-image: url(/images/shifty.jpg)">
+    <header class="masthead masthead--minimal" style="background-image: url(/images/main.jpg)">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -50,11 +50,10 @@
                                 <div class="collapse" id="edit{{ loop.index }}">
                                     {{ form_rest(imageField) }}
                                 </div>
-                                {% if loop.index != 1 %}
-                                    <button class="btn  btn-sm btn-outline-danger w-100 mt-3 remove-image" type="button"
-                                            data-id="col-id-{{ loop.index }}">delete
-                                    </button>
-                                {% endif %}
+                                <button class="btn  btn-sm btn-outline-danger w-100 mt-3 remove-image" type="button"
+                                        data-id="col-id-{{ loop.index }}">delete
+                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -67,24 +66,25 @@
         </div>
 
         <div class="form-group">
-            <ul class="form-row list-group-flush" id="videoFieldsList"
+            <ul class="list-group trickform_video-list" id="videoFieldsList"
                 data-prototype="{{ form_widget(editTrickForm.video.vars.prototype)|e }}"
                 data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
                 data-widget-counter="{{ editTrickForm.video|length }}"
                 data-youtube-api="{{ youtubeApiKey }}">
 
                 {% for videoField in editTrickForm.video %}
-                    <li class="list-group-item" id="field-id-{{ loop.index }}">
+                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                        id="field-id-{{ loop.index }}">
                         <div id="{{ videoField.vars.id }}">
                             <img src="https://img.youtube.com/vi/{{ videoField.vars.value.url }}/default.jpg" alt="">
-                                <input type="text" id="{{ videoField.vars.id }}_id"
-                                       name="{{ videoField.vars.full_name }}[id]"
-                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
-                                <input type="text" id="{{ videoField.vars.id }}_title"
-                                       name="{{ videoField.vars.full_name }}[title]"
-                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.title }}">
-                                <input type="text" id="{{ videoField.vars.id }}_description"
-                                       name="{{ videoField.vars.full_name }}[description]"
+                            <input type="text" id="{{ videoField.vars.id }}_id"
+                                   name="{{ videoField.vars.full_name }}[id]"
+                                   class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
+                            <input type="text" id="{{ videoField.vars.id }}_title"
+                                   name="{{ videoField.vars.full_name }}[title]"
+                                   class="form-control" hidden="hidden" value="{{ videoField.vars.value.title }}">
+                            <input type="text" id="{{ videoField.vars.id }}_description"
+                                   name="{{ videoField.vars.full_name }}[description]"
                                        class="form-control" hidden="hidden"
                                        value="{{ videoField.vars.value.description }}">
                             <div class="form-group">
@@ -101,7 +101,7 @@
                     {{ form_errors(videoField) }}
                 {% endfor %}
             </ul>
-            <button type="button" data-list-selector="#videoFieldsList" class="btn btn-sm btn-success"
+            <button type="button" data-list-selector="#videoFieldsList" class="my-2 btn btn-sm btn-success"
                     id="addVideoButton">Add
                 Video
             </button>

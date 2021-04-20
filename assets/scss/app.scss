@@ -9,6 +9,7 @@
 @import "contact";
 @import "footer";
 @import "bootstrap-overrides";
+@import "form";
 
 .footer {
     margin-top: 70px;
@@ -159,6 +160,10 @@ body {
 
         &.success {
             background-color: $success;
+        }
+
+        &.warning {
+            background-color: $warning;
         }
     }
 }

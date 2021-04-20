@@ -2,7 +2,9 @@
 
 {% block header %}
     <header class="masthead masthead--minimal"
-            style="background-image: url({{ asset('uploads/' ~ singleTrick.getFirstImage.file ) }}) center">
+            {% if singleTrick.getFirstImage %}
+        style="background-image: url('{{ asset('uploads/' ~ singleTrick.getFirstImage.file ) }}')"
+            {% endif %}>
         <div class="overlay"></div>
         <div class="container">
             <div class="row">

@@ -31,8 +31,7 @@ addImageButton.addEventListener('click', () => {
   column.setAttribute('id', colId)
 
   const cardLayout = document.createElement('div')
-  cardLayout.classList.add('card')
-  cardLayout.classList.add('p-3')
+  cardLayout.classList.add('card', 'p-3')
   cardLayout.innerHTML = newImageWidget
 
   const deleteButton = document.createElement('button')
@@ -65,7 +64,7 @@ addVideoButton.addEventListener('click', () => {
   deleteVideoButton.append('X')
   deleteVideoButton.setAttribute('data-id', fieldId)
   deleteVideoButton.setAttribute('type', 'button')
-
+  row.classList.add('list-group-item')
   row.setAttribute('id', fieldId)
 
   row.innerHTML = newVideoWidget
@@ -115,8 +114,9 @@ document.addEventListener('change', function (e) {
         `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${ytApiKey}&part=snippet`).
         then(response => response.json()).
         then(data => {
+          console.log(data)
           videoThumbnail.setAttribute('src',
-            data.items[0].snippet.thumbnails.medium.url)
+            data.items[0].snippet.thumbnails.default.url)
           title.value = data.items[0].snippet.title
           description.value = data.items[0].snippet.description
           parent.insertBefore(videoThumbnail, element)
