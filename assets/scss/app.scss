@@ -133,8 +133,11 @@ fieldset {
     top: 0;
     right: 0;
     padding: 5px;
-    opacity: 0;
-    transition: opacity 0.2s ease-in;
+    @media screen and (min-width: 992px) {
+
+        opacity: 0;
+        transition: opacity 0.2s ease-in;
+    }
 }
 
 body {

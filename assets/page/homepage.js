@@ -19,7 +19,6 @@ const getTricks = () => {
       const response = await fetch(url, fetchOptions)
 
       const data = await response.json()
-      console.log(data)
       const trickTemplate = await data.html
       const endMessage = await data.message
 
