@@ -26,86 +26,96 @@
         }) }}
 
 
+        <button class="btn btn-outline-primary w-100 d-block d-md-none my-3" type="button" data-toggle="collapse"
+                data-target="#medias"
+                aria-controls="medias" aria-expanded="false" aria-label="Toggle navigation">
+            <span>See Medias</span>
+        </button>
+        <div id="medias" class="collapse navbar-collapse">
+
+            <div class="form-group">
+                <div class="form-row my-3" id="imagesFieldsList"
+                     data-prototype="{{ form_rest(editTrickForm.images.vars.prototype)|e }}"
+                     data-widget-tags="{{ '<div class="card"></div>'|e }}"
+                     data-widget-counter="{{ editTrickForm.images|length }}">
+                    {% for imageField in editTrickForm.images %}
+                        <div class="col-12 col-md-4" id="col-id-{{ loop.index }}">
+                            <div class="card h-100 justify-content-between">
+                                {{ form_errors(imageField) }}
+                                <div class="card-body">
+                                    <img class="img-thumbnail"
+                                         src="{{ asset('uploads/' ~ imageField.vars.value.file.filename) }}" alt="">
+                                    <button type="button" data-toggle="collapse"
+                                            data-target="#edit{{ loop.index }}" aria-expanded="false"
+                                            aria-controls="collapseImageEdit"
+                                            class="btn btn-sm btn-outline-success w-100">
+                                        Edit
+                                    </button>
+                                    <div class="collapse" id="edit{{ loop.index }}">
+                                        {{ form_rest(imageField) }}
+                                    </div>
+                                    <button class="btn  btn-sm btn-outline-danger w-100 mt-3 remove-image" type="button"
+                                            data-id="col-id-{{ loop.index }}">delete
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+                <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
+                        id="addImageButton">Add Image
+                </button>
+            </div>
+
+            <div class="form-group">
+                <ul class="list-group trickform_video-list" id="videoFieldsList"
+                    data-prototype="{{ form_widget(editTrickForm.video.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
+                    data-widget-counter="{{ editTrickForm.video|length }}"
+                    data-youtube-api="{{ youtubeApiKey }}">
+
+                    {% for videoField in editTrickForm.video %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            id="field-id-{{ loop.index }}">
+                            <div id="{{ videoField.vars.id }}">
+                                <img src="https://img.youtube.com/vi/{{ videoField.vars.value.url }}/default.jpg"
+                                     alt="">
+                                <input type="text" id="{{ videoField.vars.id }}_id"
+                                       name="{{ videoField.vars.full_name }}[id]"
+                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
+                                <input type="text" id="{{ videoField.vars.id }}_title"
+                                       name="{{ videoField.vars.full_name }}[title]"
+                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.title }}">
+                                <input type="text" id="{{ videoField.vars.id }}_description"
+                                       name="{{ videoField.vars.full_name }}[description]"
+                                       class="form-control" hidden="hidden"
+                                       value="{{ videoField.vars.value.description }}">
+                                <div class="form-group">
+                                    <input type="text" id="{{ videoField.vars.id }}_url"
+                                           name="{{ videoField.vars.full_name }}[url]"
+                                           inputmode="url" class="form-control"
+                                           value="https://www.youtube.com/watch?v={{ videoField.vars.value.url }}">
+                                </div>
+                            </div>
+                            <button class="btn btn-danger remove-video" data-id="field-id-{{ loop.index }}"
+                                    type="button">
+                                X
+                            </button>
+                        </li>
+                        {{ form_errors(videoField) }}
+                    {% endfor %}
+                </ul>
+                <button type="button" data-list-selector="#videoFieldsList" class="my-2 btn btn-sm btn-success"
+                        id="addVideoButton">Add
+                    Video
+                </button>
+            </div>
+        </div>
         {{ form_row(editTrickForm.name) }}
         {{ form_row(editTrickForm.description) }}
         {{ form_row(editTrickForm.trickGroup) }}
-
-        <div class="form-group">
-            <div class="form-row my-3" id="imagesFieldsList"
-                 data-prototype="{{ form_rest(editTrickForm.images.vars.prototype)|e }}"
-                 data-widget-tags="{{ '<div class="card"></div>'|e }}"
-                 data-widget-counter="{{ editTrickForm.images|length }}">
-                {% for imageField in editTrickForm.images %}
-                    <div class="col-12 col-md-4" id="col-id-{{ loop.index }}">
-                        <div class="card h-100 justify-content-between">
-                            {{ form_errors(imageField) }}
-                            <div class="card-body">
-                                <img class="img-thumbnail"
-                                     src="{{ asset('uploads/' ~ imageField.vars.value.file.filename) }}" alt="">
-                                <button type="button" data-toggle="collapse"
-                                        data-target="#edit{{ loop.index }}" aria-expanded="false"
-                                        aria-controls="collapseImageEdit" class="btn btn-sm btn-outline-success w-100">
-                                    Edit
-                                </button>
-                                <div class="collapse" id="edit{{ loop.index }}">
-                                    {{ form_rest(imageField) }}
-                                </div>
-                                <button class="btn  btn-sm btn-outline-danger w-100 mt-3 remove-image" type="button"
-                                        data-id="col-id-{{ loop.index }}">delete
-                                </button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                {% endfor %}
-            </div>
-            <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
-                    id="addImageButton">Add Image
-            </button>
-        </div>
-
-        <div class="form-group">
-            <ul class="list-group trickform_video-list" id="videoFieldsList"
-                data-prototype="{{ form_widget(editTrickForm.video.vars.prototype)|e }}"
-                data-widget-tags="{{ '<li class="input-group mb-3"></li>'|e }}"
-                data-widget-counter="{{ editTrickForm.video|length }}"
-                data-youtube-api="{{ youtubeApiKey }}">
-
-                {% for videoField in editTrickForm.video %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        id="field-id-{{ loop.index }}">
-                        <div id="{{ videoField.vars.id }}">
-                            <img src="https://img.youtube.com/vi/{{ videoField.vars.value.url }}/default.jpg" alt="">
-                            <input type="text" id="{{ videoField.vars.id }}_id"
-                                   name="{{ videoField.vars.full_name }}[id]"
-                                   class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
-                            <input type="text" id="{{ videoField.vars.id }}_title"
-                                   name="{{ videoField.vars.full_name }}[title]"
-                                   class="form-control" hidden="hidden" value="{{ videoField.vars.value.title }}">
-                            <input type="text" id="{{ videoField.vars.id }}_description"
-                                   name="{{ videoField.vars.full_name }}[description]"
-                                       class="form-control" hidden="hidden"
-                                       value="{{ videoField.vars.value.description }}">
-                            <div class="form-group">
-                                <input type="text" id="{{ videoField.vars.id }}_url"
-                                       name="{{ videoField.vars.full_name }}[url]"
-                                       inputmode="url" class="form-control"
-                                       value="https://www.youtube.com/watch?v={{ videoField.vars.value.url }}">
-                            </div>
-                        </div>
-                        <button class="btn btn-danger remove-video" data-id="field-id-{{ loop.index }}" type="button">
-                            X
-                        </button>
-                    </li>
-                    {{ form_errors(videoField) }}
-                {% endfor %}
-            </ul>
-            <button type="button" data-list-selector="#videoFieldsList" class="my-2 btn btn-sm btn-success"
-                    id="addVideoButton">Add
-                Video
-            </button>
-        </div>
 
         <button class="btn btn-primary" type="submit">Update</button>
         <a class="btn btn-danger" role="button"
