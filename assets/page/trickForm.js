@@ -27,7 +27,7 @@ addImageButton.addEventListener('click', () => {
   const colId = 'col-id-' + imageCounter
 
   const column = document.createElement('div')
-  column.classList.add('col-4', 'my-2')
+  column.classList.add('col-12', 'col-md-4', 'my-2')
   column.setAttribute('id', colId)
 
   const cardLayout = document.createElement('div')

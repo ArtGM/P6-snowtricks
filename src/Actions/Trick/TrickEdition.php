@@ -91,7 +91,8 @@ class TrickEdition {
 		$templateVars = [
 			'editTrickForm' => $trickEditionForm->createView(),
 			'trickMedias'   => $trick->getMedias(),
-			'trickName'     => $trick->getName()
+			'trickName'     => $trick->getName(),
+			'slug'          => $trick->getSlug()
 		];
 
 		return $viewResponders( 'core/trick_edit.html.twig', $templateVars );

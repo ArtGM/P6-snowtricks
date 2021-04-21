@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-    <header class="masthead" style="background-image: url(/images/main.jpg)">
+    <header class="masthead masthead--minimal" style="background-image: url(/images/main.jpg)">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -16,11 +16,10 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Create New Account</h1>
     <div class="row my-3 justify-content-center">
         {{ form_start(signUpForm, {
             'attr': {
-                'class': 'col-6'
+                'class': 'col-12 col-md-6'
             }
         }) }}
 

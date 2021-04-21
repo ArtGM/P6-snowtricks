@@ -44,7 +44,7 @@
         <div>
 
 
-            <div class="block-trick-gallery">
+            <div class="block-trick-gallery d-none d-md-block ">
                 {% for media in singleTrick.getMedias %}
                     {% if media.type != 'video' %}
                         <figure>
@@ -72,10 +72,6 @@
                     <a class="btn btn-primary" role="button"
                        href="{{ path('trick-edition',  { 'slug': singleTrick.getSlug }) }}">
                         Edit
-                    </a>
-                    <a class="btn btn-danger" role="button"
-                       href="{{ path('delete-trick',  { 'slug': singleTrick.getSlug }) }}">
-                        Delete
                     </a>
                 </p>
             {% endif %}

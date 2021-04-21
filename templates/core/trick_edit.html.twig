@@ -36,7 +36,7 @@
                  data-widget-tags="{{ '<div class="card"></div>'|e }}"
                  data-widget-counter="{{ editTrickForm.images|length }}">
                 {% for imageField in editTrickForm.images %}
-                    <div class="col-4" id="col-id-{{ loop.index }}">
+                    <div class="col-12 col-md-4" id="col-id-{{ loop.index }}">
                         <div class="card h-100 justify-content-between">
                             {{ form_errors(imageField) }}
                             <div class="card-body">
@@ -108,6 +108,10 @@
         </div>
 
         <button class="btn btn-primary" type="submit">Update</button>
+        <a class="btn btn-danger" role="button"
+           href="{{ path('delete-trick',  { 'slug': slug }) }}">
+            Delete
+        </a>
         {{ form_row(editTrickForm._token) }}
         {{ form_end(editTrickForm, {'render_rest': false}) }}
     </div>

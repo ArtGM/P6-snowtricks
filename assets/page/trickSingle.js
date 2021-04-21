@@ -10,6 +10,15 @@ imageHighLight.slick({
   arrows: false,
   fade: true,
   asNavFor: gallery,
+  responsive: [
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: true,
+        autoplay: true,
+      },
+    },
+  ],
 })
 
 gallery.slick({
@@ -19,4 +28,10 @@ gallery.slick({
   dots: true,
   centerMode: true,
   focusOnSelect: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: 'unslick',
+    },
+  ],
 })

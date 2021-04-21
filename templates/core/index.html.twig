@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-    <header class="masthead" style="background-image: url(/images/main.jpg)">
+    <header class="masthead masthead--cover" style="background-image: url(/images/main.jpg)">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -11,6 +11,9 @@
                         <span class="subheading">Community around snownboard</span>
                     </div>
                 </div>
+            </div>
+            <div class="scroll-down" id="scrollDown">
+                {% include 'icons/arrow-down.html.twig' %}
             </div>
         </div>
     </header>
