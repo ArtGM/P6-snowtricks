@@ -81,12 +81,6 @@ class TrickEdition {
 			->create( TrickFormType::class, $trickDto, [ 'validation_groups' => [ 'update' ] ] )
 			->handleRequest( $request );
 
-		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
-			$trickEditionHandler->manageTrickEdition( $trickEditionForm, $trick );
-			$flashBag->add( 'success', 'Trick was updated !' );
-
-			return $redirectResponders( 'homepage' );
-		}
 
 		$templateVars = [
 			'editTrickForm' => $trickEditionForm->createView(),
@@ -94,6 +88,13 @@ class TrickEdition {
 			'trickName'     => $trick->getName(),
 			'slug'          => $trick->getSlug()
 		];
+
+		if ( $trickEditionForm->isSubmitted() && $trickEditionForm->isValid() ) {
+			$trickEditionHandler->manageTrickEdition( $trickEditionForm, $trick );
+			$flashBag->add( 'success', 'Trick was updated !' );
+
+			return $redirectResponders( 'homepage' );
+		}
 
 		return $viewResponders( 'core/trick_edit.html.twig', $templateVars );
 	}

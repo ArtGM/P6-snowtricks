@@ -12,6 +12,7 @@ header.masthead {
         right: 10%;
         z-index: 99;
         animation: 3s smooth infinite;
+        cursor: pointer;
     }
 
     @keyframes smooth {

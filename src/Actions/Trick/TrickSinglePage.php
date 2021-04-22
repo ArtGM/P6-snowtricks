@@ -82,6 +82,8 @@ class TrickSinglePage {
 		$medias       = $singleTrick->getMedias()->toArray();
 		$templateVars = [
 			'singleTrick'  => $singleTrick,
+			'creationDate' => $singleTrick->getCreatedAt()->format( 'd F Y' ),
+			'trickGroup'   => $singleTrick->getTricksGroup(),
 			'medias'       => $medias,
 			'commentsList' => $commentsList
 		];

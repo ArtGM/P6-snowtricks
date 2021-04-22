@@ -10,7 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 class Error {
-
+	/**
+	 * @param ViewResponders $viewResponders
+	 * @param FlattenException $exception
+	 *
+	 * @return Response
+	 */
 	public static function show( ViewResponders $viewResponders, FlattenException $exception ): Response {
 		$template = 'error/error' . $exception->getStatusCode() . '.html.twig';
 

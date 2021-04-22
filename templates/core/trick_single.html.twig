@@ -81,6 +81,9 @@
 
         <div class="jumbotron">
             <p class="lead">{{ singleTrick.getDescription }}</p>
+            <hr class="my-2">
+            <p><span class="badge badge-primary">{{ creationDate }}</span> <span
+                        class="badge badge-primary">{{ trickGroup }}</span></p>
             {% if app.user is not null %}
                 <hr class="my-4">
                 <p class="lead">
