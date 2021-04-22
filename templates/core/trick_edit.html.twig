@@ -48,7 +48,7 @@
                                     <button type="button" data-toggle="collapse"
                                             data-target="#edit{{ loop.index }}" aria-expanded="false"
                                             aria-controls="collapseImageEdit"
-                                            class="btn btn-sm btn-outline-success w-100">
+                                            class="btn btn-sm btn-outline-primary w-100">
                                         Edit
                                     </button>
                                     <div class="collapse" id="edit{{ loop.index }}">
@@ -64,7 +64,7 @@
 
                     {% endfor %}
                 </div>
-                <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-success"
+                <button type="button" data-list-selector="#imagesFieldsList" class="btn btn-sm btn-secondary"
                         id="addImageButton">Add Image
                 </button>
             </div>
@@ -112,7 +112,7 @@
                         {{ form_errors(videoField) }}
                     {% endfor %}
                 </ul>
-                <button type="button" data-list-selector="#videoFieldsList" class="my-2 btn btn-sm btn-success"
+                <button type="button" data-list-selector="#videoFieldsList" class="my-2 btn btn-sm btn-secondary"
                         id="addVideoButton">Add
                     Video
                 </button>

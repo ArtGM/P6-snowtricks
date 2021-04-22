@@ -26,7 +26,8 @@
                     </div>
                 {% else %}
                     <div class="alert alert-warning">
-                        This link is expired ! <a href="">Send new confirmation email</a>
+                        This link is expired ! <a href="{{ path('ask_reset_password') }}">Send new confirmation
+                            email</a>
                     </div>
                 {% endif %}
             {% else %}
