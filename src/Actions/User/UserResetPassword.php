@@ -57,6 +57,8 @@ class UserResetPassword {
 		$token = $tokenHistoryRepository->findOneBy( [ 'value' => $value ] );
 
 		if ( ! $token instanceof TokenHistory ) {
+			$flashBag->add( 'warning', 'Token is invalid' );
+
 			return $redirectResponders( 'homepage' );
 		}
 
@@ -90,6 +92,7 @@ class UserResetPassword {
 				'resetPasswordForm' => $resetPasswordForm->createView()
 			] );
 		}
+		$flashBag->add( 'warning', 'The Link is expired, please ask for new.' );
 
 		return $redirectResponders( 'homepage' );
 	}

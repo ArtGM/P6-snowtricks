@@ -49,6 +49,8 @@ class UserConfirmAccount {
 		$token = $tokenHistoryRepository->findOneBy( [ 'value' => $value ] );
 
 		if ( ! $token instanceof TokenHistory ) {
+			$flashBag->add( 'warning', 'Token is invalid' );
+
 			return $redirectResponders( 'homepage' );
 		}
 
@@ -65,9 +67,9 @@ class UserConfirmAccount {
 			$this->entityManager->flush();
 			$flashBag->add( 'success', 'your account is confirmed, please log in !' );
 		}
-
 		return $viewResponders( 'core/account_confirmed.html.twig', [
 			'confirmation' => isset( $user ) ? $user->isConfirmed() : null
 		] );
+
 	}
 }
