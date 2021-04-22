@@ -11,7 +11,9 @@
                 <img loading="lazy" src="{{ asset('uploads/' ~ medias.getValues[0].getFile) }}" class="card-img-top"
                      alt="{{ medias[0].getName }}">
             {% endif %}
-
+        {% else %}
+            <img loading="lazy" src="{{ asset('images/default_trick.png') }}" class="card-img-top"
+                 alt="default">
         {% endif %}
 
 

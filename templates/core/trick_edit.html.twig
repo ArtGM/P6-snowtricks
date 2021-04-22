@@ -31,7 +31,7 @@
                 aria-controls="medias" aria-expanded="false" aria-label="Toggle navigation">
             <span>See Medias</span>
         </button>
-        <div id="medias" class="collapse navbar-collapse">
+        <div id="medias" class="collapse show navbar-collapse">
 
             <div class="form-group">
                 <div class="form-row my-3" id="imagesFieldsList"
@@ -79,24 +79,29 @@
                     {% for videoField in editTrickForm.video %}
                         <li class="list-group-item d-flex justify-content-between align-items-center"
                             id="field-id-{{ loop.index }}">
-                            <div id="{{ videoField.vars.id }}">
-                                <img src="https://img.youtube.com/vi/{{ videoField.vars.value.url }}/default.jpg"
+                            <div id="{{ videoField.vars.id }}" class="w-100 d-flex align-center justify-content-start">
+                                <img class="img-thumbnail"
+                                     src="https://img.youtube.com/vi/{{ videoField.vars.value.url }}/default.jpg"
                                      alt="">
-                                <input type="text" id="{{ videoField.vars.id }}_id"
-                                       name="{{ videoField.vars.full_name }}[id]"
-                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
-                                <input type="text" id="{{ videoField.vars.id }}_title"
-                                       name="{{ videoField.vars.full_name }}[title]"
-                                       class="form-control" hidden="hidden" value="{{ videoField.vars.value.title }}">
-                                <input type="text" id="{{ videoField.vars.id }}_description"
-                                       name="{{ videoField.vars.full_name }}[description]"
-                                       class="form-control" hidden="hidden"
-                                       value="{{ videoField.vars.value.description }}">
-                                <div class="form-group">
-                                    <input type="text" id="{{ videoField.vars.id }}_url"
-                                           name="{{ videoField.vars.full_name }}[url]"
-                                           inputmode="url" class="form-control"
-                                           value="https://www.youtube.com/watch?v={{ videoField.vars.value.url }}">
+                                <p class="mx-2">{{ videoField.vars.value.title }}</p>
+                                <div>
+                                    <input type="text" id="{{ videoField.vars.id }}_id"
+                                           name="{{ videoField.vars.full_name }}[id]"
+                                           class="form-control" hidden="hidden" value="{{ videoField.vars.value.id }}">
+                                    <input type="text" id="{{ videoField.vars.id }}_title"
+                                           name="{{ videoField.vars.full_name }}[title]"
+                                           class="form-control" hidden="hidden"
+                                           value="{{ videoField.vars.value.title }}">
+                                    <input type="text" id="{{ videoField.vars.id }}_description"
+                                           name="{{ videoField.vars.full_name }}[description]"
+                                           class="form-control" hidden="hidden"
+                                           value="{{ videoField.vars.value.description }}">
+                                    <div class="form-group">
+                                        <input type="text" id="{{ videoField.vars.id }}_url"
+                                               name="{{ videoField.vars.full_name }}[url]"
+                                               inputmode="url" class="form-control" hidden="hidden"
+                                               value="https://www.youtube.com/watch?v={{ videoField.vars.value.url }}">
+                                    </div>
                                 </div>
                             </div>
                             <button class="btn btn-danger remove-video" data-id="field-id-{{ loop.index }}"

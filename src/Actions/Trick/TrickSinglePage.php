@@ -78,10 +78,11 @@ class TrickSinglePage {
 			'trick' => $singleTrick
 		] );
 
-		$token = $tokenStorage->getToken();
-
+		$token        = $tokenStorage->getToken();
+		$medias       = $singleTrick->getMedias()->toArray();
 		$templateVars = [
 			'singleTrick'  => $singleTrick,
+			'medias'       => $medias,
 			'commentsList' => $commentsList
 		];
 

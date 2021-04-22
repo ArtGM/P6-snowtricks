@@ -57,18 +57,20 @@ addVideoButton.addEventListener('click', () => {
   const row = document.createElement('li')
 
   const deleteVideoButton = document.createElement('button')
-  const deleteButtonClassList = ['btn', 'btn-danger', 'remove-video']
+  const deleteButtonClassList = ['btn', 'btn-sm', 'btn-danger', 'remove-video']
 
   deleteVideoButton.classList.add(...deleteButtonClassList)
 
   deleteVideoButton.append('X')
   deleteVideoButton.setAttribute('data-id', fieldId)
   deleteVideoButton.setAttribute('type', 'button')
-  row.classList.add('list-group-item')
+  row.classList.add('list-group-item', 'video-field')
   row.setAttribute('id', fieldId)
-
   row.innerHTML = newVideoWidget
   row.appendChild(deleteVideoButton)
+
+  const content = row.firstChild
+  content.classList.add('d-flex', 'justify-start', 'align-center')
   trickFormVideoField.appendChild(row)
 
 })
@@ -98,6 +100,7 @@ document.addEventListener('change', function (e) {
 
     const element = document.getElementById(e.target.id)
     const parent = element.parentNode
+    const subParent = parent.parentNode
     const container = parent.parentNode
 
     const getMainSelector = container.getAttribute('id')
@@ -110,6 +113,7 @@ document.addEventListener('change', function (e) {
 
     if (videoId !== null) {
       const videoThumbnail = document.createElement('img')
+      videoThumbnail.classList.add('img-thumbnail', 'mr-2')
       fetch(
         `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${ytApiKey}&part=snippet`).
         then(response => response.json()).
@@ -119,7 +123,7 @@ document.addEventListener('change', function (e) {
             data.items[0].snippet.thumbnails.default.url)
           title.value = data.items[0].snippet.title
           description.value = data.items[0].snippet.description
-          parent.insertBefore(videoThumbnail, element)
+          subParent.insertBefore(videoThumbnail, parent)
           return data.items[0].snippet
         })
     }

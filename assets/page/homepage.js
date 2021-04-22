@@ -46,17 +46,18 @@ const deleteModal = () => {
 }
 
 const smoothScrollButton = document.getElementById('scrollDown')
+if (null !== smoothScrollButton) {
+  smoothScrollButton.addEventListener('click', function (e) {
+    e.preventDefault()
 
-smoothScrollButton.addEventListener('click', function (e) {
-  e.preventDefault()
+    const trickList = document.querySelector('#homeTricksList').offsetTop
 
-  const trickList = document.querySelector('#homeTricksList').offsetTop
-
-  scroll({
-    top: trickList,
-    behavior: 'smooth',
+    scroll({
+      top: trickList,
+      behavior: 'smooth',
+    })
   })
-})
+}
 
 export {
   getTricks,

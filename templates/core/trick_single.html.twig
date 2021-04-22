@@ -20,49 +20,64 @@
 
 {% block body %}
     <section class="container">
-        <div class="row">
-            <div class="col image-highlight">
 
-                {% for media in singleTrick.getMedias %}
-                    {% if media.type != 'video' %}
-                        <figure>
-                            <img class="img-fluid" src="{{ asset('uploads/' ~ media.file) }}"
-                                 alt="{{ media.description }}">
-                            <figcaption>{{ media.name }}</figcaption>
-                        </figure>
-                    {% else %}
-                        <figure class="embed-responsive embed-responsive-16by9">
-                        <iframe id="ytplayerMain"
-                                src="https://www.youtube.com/embed/{{ media.file }}"
-                                allowfullscreen></iframe>
-                    {% endif %}
-                    </figure>
+        {% if medias %}
+            <div class="row">
+                <div class="col image-highlight">
 
-                {% endfor %}
+                    {% for media in medias %}
+
+                        {% if media.type != 'video' %}
+                            <figure>
+                                <img class="img-fluid" src="{{ asset('uploads/' ~ media.file) }}"
+                                     alt="{{ media.description }}">
+                                <figcaption class="h3">{{ media.name }}</figcaption>
+                            </figure>
+                        {% else %}
+                            <figure class="embed-responsive embed-responsive-16by9">
+                                <iframe id="ytplayerMain"
+                                        src="https://www.youtube.com/embed/{{ media.file }}"
+                                        allowfullscreen></iframe>
+                            </figure>
+                        {% endif %}
+
+
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-        <div>
+        {% else %}
+            <div class="d-flex justify-content-center">
 
-
-            <div class="block-trick-gallery d-none d-md-block ">
-                {% for media in singleTrick.getMedias %}
-                    {% if media.type != 'video' %}
-                        <figure>
-                            <img class="img-thumbnail"
-                                 src="{{ asset('uploads/' ~ media.file)  | imagine_filter('trick_slides') }}"
-                                 alt="{{ media.description }}">
-                        </figure>
-                    {% else %}
-                        <figure>
-                            <img class="img-thumbnail" src="https://img.youtube.com/vi/{{ media.file }}/default.jpg"
-                                 alt="{{ media.name }}"
-                                 width="192">
-                        </figure>
-                    {% endif %}
-                {% endfor %}
-
+                <figure>
+                    <img class="img-fluid" src="{{ asset('images/default_trick.png') }}"
+                         alt="default">
+                </figure>
             </div>
-        </div>
+        {% endif %}
+        {% if medias %}
+            <div>
+
+
+                <div class="block-trick-gallery d-none d-md-block ">
+                    {% for media in medias %}
+                        {% if media.type != 'video' %}
+                            <figure>
+                                <img class="img-thumbnail"
+                                     src="{{ asset('uploads/' ~ media.file)  | imagine_filter('trick_slides') }}"
+                                     alt="{{ media.description }}">
+                            </figure>
+                        {% else %}
+                            <figure>
+                                <img class="img-thumbnail" src="https://img.youtube.com/vi/{{ media.file }}/default.jpg"
+                                     alt="{{ media.name }}"
+                                     width="192">
+                            </figure>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        {% endif %}
 
         <div class="jumbotron">
             <p class="lead">{{ singleTrick.getDescription }}</p>
