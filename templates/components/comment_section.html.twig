@@ -29,7 +29,7 @@
                     </ul>
                     {% if numberOfComments > 10 %}
                         <button type="button" id="loadMoreComments" data-target="commentList" class="btn btn-primary"
-                                data-page="{{ currentPage }}"
+                                data-page="{{ currentPage }}" data-filter="{{ singleTrick.getId }}"
                                 data-url="/load-more-comment/page">
                             Load More Comments...
                         </button>

@@ -1,9 +1,15 @@
 export default function getListener (button) {
   const target = button.getAttribute('data-target')
+  const parameters = button.getAttribute('data-filter')
+  console.log(parameters)
   const targetContainer = document.getElementById(target)
   return async (event) => {
     const element = event.target
-    const url = `${element.dataset.url}/${element.dataset.page}`
+    let url = `${element.dataset.url}/${element.dataset.page}/`
+    if (element.dataset.filter) {
+      url += element.dataset.filter
+    }
+
     const headers = new Headers()
     headers.append('snow-request', 'true')
     const fetchOptions = {

@@ -77,7 +77,9 @@ class TrickSinglePage {
 		$commentsList     = $commentRepository->findBy( [
 			'trick' => $singleTrick
 		], [ 'created_at' => 'DESC' ], 10 );
-		$numberOfComments = count( $commentRepository->findAll() );
+		$numberOfComments = count( $commentRepository->findBy( [
+			'trick' => $singleTrick
+		] ) );
 
 		$token        = $tokenStorage->getToken();
 		$medias       = $singleTrick->getMedias()->toArray();
