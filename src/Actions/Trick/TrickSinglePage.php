@@ -76,7 +76,7 @@ class TrickSinglePage {
 		$singleTrick  = $tricksRepository->findOneBy( [ 'slug' => $slug ] );
 		$commentsList = $commentRepository->findBy( [
 			'trick' => $singleTrick
-		] );
+		], [ 'created_at' => 'DESC' ] );
 
 		$token        = $tokenStorage->getToken();
 		$medias       = $singleTrick->getMedias()->toArray();
