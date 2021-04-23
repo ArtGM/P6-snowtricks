@@ -36,13 +36,13 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
-      "doctrine/doctrine-fixtures-bundle": "^3.4",
-      "symfony/browser-kit": "^5.1",
-      "symfony/css-selector": "^5.1",
-      "symfony/maker-bundle": "^1.21",
-      "symfony/phpunit-bridge": "^5.2",
-      "symfony/stopwatch": "^5.1",
-      "symfony/web-profiler-bundle": "^5.1"
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "symfony/browser-kit": "^5.1",
+        "symfony/css-selector": "^5.1",
+        "symfony/maker-bundle": "^1.21",
+        "symfony/phpunit-bridge": "^5.2",
+        "symfony/stopwatch": "^5.1",
+        "symfony/web-profiler-bundle": "^5.1"
     },
     "config": {
         "optimize-autoloader": true,
