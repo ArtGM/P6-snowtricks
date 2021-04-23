@@ -118,7 +118,7 @@ document.addEventListener('change', function (e) {
         `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${ytApiKey}&part=snippet`).
         then(response => response.json()).
         then(data => {
-          console.log(data)
+
           videoThumbnail.setAttribute('src',
             data.items[0].snippet.thumbnails.default.url)
           title.value = data.items[0].snippet.title

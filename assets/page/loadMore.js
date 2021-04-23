@@ -1,6 +1,5 @@
 export default function getListener (button) {
   const target = button.getAttribute('data-target')
-  console.log(target)
   const targetContainer = document.getElementById(target)
   return async (event) => {
     const element = event.target
