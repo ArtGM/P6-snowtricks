@@ -4,6 +4,7 @@
 namespace App\Actions\Ajax;
 
 use App\Entity\Comment;
+use App\Entity\Trick;
 use App\Responders\JsonResponders;
 use App\Responders\RedirectResponders;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,7 +19,7 @@ use Twig\Error\SyntaxError;
 /**
  * Class CommentPagination
  * @package App\Actions\Ajax
- * @Route ( "/load-more-comment/page/{page}", name="load-more-comments")
+ * @Route ( "/load-more-comment/page/{page}/{trickId}", name="load-more-comments")
  */
 class CommentPagination {
 	/**
@@ -45,6 +46,7 @@ class CommentPagination {
 	 * @param JsonResponders $jsonResponders
 	 * @param RedirectResponders $redirectResponders
 	 * @param int $page
+	 * @param string $trickId
 	 *
 	 * @return Response
 	 * @throws LoaderError
@@ -55,6 +57,7 @@ class CommentPagination {
 		Request $request,
 		JsonResponders $jsonResponders,
 		RedirectResponders $redirectResponders,
+		string $trickId,
 		int $page = 1
 	): Response {
 
@@ -64,8 +67,13 @@ class CommentPagination {
 
 		$offset            = $page * 10;
 		$commentRepository = $this->entityManager->getRepository( Comment::class );
-		$getOtherComments  = $commentRepository->findBy( [], [], 10, $offset );
-		$output            = '';
+		$trickRepo         = $this->entityManager->getRepository( Trick::class );
+		$trick             = $trickRepo->findOneBy( [ 'id' => $trickId ] );
+
+		$getOtherComments = $commentRepository->findBy( [
+			'trick' => $trick
+		], [ 'created_at' => 'DESC' ], 10, $offset );
+		$output           = '';
 
 		foreach ( $getOtherComments as $commentData ) {
 			$output .= $this->templating->render( 'components/comment.html.twig', [
