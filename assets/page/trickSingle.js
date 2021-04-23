@@ -1,8 +1,15 @@
 import 'slick-slider'
 import $ from 'jquery'
+import getListener from './loadMore'
 
 const gallery = $('.block-trick-gallery')
 const imageHighLight = $('.image-highlight')
+
+const loadMoreComment = document.getElementById('loadMoreComments')
+
+if (null !== loadMoreComment) {
+  loadMoreComment.addEventListener('click', getListener(loadMoreComment))
+}
 
 imageHighLight.slick({
   slidesToShow: 1,

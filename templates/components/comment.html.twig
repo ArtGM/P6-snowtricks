@@ -1,0 +1,22 @@
+<li class="media">
+    <span class="pull-left">
+        {% if comment.user.avatar %}
+            <img src="{{ asset('uploads/' ~ comment.user.getAvatarImgPath()) | imagine_filter('thumbnail_comment') }}"
+                 alt=""
+                 class="img-circle">
+        {% else %}
+            <img src="{{ asset('images/default.jpg') | imagine_filter('thumbnail_comment') }}"
+                 alt="default user avatar">
+        {% endif %}
+    </span>
+    <div class="media-body">
+        <span class="text-muted pull-right">
+            <small class="text-muted">{{ comment.createdAt }}</small>
+        </span>
+        <strong class="text-success">@{{ comment.user.username }}</strong>
+        <p>
+            {{ comment.content }}
+        </p>
+    </div>
+</li>
+

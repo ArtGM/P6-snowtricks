@@ -73,19 +73,22 @@ class TrickSinglePage {
 	): Response {
 
 		/** @var Trick $singleTrick */
-		$singleTrick  = $tricksRepository->findOneBy( [ 'slug' => $slug ] );
-		$commentsList = $commentRepository->findBy( [
+		$singleTrick      = $tricksRepository->findOneBy( [ 'slug' => $slug ] );
+		$commentsList     = $commentRepository->findBy( [
 			'trick' => $singleTrick
-		], [ 'created_at' => 'DESC' ] );
+		], [ 'created_at' => 'DESC' ], 10 );
+		$numberOfComments = count( $commentRepository->findAll() );
 
 		$token        = $tokenStorage->getToken();
 		$medias       = $singleTrick->getMedias()->toArray();
 		$templateVars = [
-			'singleTrick'  => $singleTrick,
-			'creationDate' => $singleTrick->getCreatedAt()->format( 'd F Y' ),
-			'trickGroup'   => $singleTrick->getTricksGroup()->getName(),
-			'medias'       => $medias,
-			'commentsList' => $commentsList
+			'singleTrick'      => $singleTrick,
+			'creationDate'     => $singleTrick->getCreatedAt()->format( 'd F Y' ),
+			'trickGroup'       => $singleTrick->getTricksGroup()->getName(),
+			'medias'           => $medias,
+			'commentsList'     => $commentsList,
+			'numberOfComments' => $numberOfComments,
+			'currentPage'      => 1
 		];
 
 		if ( $authorizationChecker->isGranted( 'ROLE_USER' ) ) {
