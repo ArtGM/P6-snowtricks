@@ -4,9 +4,10 @@ Snowboard tricks community website
 
 ## Prerequisites
 
-- Composer
-- Docker / Docker Desktop
-- Symfony cli
+- Composer v1.9.3
+- Docker v20.10.5 / Docker Desktop
+- Symfony CLI v4.23.5
+- PHP 7.4
 
 ## Installation
 
