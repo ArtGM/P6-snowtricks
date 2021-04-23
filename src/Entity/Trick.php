@@ -163,10 +163,10 @@ class Trick {
 	}
 
 	/**
-	 * @return string
+	 * @return TrickGroup
 	 */
-	public function getTricksGroup(): string {
-		return $this->tricks_group->getName();
+	public function getTricksGroup(): TrickGroup {
+		return $this->tricks_group;
 	}
 
 	/**

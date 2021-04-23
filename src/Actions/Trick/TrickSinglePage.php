@@ -83,7 +83,7 @@ class TrickSinglePage {
 		$templateVars = [
 			'singleTrick'  => $singleTrick,
 			'creationDate' => $singleTrick->getCreatedAt()->format( 'd F Y' ),
-			'trickGroup'   => $singleTrick->getTricksGroup(),
+			'trickGroup'   => $singleTrick->getTricksGroup()->getName(),
 			'medias'       => $medias,
 			'commentsList' => $commentsList
 		];
