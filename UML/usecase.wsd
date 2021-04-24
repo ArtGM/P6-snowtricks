@@ -6,6 +6,7 @@ left to right direction
 rectangle Application {
   usecase "Consulter la page d'accueil (liste des tricks)" as Home
   usecase "Consulter les details d'un trick" as Single
+  usecase "Lire les commentaires" as ReadComment
   usecase "Créer un compte utilisateur" as Signup
   usecase "Se connecter" as Login
   usecase "Demander un nouveau mot de passe" as Reset
@@ -18,17 +19,24 @@ rectangle Application {
 }
 
 V <|- U
-V --> Home
-V --> Single
-V --> Signup
-U --> Login
-U --> Reset
-U --> AddNew
-U --> Update
-U --> Delete
-U --> Comment
-U --> UpdateProfile
-U --> Logout
+V -- Home
+V -- Single
+V -- Signup
+
+U -- Reset
+U -- AddNew
+U -- Update
+U -- Delete
+U -- Comment
+U -- UpdateProfile
+U -- Logout
+ReadComment .> Single: <<extend>>
+AddNew ..> Login: <<include>>
+Update ..> Login: <<include>>
+Delete ..> Login: <<include>>
+Comment ..> Login: <<include>>
+UpdateProfile ..> Login: <<include>>
+Logout ..> Login: <<include>>
 
 
 @enduml

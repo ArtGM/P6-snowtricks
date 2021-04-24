@@ -45,13 +45,13 @@ Class TokenHistory {
 }
 
 
-Media "one" --o  "one" User
-Trick  "one" *--  "many" User
-Trick "many" -- "one" TricksGroup
-User  "one" *--  "many" Comment
-Media  "one" -o "many" Trick
-Comment "one" --* "one" Trick
-User "one" --* "many" TokenHistory
+Media "0..1" --o  "1" User
+Trick  "0..*" *--  "1..*" User
+Trick "0..*" -- "1" TricksGroup
+User  "1" *--  "0..*" Comment
+Media  "0..*" --o "1" Trick
+Comment "0..*" --* "0..*" Trick
+User "1" --* "0..*" TokenHistory
 
 
 
